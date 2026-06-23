@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Élite · Boutique de Moda</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#faf8f5;color:#1a1a1a;overflow-x:hidden;}
+:root{--bg:#faf8f5;--bg2:#f3f0ea;--bg3:#ece8e0;--dark:#1a1a1a;--muted:rgba(26,26,26,0.55);--faint:rgba(26,26,26,0.3);--border:rgba(26,26,26,0.1);--rose:#c4786a;--rose2:#d4887a;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--rose);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:72px;background:rgba(250,248,245,0.97);backdrop-filter:blur(10px);border-bottom:0.5px solid var(--border);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--dark);letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-cta{font-size:11px;font-weight:500;padding:9px 22px;border:0.5px solid var(--dark);color:var(--dark);letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+.nav-cta:hover{background:var(--dark);color:var(--bg);}
+
+/* HERO */
+#inicio{height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+.hero-left{position:relative;overflow:hidden;}
+.hero-left img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(0.88);transition:transform .8s ease;}
+.hero-left:hover img{transform:scale(1.03);}
+.hero-left::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 70%,var(--bg) 100%);}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:80px 8% 60px 6%;background:var(--bg);}
+.hero-eyebrow{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--rose);margin-bottom:20px;opacity:0.8;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,5vw,72px);font-weight:300;line-height:1.05;color:var(--dark);margin-bottom:20px;letter-spacing:0.02em;}
+.hero-h1 em{font-style:italic;color:var(--rose);}
+.hero-sub{font-size:15px;color:var(--muted);max-width:360px;line-height:1.8;margin-bottom:36px;font-weight:300;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+.btn-dark{font-size:11px;font-weight:500;padding:14px 30px;background:var(--dark);color:var(--bg);letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s;}
+.btn-dark:hover{background:var(--rose);}
+.btn-outline{font-size:11px;font-weight:500;padding:14px 30px;background:transparent;color:var(--dark);border:0.5px solid var(--border);letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:border-color .2s;}
+.btn-outline:hover{border-color:var(--rose);color:var(--rose);}
+.hero-info{display:flex;gap:32px;flex-wrap:wrap;}
+.hinfo{text-align:center;}
+.hinfo .val{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--dark);line-height:1;margin-bottom:4px;}
+.hinfo .lbl{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);}
+
+section{padding:100px 6%;}
+.sec-eyebrow{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;opacity:0.8;}
+.sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,58px);font-weight:300;line-height:1.1;color:var(--dark);margin-bottom:16px;}
+.sec-h2 em{font-style:italic;color:var(--rose);}
+.sec-sub{font-size:14px;color:var(--muted);max-width:480px;line-height:1.85;font-weight:300;}
+
+/* COLECCIONES */
+#colecciones{background:var(--bg2);padding:0;}
+.col-header{padding:72px 6% 48px;}
+.col-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;}
+.col-item{overflow:hidden;position:relative;cursor:pointer;}
+.col-item img{width:100%;height:480px;object-fit:cover;object-position:top center;filter:brightness(0.82);transition:transform .6s,filter .4s;}
+.col-item:hover img{transform:scale(1.04);filter:brightness(0.65);}
+.col-overlay{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(26,26,26,0.7));}
+.col-name{font-family:'Cormorant Garamond',serif;font-size:24px;color:#fff;margin-bottom:4px;}
+.col-count{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);}
+.col-arrow{display:inline-block;margin-top:10px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose);opacity:0;transition:opacity .3s;}
+.col-item:hover .col-arrow{opacity:1;}
+
+/* PRODUCTOS */
+#productos{background:var(--bg);}
+.prod-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px;}
+.ver-todo{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--rose);text-decoration:none;border-bottom:0.5px solid rgba(196,120,106,0.3);padding-bottom:2px;}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;}
+.prod-card{cursor:pointer;}
+.prod-img{overflow:hidden;position:relative;margin-bottom:16px;background:var(--bg2);}
+.prod-img img{width:100%;height:320px;object-fit:cover;object-position:top center;filter:brightness(0.88);transition:transform .6s,filter .4s;}
+.prod-card:hover .prod-img img{transform:scale(1.04);filter:brightness(0.75);}
+.prod-badge{position:absolute;top:12px;left:12px;font-size:9px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;}
+.b-new{background:var(--dark);color:var(--bg);}
+.b-sale{background:var(--rose);color:#fff;}
+.b-exc{background:var(--bg);color:var(--dark);border:0.5px solid var(--border);}
+.prod-fav{position:absolute;top:12px;right:12px;width:32px;height:32px;background:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;cursor:pointer;}
+.prod-fav svg{width:14px;height:14px;stroke:var(--dark);fill:none;stroke-width:1.5;}
+.prod-card:hover .prod-fav{opacity:1;}
+.prod-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--dark);margin-bottom:4px;}
+.prod-mat{font-size:11px;color:var(--faint);margin-bottom:10px;letter-spacing:0.04em;}
+.prod-colors{display:flex;gap:6px;margin-bottom:12px;}
+.color-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(26,26,26,0.15);}
+.prod-bottom{display:flex;align-items:center;justify-content:space-between;}
+.prod-price{font-size:16px;font-weight:500;color:var(--dark);}
+.prod-old{font-size:13px;color:var(--faint);text-decoration:line-through;margin-left:6px;}
+.prod-btn{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 16px;background:transparent;color:var(--dark);border:0.5px solid var(--border);cursor:pointer;font-family:inherit;transition:all .2s;}
+.prod-btn:hover{background:var(--dark);color:var(--bg);}
+
+/* LOOKBOOK */
+#lookbook{background:var(--bg3);padding:0;}
+.look-header{padding:80px 6% 52px;}
+.look-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:400px 350px;gap:3px;}
+.look-item{overflow:hidden;position:relative;cursor:pointer;}
+.look-item img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(0.82);transition:transform .6s,filter .4s;}
+.look-item:hover img{transform:scale(1.04);filter:brightness(0.65);}
+.look-item.wide{grid-column:span 2;}
+.look-label{position:absolute;bottom:20px;left:20px;font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;opacity:0;transition:opacity .3s;}
+.look-item:hover .look-label{opacity:1;}
+
+/* TESTIMONIOS */
+#testimonios{background:var(--bg);}
+.test-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);margin-top:52px;}
+.test-card{background:var(--bg);padding:36px 30px;transition:background .2s;}
+.test-card:hover{background:var(--bg2);}
+.test-stars{font-size:13px;letter-spacing:4px;color:var(--rose);margin-bottom:18px;}
+.test-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--muted);line-height:1.65;margin-bottom:20px;}
+.test-sep{width:20px;height:0.5px;background:var(--rose);margin-bottom:16px;}
+.test-name{font-size:11px;font-weight:500;color:var(--dark);letter-spacing:0.1em;margin-bottom:2px;}
+.test-prod{font-size:11px;color:var(--faint);}
+
+/* CTA */
+#cta{padding:0;overflow:hidden;position:relative;}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(26,26,26,0.75),rgba(26,26,26,0.75)),url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1400&q=85') center/cover no-repeat;}
+.cta-content{position:relative;z-index:2;text-align:center;padding:108px 6%;}
+.cta-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,80px);font-weight:300;color:#fff;margin-bottom:16px;line-height:1.05;}
+.cta-content h2 em{font-style:italic;color:rgba(196,120,106,0.9);}
+.cta-content p{font-size:15px;color:rgba(255,255,255,0.65);max-width:400px;margin:0 auto 40px;line-height:1.8;}
+.btn-white{font-size:11px;font-weight:500;padding:14px 36px;background:#fff;color:var(--dark);letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .2s,color .2s;}
+.btn-white:hover{background:var(--rose);color:#fff;}
+
+footer{background:var(--dark);padding:52px 6%;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--bg);letter-spacing:0.18em;margin-bottom:12px;}
+.f-desc{font-size:12px;color:rgba(250,248,245,0.3);line-height:1.9;}
+.f-col h4{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:18px;opacity:0.8;}
+.f-col a{font-size:12px;color:rgba(250,248,245,0.3);line-height:2.1;text-decoration:none;display:block;transition:color .2s;}
+.f-col a:hover{color:var(--rose2);}
+.f-bottom{background:#111;padding:16px 6%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.f-bottom p{font-size:11px;color:rgba(250,248,245,0.18);}
+
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:300;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#22c55e);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 28px rgba(34,197,94,0.45);text-decoration:none;transition:transform .2s;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+
+@media(max-width:900px){#inicio{grid-template-columns:1fr;}.hero-left{height:55vh;}.hero-right{padding:48px 6%;}.nav-links{display:none;}.col-grid{grid-template-columns:1fr;}.col-item img{height:280px;}.look-grid{grid-template-columns:1fr;}.look-item.wide{grid-column:span 1;height:280px;}.look-item{height:240px;}.test-inner{grid-template-columns:1fr;}footer{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="#inicio">Élite</a>
+  <div class="nav-links">
+    <a href="#colecciones">Colecciones</a>
+    <a href="#productos">Shop</a>
+    <a href="#lookbook">Lookbook</a>
+    <a href="#testimonios">Clientes</a>
+    <a href="https://wa.me/541140347468" class="nav-cta" target="_blank">Contactar</a>
+  </div>
+</nav>
+
+<div id="inicio">
+  <div class="hero-left">
+    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=900&q=85" alt="Élite Moda">
+  </div>
+  <div class="hero-right">
+    <div class="hero-eyebrow">Boutique de moda · Buenos Aires</div>
+    <h1 class="hero-h1">Moda que<br>te define.<br><em>Siempre.</em></h1>
+    <p class="hero-sub">Prendas seleccionadas para la mujer que sabe lo que quiere. Calidad, estilo y exclusividad en cada colección.</p>
+    <div class="hero-actions">
+      <a href="#colecciones" class="btn-dark">Ver colecciones</a>
+      <a href="https://wa.me/541140347468" class="btn-outline" target="_blank">Consultar</a>
+    </div>
+    <div class="hero-info">
+      <div class="hinfo"><div class="val">+300</div><div class="lbl">Prendas exclusivas</div></div>
+      <div class="hinfo"><div class="val">4.9</div><div class="lbl">Valoración</div></div>
+      <div class="hinfo"><div class="val">12x</div><div class="lbl">Sin interés</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="colecciones" style="padding:0;">
+  <div class="col-header">
+    <div class="sec-eyebrow">Temporada 2025</div>
+    <h2 class="sec-h2">Nuestras<br><em>colecciones.</em></h2>
+  </div>
+  <div class="col-grid">
+    <div class="col-item">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85" alt="Primavera">
+      <div class="col-overlay"><div class="col-name">Primavera · Verano</div><div class="col-count">+80 prendas</div><div class="col-arrow">Explorar →</div></div>
+    </div>
+    <div class="col-item">
+      <img src="https://images.unsplash.com/photo-1581338834647-b0fb40704e21?w=700&q=85" alt="Casual Chic">
+      <div class="col-overlay"><div class="col-name">Casual Chic</div><div class="col-count">+60 prendas</div><div class="col-arrow">Explorar →</div></div>
+    </div>
+    <div class="col-item">
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=700&q=85" alt="Evening">
+      <div class="col-overlay"><div class="col-name">Evening Wear</div><div class="col-count">+40 prendas</div><div class="col-arrow">Explorar →</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="prod-header">
+    <div>
+      <div class="sec-eyebrow">Lo más elegido</div>
+      <h2 class="sec-h2">Favoritas<br><em>de la temporada.</em></h2>
+    </div>
+    <a href="https://wa.me/541140347468" class="ver-todo" target="_blank">Ver todo →</a>
+  </div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=85" alt="Vestido">
+        <div class="prod-badge b-new">Nueva temporada</div>
+        <div class="prod-fav"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+      <div class="prod-name">Vestido midi floral</div>
+      <div class="prod-mat">Seda italiana · Talle S-XL</div>
+      <div class="prod-colors"><div class="color-dot" style="background:#e8d4c8;"></div><div class="color-dot" style="background:#2c2c2c;"></div><div class="color-dot" style="background:#6b8fa8;"></div></div>
+      <div class="prod-bottom"><div><span class="prod-price">$124.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=85" alt="Blazer">
+        <div class="prod-badge b-exc">Exclusivo</div>
+        <div class="prod-fav"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+      <div class="prod-name">Blazer oversized crema</div>
+      <div class="prod-mat">Lana merino · Talle S-XL</div>
+      <div class="prod-colors"><div class="color-dot" style="background:#f0ebe0;"></div><div class="color-dot" style="background:#1a1a1a;"></div></div>
+      <div class="prod-bottom"><div><span class="prod-price">$98.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=600&q=85" alt="Camisa">
+        <div class="prod-badge b-sale">-25%</div>
+        <div class="prod-fav"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+      <div class="prod-name">Camisa de seda blanca</div>
+      <div class="prod-mat">100% seda · Talle S-XL</div>
+      <div class="prod-colors"><div class="color-dot" style="background:#fff;"></div><div class="color-dot" style="background:#f5c6b0;"></div></div>
+      <div class="prod-bottom"><div><span class="prod-price">$72.990</span><span class="prod-old">$96.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=85" alt="Pantalón">
+        <div class="prod-badge b-new">Nuevo</div>
+        <div class="prod-fav"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+      <div class="prod-name">Pantalón palazzo negro</div>
+      <div class="prod-mat">Crepé fluido · Talle XS-XL</div>
+      <div class="prod-colors"><div class="color-dot" style="background:#1a1a1a;"></div><div class="color-dot" style="background:#8b7355;"></div></div>
+      <div class="prod-bottom"><div><span class="prod-price">$64.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="lookbook" style="padding:0;">
+  <div class="look-header">
+    <div class="sec-eyebrow">Lookbook 2025</div>
+    <h2 class="sec-h2">Cómo combinarlo.<br><em>Cómo usarlo.</em></h2>
+  </div>
+  <div class="look-grid">
+    <div class="look-item wide"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=85" alt="Look 1"><div class="look-label">Colección Primavera 2025</div></div>
+    <div class="look-item"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=85" alt="Look 2"><div class="look-label">Look casual chic</div></div>
+    <div class="look-item"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=700&q=85" alt="Look 3"><div class="look-label">Look evening</div></div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div style="max-width:500px;margin-bottom:0;">
+    <div class="sec-eyebrow">Lo que dicen</div>
+    <h2 class="sec-h2">Clientas que<br><em>volvieron.</em></h2>
+  </div>
+  <div class="test-inner">
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"El vestido midi es perfecto. La calidad de la seda es impresionante y el talle es exacto. Lo usé en una boda y recibí mil comentarios."</div><div class="test-sep"></div><div class="test-name">CAMILA A.</div><div class="test-prod">Vestido midi floral · Verificado</div></div>
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"El blazer oversized es una joya. Lo uso con todo — jeans, vestidos, pantalones. La calidad de la lana es increíble. Vale cada peso."</div><div class="test-sep"></div><div class="test-name">FLORENCIA M.</div><div class="test-prod">Blazer crema · Verificado</div></div>
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Compré en el sale y la calidad superó mis expectativas. La camisa de seda es una pasada. Shipping rápido y embalaje impecable."</div><div class="test-sep"></div><div class="test-name">SOFÍA R.</div><div class="test-prod">Camisa seda · Verificado</div></div>
+  </div>
+</section>
+
+<div id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <h2>Nueva colección.<br><em>Ya disponible.</em></h2>
+    <p>Las piezas más exclusivas de la temporada. Stock limitado.</p>
+    <a href="https://wa.me/541140347468" class="btn-white" target="_blank">Ver colección →</a>
+  </div>
+</div>
+
+<footer>
+  <div><div class="f-logo">Élite</div><div class="f-desc">Boutique de moda femenina premium.<br>Buenos Aires, Argentina.</div></div>
+  <div class="f-col"><h4>Colecciones</h4><a href="#">Primavera · Verano</a><a href="#">Casual Chic</a><a href="#">Evening Wear</a><a href="#">Sale</a></div>
+  <div class="f-col"><h4>Ayuda</h4><a href="#">Guía de talles</a><a href="#">Envíos</a><a href="#">Cambios</a><a href="#">FAQ</a></div>
+  <div class="f-col"><h4>Contacto</h4><a href="https://wa.me/541140347468">WhatsApp</a><a href="#">Instagram</a><a href="#">Email</a></div>
+</footer>
+<div class="f-bottom"><p>© 2025 Élite · Buenos Aires</p><p>Diseño por <span style="color:var(--rose2);">Presence</span></p></div>
+
+<a class="wa-float" href="https://wa.me/541140347468" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 1.998C6.475 1.998 2 6.473 2 11.996c0 1.76.463 3.513 1.34 5.053L2 22l5.109-1.322A9.946 9.946 0 0 0 12 21.994c5.523 0 9.998-4.475 9.998-9.998s-4.475-9.998-9.998-9.998z"/></svg>
+</a>
+</body>
+</html>

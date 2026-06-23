@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Guarida · Bar & Cantina</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#0e0b06;color:#f2ead8;overflow-x:hidden;}
+:root{
+  --gold:#c8922a;--gold2:#e8b84b;--amber:#d4821a;
+  --dark:#0e0b06;--dark2:#161008;--dark3:#1e1609;
+  --green:#1a3d2b;--green2:#2d6b47;
+  --text:#f2ead8;--muted:rgba(242,234,216,0.6);--faint:rgba(242,234,216,0.3);
+  --border:rgba(200,146,42,0.12);--borderl:rgba(200,146,42,0.25);
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:72px;background:rgba(14,11,6,0.96);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+.nav-brand{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--gold);letter-spacing:0.04em;}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .2s;letter-spacing:0.04em;}
+.nav-links a:hover{color:var(--gold);}
+.nav-res{font-size:13px;font-weight:600;padding:9px 22px;border:1.5px solid var(--gold);color:var(--gold);border-radius:2px;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:all .2s;}
+.nav-res:hover{background:var(--gold);color:#000;}
+
+/* HERO */
+#inicio{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px 6%;gap:48px;background:linear-gradient(160deg,#0e0b06,#1a1205,#0e0b06);position:relative;overflow:hidden;}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.hero-left{position:relative;z-index:2;}
+.hero-eyebrow{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);opacity:0.8;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:1;height:0.5px;background:rgba(200,146,42,0.3);}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(48px,5.5vw,80px);font-weight:900;line-height:1.05;color:var(--text);margin-bottom:16px;}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:40px;max-width:420px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+.btn-gold{font-size:14px;font-weight:600;padding:14px 30px;background:var(--gold);color:#000;border:none;cursor:pointer;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px);}
+.btn-outline{font-size:14px;font-weight:600;padding:14px 30px;background:transparent;color:var(--gold);border:1px solid var(--gold);cursor:pointer;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+.btn-outline:hover{background:rgba(200,146,42,0.1);}
+.hero-info{display:flex;flex-direction:column;gap:12px;}
+.info-row{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted);}
+.info-ico{color:var(--gold);font-size:15px;width:20px;}
+.hero-right{position:relative;z-index:2;}
+.carta-preview{background:var(--dark3);border:0.5px solid var(--border);padding:32px;position:relative;}
+.carta-preview::before{content:'"';font-family:'Playfair Display',serif;font-size:100px;color:var(--gold);opacity:0.08;position:absolute;top:-10px;left:16px;line-height:1;}
+.carta-title{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0.7;}
+.carta-section{margin-bottom:20px;}
+.carta-sec-name{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:10px;padding-bottom:6px;border-bottom:0.5px solid var(--border);}
+.carta-item{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:0.5px solid rgba(200,146,42,0.06);}
+.carta-item:last-child{border-bottom:none;}
+.carta-item-name{font-size:13px;font-weight:500;color:var(--text);}
+.carta-item-desc{font-size:11px;color:var(--faint);margin-top:2px;}
+.carta-item-price{font-size:13px;font-weight:600;color:var(--gold);white-space:nowrap;}
+
+/* SECCIONES */
+section{padding:96px 6%;}
+.sec-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;opacity:0.75;}
+.sec-h2{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,52px);font-weight:900;color:var(--text);margin-bottom:16px;line-height:1.12;}
+.sec-h2 em{font-style:italic;color:var(--gold);}
+.sec-sub{font-size:15px;color:var(--muted);max-width:500px;line-height:1.7;}
+
+/* AMBIENTE */
+#ambiente{background:var(--dark2);}
+.amb-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.amb-features{display:flex;flex-direction:column;gap:14px;margin-top:32px;}
+.amb-feat{display:flex;gap:16px;padding:18px 20px;background:var(--dark3);border:0.5px solid var(--border);border-left:3px solid var(--gold);transition:background .2s;}
+.amb-feat:hover{background:rgba(200,146,42,0.04);}
+.amb-feat-ico{font-size:22px;flex-shrink:0;}
+.amb-feat-text strong{display:block;font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.amb-feat-text span{font-size:12px;color:var(--faint);line-height:1.5;}
+.amb-right{display:flex;flex-direction:column;gap:14px;}
+.amb-stat{background:var(--dark3);border:0.5px solid var(--border);padding:24px;display:flex;align-items:center;gap:20px;}
+.amb-stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;}
+.amb-stat-text strong{display:block;font-size:14px;color:var(--text);margin-bottom:2px;}
+.amb-stat-text span{font-size:12px;color:var(--faint);}
+
+/* EVENTOS */
+#eventos{background:var(--dark);text-align:center;}
+.eventos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:48px;}
+.evento-card{background:var(--dark3);border:0.5px solid var(--border);padding:28px 22px;text-align:center;transition:border-color .2s,transform .2s;}
+.evento-card:hover{border-color:var(--borderl);transform:translateY(-3px);}
+.evento-dia{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.evento-ico{font-size:36px;margin-bottom:14px;}
+.evento-nombre{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.evento-desc{font-size:12px;color:var(--faint);line-height:1.6;}
+
+/* RESERVAS */
+#reservas{background:var(--dark2);}
+.res-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.res-form{background:var(--dark);border:0.5px solid var(--border);padding:40px;}
+.res-form h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--text);margin-bottom:24px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;font-weight:600;}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,0.03);border:0.5px solid rgba(200,146,42,0.15);padding:12px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color .2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg select option{background:#1e1609;}
+.fg textarea{resize:vertical;min-height:80px;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.res-btn{width:100%;padding:14px;background:var(--gold);color:#000;border:none;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:background .2s;}
+.res-btn:hover{background:var(--gold2);}
+.res-info .sec-sub{margin-bottom:32px;}
+.horarios{display:flex;flex-direction:column;gap:10px;}
+.horario{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border:0.5px solid var(--border);background:var(--dark3);}
+.horario .dia{font-size:13px;color:var(--muted);letter-spacing:0.04em;}
+.horario .hora{font-size:13px;font-weight:600;color:var(--gold);}
+.horario.especial{border-left:2px solid var(--gold);}
+
+footer{background:#070502;border-top:0.5px solid var(--border);padding:40px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+footer .brand{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);}
+footer .copy{font-size:12px;color:var(--faint);}
+footer .links{display:flex;gap:24px;}
+footer .links a{font-size:12px;color:var(--faint);text-decoration:none;transition:color .2s;}
+footer .links a:hover{color:var(--gold);}
+
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:300;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#22c55e);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(34,197,94,0.5);text-decoration:none;transition:transform .2s;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+
+@media(max-width:768px){#inicio{grid-template-columns:1fr;padding-top:100px;}.nav-links{display:none;}.amb-inner,.res-inner{grid-template-columns:1fr;gap:48px;}.fg-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">La Guarida</div>
+  <div class="nav-links">
+    <a href="#ambiente">El lugar</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#reservas">Reservas</a>
+    <a href="#reservas" class="nav-res">Reservar</a>
+  </div>
+</nav>
+
+<section id="inicio">
+  <div class="hero-orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(200,146,42,0.1),transparent);top:-100px;right:-50px;"></div>
+  <div class="hero-orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(200,146,42,0.06),transparent);bottom:-50px;left:-30px;"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Bar · Cantina · Buenos Aires</div>
+    <h1 class="hero-h1">El lugar donde<br>las noches<br>tienen <em>sabor.</em></h1>
+    <p class="hero-sub">Cocina de cantina con producto de estación, vinos naturales, cócteles de autor y una atmósfera que te invita a quedarte hasta tarde.</p>
+    <div class="hero-actions">
+      <a href="#reservas" class="btn-gold">Reservar mesa</a>
+      <a href="https://wa.me/541140347468" class="btn-outline" target="_blank">Consultarnos</a>
+    </div>
+    <div class="hero-info">
+      <div class="info-row"><span class="info-ico">📍</span>Thames 1456, Palermo · Buenos Aires</div>
+      <div class="info-row"><span class="info-ico">🕐</span>Martes a Domingo · 19:00 — 02:00</div>
+      <div class="info-row"><span class="info-ico">⭐</span>4.8 en Google · 420 reseñas</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="carta-preview">
+      <div class="carta-title">Carta de la noche</div>
+      <div class="carta-section">
+        <div class="carta-sec-name">Para picar</div>
+        <div class="carta-item"><div><div class="carta-item-name">Tabla de quesos y fiambres</div><div class="carta-item-desc">Selección artesanal con mermeladas</div></div><div class="carta-item-price">$5.800</div></div>
+        <div class="carta-item"><div><div class="carta-item-name">Tortilla española</div><div class="carta-item-desc">Con alioli de la casa</div></div><div class="carta-item-price">$3.200</div></div>
+        <div class="carta-item"><div><div class="carta-item-name">Croquetas de jamón</div><div class="carta-item-desc">Rebozadas, crujientes, perfectas</div></div><div class="carta-item-price">$2.900</div></div>
+      </div>
+      <div class="carta-section">
+        <div class="carta-sec-name">Cócteles de autor</div>
+        <div class="carta-item"><div><div class="carta-item-name">Guarida Sour</div><div class="carta-item-desc">Gin, limón, miel, albahaca</div></div><div class="carta-item-price">$3.400</div></div>
+        <div class="carta-item"><div><div class="carta-item-name">Mezcal Sunset</div><div class="carta-item-desc">Mezcal, mango, chile, sal</div></div><div class="carta-item-price">$3.800</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ambiente">
+  <div class="amb-inner">
+    <div>
+      <div class="sec-eyebrow">El espacio</div>
+      <h2 class="sec-h2">Un rincón para<br><em>perderse.</em></h2>
+      <p class="sec-sub">Un espacio íntimo con luz cálida, música en vivo los fines de semana y una cocina que trabaja con lo mejor de cada estación.</p>
+      <div class="amb-features">
+        <div class="amb-feat"><div class="amb-feat-ico">🎵</div><div class="amb-feat-text"><strong>Música en vivo</strong><span>Jueves, viernes y sábados. Jazz, folk y música latinoamericana.</span></div></div>
+        <div class="amb-feat"><div class="amb-feat-ico">🍷</div><div class="amb-feat-text"><strong>Vinos naturales</strong><span>Carta curada de bodegas pequeñas y biodinámicas de Argentina y España.</span></div></div>
+        <div class="amb-feat"><div class="amb-feat-ico">🍳</div><div class="amb-feat-text"><strong>Cocina de mercado</strong><span>El menú cambia según lo que hay en el mercado. Siempre fresco, siempre distinto.</span></div></div>
+      </div>
+    </div>
+    <div class="amb-right">
+      <div class="amb-stat"><div class="amb-stat-num">5+</div><div class="amb-stat-text"><strong>Años en Palermo</strong><span>Un clásico del barrio</span></div></div>
+      <div class="amb-stat"><div class="amb-stat-num">4.8</div><div class="amb-stat-text"><strong>Estrellas en Google</strong><span>420 reseñas verificadas</span></div></div>
+      <div class="amb-stat"><div class="amb-stat-num">60</div><div class="amb-stat-text"><strong>Cubiertos disponibles</strong><span>Interior y terraza</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="eventos">
+  <div class="sec-eyebrow">Eventos semanales</div>
+  <h2 class="sec-h2">Algo pasa cada<br><em>noche.</em></h2>
+  <div class="eventos-grid">
+    <div class="evento-card"><div class="evento-dia">Jueves</div><div class="evento-ico">🎷</div><div class="evento-nombre">Jazz en vivo</div><div class="evento-desc">Banda en vivo a partir de las 21:00. Entrada libre.</div></div>
+    <div class="evento-card"><div class="evento-dia">Viernes</div><div class="evento-ico">🍸</div><div class="evento-nombre">Noche de cócteles</div><div class="evento-desc">2x1 en todos los tragos de autor de 19:00 a 21:00.</div></div>
+    <div class="evento-card"><div class="evento-dia">Sábado</div><div class="evento-ico">🎸</div><div class="evento-nombre">Folk & Rock acústico</div><div class="evento-desc">Artistas emergentes de Buenos Aires. 22:00 hs.</div></div>
+    <div class="evento-card"><div class="evento-dia">Domingo</div><div class="evento-ico">🫕</div><div class="evento-nombre">Almuerzo de cantina</div><div class="evento-desc">Menú especial de mediodía con vino incluido. 12:00 — 17:00.</div></div>
+  </div>
+</section>
+
+<section id="reservas">
+  <div class="res-inner">
+    <div class="res-info">
+      <div class="sec-eyebrow">Reservas</div>
+      <h2 class="sec-h2">Asegurá<br>tu <em>noche.</em></h2>
+      <p class="sec-sub">Los fines de semana se llenan rápido. Reservá con anticipación para no quedarte afuera.</p>
+      <div class="horarios" style="margin-top:32px;">
+        <div class="horario"><span class="dia">Martes y Miércoles</span><span class="hora">19:00 — 00:00</span></div>
+        <div class="horario especial"><span class="dia">Jueves</span><span class="hora">19:00 — 01:00 🎷</span></div>
+        <div class="horario especial"><span class="dia">Viernes</span><span class="hora">19:00 — 02:00 🍸</span></div>
+        <div class="horario especial"><span class="dia">Sábado</span><span class="hora">19:00 — 02:00 🎸</span></div>
+        <div class="horario especial"><span class="dia">Domingo</span><span class="hora">12:00 — 17:00 🫕</span></div>
+        <div class="horario"><span class="dia">Lunes</span><span class="hora" style="color:var(--faint);">Cerrado</span></div>
+      </div>
+    </div>
+    <div class="res-form">
+      <h3>Hacé tu reserva</h3>
+      <div class="fg-row">
+        <div class="fg"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+        <div class="fg"><label>Teléfono</label><input type="text" placeholder="11 1234-5678"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Fecha</label><input type="date"></div>
+        <div class="fg"><label>Personas</label><select><option>1-2 personas</option><option>3-4 personas</option><option>5-6 personas</option><option>+6 personas</option></select></div>
+      </div>
+      <div class="fg"><label>Ocasión especial</label><select><option>Sin ocasión especial</option><option>Cumpleaños</option><option>Aniversario</option><option>Cena de negocios</option><option>Evento privado</option></select></div>
+      <div class="fg"><label>Algo para aclarar</label><textarea placeholder="Alergias, pedidos especiales..."></textarea></div>
+      <button class="res-btn">Confirmar reserva</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">La Guarida</div>
+  <div class="copy">© 2025 La Guarida · Palermo, Buenos Aires · Diseño por Presence</div>
+  <div class="links"><a href="#inicio">Inicio</a><a href="#eventos">Eventos</a><a href="#reservas">Reservas</a></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/541140347468" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 1.998C6.475 1.998 2 6.473 2 11.996c0 1.76.463 3.513 1.34 5.053L2 22l5.109-1.322A9.946 9.946 0 0 0 12 21.994c5.523 0 9.998-4.475 9.998-9.998s-4.475-9.998-9.998-9.998z"/></svg>
+</a>
+</body>
+</html>
