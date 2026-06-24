@@ -245,7 +245,6 @@ nav{
   <div class="filtro" onclick="filtrar('gimnasio',this)">🏋️ Gimnasio</div>
   <div class="filtro" onclick="filtrar('spa',this)">💆 Spa</div>
   <div class="filtro" onclick="filtrar('veterinaria',this)">🐾 Veterinaria</div>
-  <div class="filtro" onclick="filtrar('taller',this)">🔧 Taller Mecánico</div>
 </div>
 
 <!-- CATEGORIAS -->
@@ -388,25 +387,10 @@ nav{
       </div>
     </div>
 
-    <!-- TALLER MECÁNICO -->
-    <div class="cat-card rv" data-cat="taller" onclick="openModal('taller')">
-      <div class="cat-visual" style="background:linear-gradient(145deg,#1a0e00,#2d1800);">
-        <div class="bg-pattern"></div>
-        <div class="cat-glow" style="background:#e8650a;"></div>
-        <div class="cat-emoji">🔧</div>
-      </div>
-      <div class="cat-info">
-        <h3>Taller Mecánico</h3>
-        <p>Talleres mecánicos, service de autos y electricidad del automotor que quieren recibir más clientes.</p>
-        <div class="cat-footer">
-          <span class="cat-count">3 diseños disponibles</span>
-          <span class="cat-btn">Ver diseños →</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
+
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
   <div class="modal" id="modal">
     <div class="modal-header">
@@ -504,15 +488,6 @@ const datos = {
       {name:'ZEN.BA', style:'Japonés · Blanco y rojo lacado', tags:['Tratamientos','Filosofía','Reservas'], accent:'#CC2200', link:'spa/zenba.html'},
     ]
   },
-  taller: {
-    emoji:'🔧', title:'Taller Mecánico', sub:'Mecánica General · Frenos · Suspensión · Service · Electricidad',
-    color:'#e8650a',
-    designs:[
-      {name:'MecánicaPro', style:'Profesional · Azul marino y naranja', tags:['Servicios','Presupuesto','Contacto'], accent:'#E8650A', link:'taller/mecanicapro.html'},
-      {name:'TURBO', style:'Racing · Negro y amarillo bold', tags:['Servicios','Proceso','Presupuesto'], accent:'#F5D000', link:'taller/turbo.html'},
-      {name:'AutoCare', style:'Familiar · Blanco y verde', tags:['Servicios','Por qué elegirnos','Presupuesto'], accent:'#1A6B3C', link:'taller/autocare.html'},
-    ]
-  },
   veterinaria: {
     emoji:'🐾', title:'Veterinaria / Pet Shop', sub:'Clínica Veterinaria · Pet Shop · Grooming · Guardería',
     color:'#0a8f82',
@@ -592,11 +567,9 @@ function filtrar(cat, el) {
   });
 }
 
-document.querySelectorAll('.rv').forEach(el => el.classList.add('show'));
-
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-}, {threshold: 0.05});
+}, {threshold: 0.1});
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
