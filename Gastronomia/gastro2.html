@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masa Madre · Pizzería</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#0c0c0c;color:#f5f0e8;overflow-x:hidden;}
+:root{
+  --red:#e8330a;--red2:#ff4422;--orange:#ff8c00;
+  --cream:#f5f0e8;--dark:#0c0c0c;--dark2:#141414;--dark3:#1c1c1c;
+  --muted:rgba(245,240,232,0.6);--faint:rgba(245,240,232,0.3);
+  --border:rgba(245,240,232,0.08);--borderl:rgba(232,51,10,0.2);
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:70px;background:rgba(12,12,12,0.95);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-logo{width:36px;height:36px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.nav-name{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.06em;color:var(--cream);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;transition:color .2s;}
+.nav-links a:hover{color:var(--cream);}
+.nav-order{font-size:13px;font-weight:700;padding:10px 24px;background:var(--red);color:#fff;border-radius:4px;text-decoration:none;letter-spacing:0.04em;transition:background .2s,transform .15s;box-shadow:0 0 20px rgba(232,51,10,0.4);}
+.nav-order:hover{background:var(--red2);transform:translateY(-1px);}
+
+/* HERO */
+#inicio{min-height:100vh;display:flex;align-items:center;padding:80px 6%;position:relative;overflow:hidden;background:#0c0c0c;}
+.hero-bg-text{position:absolute;font-family:'Anton',sans-serif;font-size:28vw;color:rgba(232,51,10,0.04);line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:0.02em;}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.hero-content{position:relative;z-index:2;max-width:680px;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);background:rgba(255,140,0,0.1);border:0.5px solid rgba(255,140,0,0.25);padding:6px 16px;border-radius:2px;margin-bottom:28px;}
+.hero-h1{font-family:'Anton',sans-serif;font-size:clamp(64px,10vw,130px);line-height:0.9;letter-spacing:0.02em;color:var(--cream);margin-bottom:16px;}
+.hero-h1 .red{color:var(--red);}
+.hero-sub{font-size:17px;color:var(--muted);max-width:460px;line-height:1.7;margin-bottom:40px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+.btn-red{font-size:15px;font-weight:700;padding:15px 34px;background:var(--red);color:#fff;border-radius:4px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 0 30px rgba(232,51,10,0.45);transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 0 50px rgba(232,51,10,0.65);}
+.btn-ghost{font-size:15px;font-weight:600;padding:15px 34px;background:transparent;color:var(--cream);border:1px solid rgba(245,240,232,0.2);border-radius:4px;text-decoration:none;cursor:pointer;transition:border-color .2s;}
+.btn-ghost:hover{border-color:rgba(245,240,232,0.5);}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.hstat{display:flex;align-items:center;gap:10px;}
+.hstat-ico{width:38px;height:38px;border-radius:50%;background:rgba(232,51,10,0.1);border:0.5px solid var(--borderl);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.hstat-text .val{font-size:16px;font-weight:700;color:var(--cream);}
+.hstat-text .lbl{font-size:11px;color:var(--faint);}
+
+/* SECCIONES */
+section{padding:96px 6%;}
+.sec-tag{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.sec-h2{font-family:'Anton',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:0.03em;color:var(--cream);margin-bottom:16px;line-height:1.0;}
+.sec-sub{font-size:15px;color:var(--muted);max-width:500px;line-height:1.7;}
+
+/* PIZZAS */
+#menu{background:var(--dark2);}
+.menu-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px;}
+.pizza-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);}
+.pizza-card{background:var(--dark2);padding:0;overflow:hidden;transition:background .2s;position:relative;}
+.pizza-card:hover{background:var(--dark3);}
+.pizza-img{height:180px;background:linear-gradient(135deg,#1a0800,#2a0f00);display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden;}
+.pizza-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--dark2));}
+.pizza-badge{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:2px;z-index:2;}
+.badge-hot{background:var(--red);color:#fff;}
+.badge-new{background:var(--orange);color:#000;}
+.badge-veg{background:#22c55e;color:#fff;}
+.pizza-info{padding:22px 24px 26px;}
+.pizza-name{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.04em;color:var(--cream);margin-bottom:6px;}
+.pizza-desc{font-size:13px;color:var(--faint);line-height:1.6;margin-bottom:16px;}
+.pizza-footer{display:flex;align-items:center;justify-content:space-between;}
+.pizza-sizes{display:flex;gap:8px;}
+.size-btn{font-size:11px;font-weight:600;padding:4px 10px;border:0.5px solid var(--border);color:var(--faint);border-radius:2px;cursor:pointer;transition:all .2s;}
+.size-btn:hover,.size-btn.active{border-color:var(--red);color:var(--red);}
+.pizza-price{font-size:20px;font-weight:800;color:var(--red);}
+
+/* PROCESO */
+#proceso{background:var(--dark);position:relative;overflow:hidden;}
+.proceso-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(232,51,10,0.05),transparent);pointer-events:none;}
+.proceso-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.proceso-left .sec-sub{margin-bottom:36px;}
+.proceso-steps{display:flex;flex-direction:column;gap:0;}
+.proceso-step{display:flex;gap:20px;padding:22px 0;border-bottom:0.5px solid var(--border);}
+.proceso-step:last-child{border-bottom:none;}
+.step-num{font-family:'Anton',sans-serif;font-size:36px;color:var(--red);opacity:0.4;line-height:1;flex-shrink:0;width:40px;}
+.step-body strong{display:block;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.step-body span{font-size:13px;color:var(--faint);line-height:1.55;}
+.proceso-right{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.dato-card{background:var(--dark3);border:0.5px solid var(--border);border-radius:8px;padding:24px 20px;transition:border-color .2s;}
+.dato-card:hover{border-color:var(--borderl);}
+.dato-ico{font-size:24px;margin-bottom:12px;}
+.dato-val{font-family:'Anton',sans-serif;font-size:32px;color:var(--red);line-height:1;margin-bottom:4px;}
+.dato-lbl{font-size:12px;color:var(--faint);}
+
+/* TESTIMONIOS */
+#testimonios{background:var(--dark2);}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:48px;}
+.test-card{background:var(--dark3);border:0.5px solid var(--border);border-radius:8px;padding:24px;transition:border-color .2s;}
+.test-card:hover{border-color:var(--borderl);}
+.test-stars{color:var(--orange);font-size:14px;margin-bottom:12px;}
+.test-text{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px;font-style:italic;}
+.test-author{display:flex;align-items:center;gap:10px;}
+.test-avatar{width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;}
+.test-name{font-size:13px;font-weight:600;color:var(--cream);}
+.test-date{font-size:11px;color:var(--faint);}
+
+/* PEDIDO CTA */
+#pedido{background:linear-gradient(135deg,#1a0500,#0c0c0c);padding:80px 6%;text-align:center;position:relative;overflow:hidden;}
+#pedido::before{content:'🍕';position:absolute;font-size:300px;opacity:0.03;top:50%;left:50%;transform:translate(-50%,-50%);}
+#pedido h2{font-family:'Anton',sans-serif;font-size:clamp(44px,7vw,88px);letter-spacing:0.03em;color:var(--cream);margin-bottom:16px;line-height:1;position:relative;z-index:2;}
+#pedido h2 span{color:var(--red);}
+#pedido p{font-size:17px;color:var(--muted);max-width:440px;margin:0 auto 40px;position:relative;z-index:2;}
+.pedido-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;}
+
+footer{background:#080808;border-top:0.5px solid var(--border);padding:32px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+footer .brand{font-family:'Anton',sans-serif;font-size:20px;color:var(--red);}
+footer .copy{font-size:12px;color:var(--faint);}
+footer .links{display:flex;gap:20px;}
+footer .links a{font-size:12px;color:var(--faint);text-decoration:none;transition:color .2s;}
+footer .links a:hover{color:var(--cream);}
+
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:300;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#22c55e);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(34,197,94,0.5);text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(34,197,94,0.7);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+
+@media(max-width:768px){.nav-links{display:none;}.proceso-inner{grid-template-columns:1fr;gap:48px;}.proceso-right{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🍕</div>
+    <span class="nav-name">MASA MADRE</span>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">Menú</a>
+    <a href="#proceso">Nuestro proceso</a>
+    <a href="#testimonios">Reseñas</a>
+    <a href="https://wa.me/541140347468" class="nav-order" target="_blank">🛵 Pedir ahora</a>
+  </div>
+</nav>
+
+<section id="inicio">
+  <div class="hero-bg-text">PIZZA</div>
+  <div class="hero-orb" style="width:500px;height:500px;background:radial-gradient(circle,rgba(232,51,10,0.15),transparent);top:-100px;right:-100px;"></div>
+  <div class="hero-orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(255,140,0,0.08),transparent);bottom:-50px;left:-50px;"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🔥 Horno a leña · Masa madre · Buenos Aires</div>
+    <h1 class="hero-h1">LA PIZZA<br>QUE <span class="red">TE</span><br>CAMBIA.</h1>
+    <p class="hero-sub">Masa madre fermentada 48hs, mozzarella artesanal y los mejores ingredientes. Sin atajos, sin congelados. Solo pizza de verdad.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/541140347468" class="btn-red" target="_blank">🛵 Pedir ahora</a>
+      <a href="#menu" class="btn-ghost">Ver el menú</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-ico">⭐</div>
+        <div class="hstat-text"><div class="val">4.9</div><div class="lbl">580 reseñas</div></div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-ico">⏱️</div>
+        <div class="hstat-text"><div class="val">40 min</div><div class="lbl">Delivery promedio</div></div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-ico">🔥</div>
+        <div class="hstat-text"><div class="val">Horno</div><div class="lbl">A leña siempre</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="menu-header">
+    <div>
+      <div class="sec-tag">El menú</div>
+      <h2 class="sec-h2">ELEGÍ TU<br>PIZZA.</h2>
+    </div>
+    <p style="font-size:14px;color:var(--faint);max-width:280px;line-height:1.6;">Todas hechas al momento en nuestro horno a leña. Disponibles en individual (26cm) y familiar (40cm).</p>
+  </div>
+  <div class="pizza-grid">
+    <div class="pizza-card">
+      <div class="pizza-img">🍕<div class="pizza-badge badge-hot">🔥 La más pedida</div></div>
+      <div class="pizza-info">
+        <div class="pizza-name">MARGARITA CLÁSICA</div>
+        <div class="pizza-desc">Salsa de tomate San Marzano, mozzarella fior di latte, albahaca fresca y aceite de oliva extra virgen.</div>
+        <div class="pizza-footer">
+          <div class="pizza-sizes"><span class="size-btn active">Indiv.</span><span class="size-btn">Famil.</span></div>
+          <div class="pizza-price">$4.200</div>
+        </div>
+      </div>
+    </div>
+    <div class="pizza-card">
+      <div class="pizza-img">🥓<div class="pizza-badge badge-new">✨ Nueva</div></div>
+      <div class="pizza-info">
+        <div class="pizza-name">BACON & TRUFA</div>
+        <div class="pizza-desc">Base de crema de trufa negra, mozzarella, panceta ahumada y rúcula fresca con parmesano rallado.</div>
+        <div class="pizza-footer">
+          <div class="pizza-sizes"><span class="size-btn active">Indiv.</span><span class="size-btn">Famil.</span></div>
+          <div class="pizza-price">$6.800</div>
+        </div>
+      </div>
+    </div>
+    <div class="pizza-card">
+      <div class="pizza-img">🌶️</div>
+      <div class="pizza-info">
+        <div class="pizza-name">DIAVOLA</div>
+        <div class="pizza-desc">Salsa de tomate, mozzarella, salame picante importado, ají rojo y aceite de oliva con ajo.</div>
+        <div class="pizza-footer">
+          <div class="pizza-sizes"><span class="size-btn active">Indiv.</span><span class="size-btn">Famil.</span></div>
+          <div class="pizza-price">$5.900</div>
+        </div>
+      </div>
+    </div>
+    <div class="pizza-card">
+      <div class="pizza-img">🥦<div class="pizza-badge badge-veg">🌱 Vegana</div></div>
+      <div class="pizza-info">
+        <div class="pizza-name">VERDE TOTAL</div>
+        <div class="pizza-desc">Base de pesto de albahaca, mozzarella vegana, zucchini, espinaca, cherry y semillas de girasol.</div>
+        <div class="pizza-footer">
+          <div class="pizza-sizes"><span class="size-btn active">Indiv.</span><span class="size-btn">Famil.</span></div>
+          <div class="pizza-price">$5.400</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="proceso-bg"></div>
+  <div class="proceso-inner">
+    <div class="proceso-left">
+      <div class="sec-tag">Nuestro proceso</div>
+      <h2 class="sec-h2">48HS DE<br>FERMENTACIÓN.</h2>
+      <p class="sec-sub">No usamos levadura química ni atajos. La masa madre necesita tiempo, y ese tiempo se nota en cada mordida.</p>
+      <div class="proceso-steps">
+        <div class="proceso-step"><div class="step-num">01</div><div class="step-body"><strong>Fermentación lenta</strong><span>La masa reposa 48 horas a temperatura controlada para desarrollar sabor y digestibilidad.</span></div></div>
+        <div class="proceso-step"><div class="step-num">02</div><div class="step-body"><strong>Ingredientes del día</strong><span>Compramos en el mercado cada mañana. Nada de stock, nada de freezer.</span></div></div>
+        <div class="proceso-step"><div class="step-num">03</div><div class="step-body"><strong>Horno a leña 450°C</strong><span>Cocción en 90 segundos a máxima temperatura. Bordes perfectos, base crujiente.</span></div></div>
+      </div>
+    </div>
+    <div class="proceso-right">
+      <div class="dato-card"><div class="dato-ico">⏰</div><div class="dato-val">48h</div><div class="dato-lbl">De fermentación mínima</div></div>
+      <div class="dato-card"><div class="dato-ico">🌡️</div><div class="dato-val">450°</div><div class="dato-lbl">Temperatura del horno</div></div>
+      <div class="dato-card"><div class="dato-ico">⭐</div><div class="dato-val">4.9</div><div class="dato-lbl">Puntuación promedio</div></div>
+      <div class="dato-card"><div class="dato-ico">🍕</div><div class="dato-val">+8</div><div class="dato-lbl">Años haciendo pizza</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="sec-tag">Lo que dicen</div>
+  <h2 class="sec-h2">580 OPINIONES.<br>TODAS REALES.</h2>
+  <div class="test-grid">
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"La Bacon & Trufa es literalmente la mejor pizza que comí en mi vida. La masa es increíble, se nota que está bien hecha. Ya la pedí 4 veces esta semana."</div><div class="test-author"><div class="test-avatar">M</div><div><div class="test-name">Martín R.</div><div class="test-date">Hace 2 días</div></div></div></div>
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Por fin una pizzería que entiende lo que es la masa madre. Llegó en 35 minutos, caliente y perfecta. Los bordes son otra cosa."</div><div class="test-author"><div class="test-avatar">S</div><div><div class="test-name">Sol G.</div><div class="test-date">Hace 5 días</div></div></div></div>
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">"Probé la vegana sin muchas expectativas y me sorprendió. El pesto es casero, los ingredientes fresquísimos. Ya no pido en otro lado."</div><div class="test-author"><div class="test-avatar">L</div><div><div class="test-name">Lucía M.</div><div class="test-date">Hace 1 semana</div></div></div></div>
+  </div>
+</section>
+
+<div id="pedido">
+  <h2>¿TENÉS<br><span>HAMBRE?</span></h2>
+  <p>Pedí ahora y en 40 minutos tenés tu pizza en la puerta. Sin excusas.</p>
+  <div class="pedido-btns">
+    <a href="https://wa.me/541140347468" class="btn-red" target="_blank" style="font-size:16px;padding:16px 40px;">🛵 Pedir por WhatsApp</a>
+    <a href="#menu" class="btn-ghost" style="font-size:16px;padding:16px 40px;">Ver el menú completo</a>
+  </div>
+</div>
+
+<footer>
+  <div class="brand">MASA MADRE</div>
+  <div class="copy">© 2025 Masa Madre · Buenos Aires · Diseño por Presence</div>
+  <div class="links"><a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#pedido">Pedir</a></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/541140347468" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 1.998C6.475 1.998 2 6.473 2 11.996c0 1.76.463 3.513 1.34 5.053L2 22l5.109-1.322A9.946 9.946 0 0 0 12 21.994c5.523 0 9.998-4.475 9.998-9.998s-4.475-9.998-9.998-9.998z"/></svg>
+</a>
+</body>
+</html>

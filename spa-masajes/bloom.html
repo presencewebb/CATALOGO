@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom Wellness | Masajes & Bienestar</title>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --terra:#C4704A;--terra2:#D98A64;--terra-lt:#F0D4C4;--terra-pale:#FAF0EA;
+  --sage:#5A8A6A;--sage-lt:#A8C8B4;--sage-pale:#EBF4EE;
+  --bg:#FDFAF7;--bg2:#F5F0E8;--warm:#EDE5D8;--stone:#D8CFBE;--stone-dk:#B8AA96;
+  --text:#1E1A14;--text-mid:#4A4035;--muted:#8A7E6E;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,247,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--warm);padding:1.2rem 6%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Gilda Display',serif;font-size:1.2rem;letter-spacing:0.04em;color:var(--text);}
+.nav-logo span{color:var(--terra);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.82rem;transition:color 0.3s;}
+.nav-links a:hover{color:var(--terra);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-badge{font-size:0.72rem;color:var(--sage);background:var(--sage-pale);padding:0.3rem 0.8rem;border-radius:50px;font-weight:500;}
+.nav-cta{background:var(--terra);color:white;border:none;padding:0.65rem 1.5rem;border-radius:8px;font-size:0.82rem;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:background 0.3s;}
+.nav-cta:hover{background:var(--terra2);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;background:var(--bg2);overflow:hidden;position:relative;}
+.hero::before{content:'';position:absolute;top:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:var(--terra-lt);opacity:0.3;filter:blur(60px);}
+.hero::after{content:'';position:absolute;bottom:-100px;right:-100px;width:350px;height:350px;border-radius:50%;background:var(--sage-lt);opacity:0.2;filter:blur(60px);}
+
+.hero-left{padding:4rem 3rem 4rem 6%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
+
+.hero-chip{display:inline-flex;align-items:center;gap:0.5rem;background:var(--terra-pale);border:1px solid var(--terra-lt);border-radius:50px;padding:0.35rem 1rem;font-size:0.7rem;color:var(--terra);margin-bottom:2rem;font-weight:500;letter-spacing:0.04em;}
+
+.hero h1{font-family:'Gilda Display',serif;font-size:clamp(2.8rem,5vw,5rem);line-height:1.08;letter-spacing:0.01em;margin-bottom:1.5rem;color:var(--text);}
+.hero h1 em{font-style:italic;color:var(--terra);}
+
+.hero-sub{font-size:0.95rem;color:var(--muted);line-height:1.85;max-width:420px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+
+.btn-terra{background:var(--terra);color:white;border:none;padding:0.95rem 2rem;border-radius:10px;font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-terra:hover{background:var(--terra2);transform:translateY(-1px);}
+.btn-outline-t{background:transparent;color:var(--text-mid);border:1.5px solid var(--stone);padding:0.95rem 2rem;border-radius:10px;font-size:0.85rem;font-family:'DM Sans',sans-serif;font-weight:400;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-outline-t:hover{border-color:var(--terra);color:var(--terra);}
+
+.hero-trust{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.ht{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--muted);font-weight:300;}
+.ht-sep{width:3px;height:3px;background:var(--stone-dk);border-radius:50%;}
+
+.hero-right{position:relative;z-index:1;padding:3rem 4rem 3rem 2rem;display:flex;align-items:center;justify-content:center;}
+.hero-mosaic{width:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 180px 160px;gap:1rem;}
+.hm-block{border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.6rem;position:relative;overflow:hidden;}
+.hm-1{background:var(--terra-lt);grid-row:span 2;}
+.hm-2{background:var(--sage-pale);border:1px solid var(--sage-lt);}
+.hm-3{background:var(--warm);}
+.hm-4{background:var(--terra-pale);border:1px solid var(--terra-lt);grid-column:span 2;}
+.hm-ico{font-size:2.5rem;opacity:0.45;}
+.hm-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.hm-stat{position:absolute;bottom:1rem;right:1rem;background:white;border-radius:8px;padding:0.5rem 0.8rem;font-size:0.72rem;color:var(--text);font-weight:500;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+
+/* STRIP */
+.strip{background:var(--terra);padding:0.9rem 6%;display:flex;gap:2.5rem;overflow-x:auto;scrollbar-width:none;align-items:center;}
+.strip::-webkit-scrollbar{display:none;}
+.si{font-size:0.8rem;color:rgba(255,255,255,0.8);white-space:nowrap;font-weight:300;display:flex;align-items:center;gap:2.5rem;}
+.si::after{content:'✿';color:rgba(255,255,255,0.3);}
+.si:last-child::after{display:none;}
+
+/* SECCIÓN */
+.section{padding:5rem 6%;}
+.sec-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.67rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:0.8rem;font-weight:500;}
+.sec-tag::before{content:'✦';font-size:0.5rem;}
+.sec-h{font-family:'Gilda Display',serif;font-size:clamp(2rem,3vw,2.8rem);line-height:1.15;color:var(--text);}
+.sec-h em{font-style:italic;color:var(--terra);}
+.sec-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+.sec-ver{font-size:0.78rem;color:var(--terra);text-decoration:none;display:flex;align-items:center;gap:0.4rem;font-weight:500;transition:gap 0.2s;}
+.sec-ver:hover{gap:0.8rem;}
+
+/* SERVICIOS */
+.svs-bg{background:var(--bg2);}
+.svs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+
+.sv{background:var(--white);border-radius:16px;border:1.5px solid var(--warm);overflow:hidden;cursor:default;transition:all 0.3s;}
+.sv:hover{border-color:var(--terra-lt);box-shadow:0 12px 40px rgba(196,112,74,0.1);transform:translateY(-3px);}
+
+.sv-top{padding:2rem 2rem 1.5rem;position:relative;}
+.sv-accent{position:absolute;top:0;left:0;right:0;height:4px;}
+.sa-terra{background:linear-gradient(90deg,var(--terra),var(--terra2));}
+.sa-sage{background:linear-gradient(90deg,var(--sage),var(--sage-lt));}
+.sa-warm{background:linear-gradient(90deg,var(--stone-dk),var(--stone));}
+
+.sv-ico-ring{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem;}
+.sir-terra{background:var(--terra-pale);}
+.sir-sage{background:var(--sage-pale);}
+.sir-warm{background:var(--bg2);}
+
+.sv-name{font-family:'Gilda Display',serif;font-size:1.2rem;color:var(--text);margin-bottom:0.5rem;}
+.sv-desc{font-size:0.82rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.sv-bot{padding:1.2rem 2rem;border-top:1px solid var(--warm);display:flex;justify-content:space-between;align-items:center;}
+.sv-meta{font-size:0.72rem;color:var(--muted);}
+.sv-price{font-family:'Gilda Display',serif;font-size:1rem;color:var(--terra);}
+
+/* PACKS */
+.packs-section{}
+.packs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.pack{border-radius:16px;padding:2.5rem;border:1.5px solid var(--warm);transition:all 0.3s;position:relative;}
+.pack:hover{border-color:var(--terra-lt);}
+.pack.pop{background:var(--terra);border-color:var(--terra);}
+.pack-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--sage);color:white;font-size:0.68rem;font-weight:500;padding:0.2rem 1rem;border-radius:50px;white-space:nowrap;letter-spacing:0.06em;}
+.pack-ico{font-size:2rem;margin-bottom:1rem;}
+.pack-name{font-family:'Gilda Display',serif;font-size:1.15rem;color:var(--text);margin-bottom:0.4rem;}
+.pack.pop .pack-name{color:white;}
+.pack-tagline{font-size:0.78rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300;}
+.pack.pop .pack-tagline{color:rgba(255,255,255,0.65);}
+.pack-price{font-family:'Gilda Display',serif;font-size:2.5rem;line-height:1;color:var(--text);margin-bottom:0.3rem;}
+.pack.pop .pack-price{color:white;}
+.pack-note{font-size:0.72rem;color:var(--muted);margin-bottom:1.8rem;}
+.pack.pop .pack-note{color:rgba(255,255,255,0.55);}
+.pack-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;}
+.pack-list li{font-size:0.82rem;color:var(--muted);display:flex;gap:0.6rem;font-weight:300;}
+.pack.pop .pack-list li{color:rgba(255,255,255,0.8);}
+.pack-list li::before{content:'✦';color:var(--terra);font-size:0.55rem;flex-shrink:0;margin-top:0.25rem;}
+.pack.pop .pack-list li::before{color:rgba(255,255,255,0.5);}
+.btn-pack{width:100%;background:var(--terra);color:white;border:none;padding:0.9rem;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.85rem;cursor:pointer;transition:background 0.3s;}
+.btn-pack:hover{background:var(--terra2);}
+.pack.pop .btn-pack{background:white;color:var(--terra);}
+.pack.pop .btn-pack:hover{background:var(--terra-pale);}
+
+/* TESTIMONIOS */
+.reviews-bg{background:var(--bg2);}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.rev{background:white;border-radius:16px;padding:2rem;border:1px solid var(--warm);}
+.rev-stars{display:flex;gap:0.2rem;margin-bottom:1rem;}
+.star{color:var(--terra);font-size:0.85rem;}
+.rev-text{font-family:'Gilda Display',serif;font-size:1rem;font-style:italic;color:var(--text-mid);line-height:1.7;margin-bottom:1.5rem;}
+.rev-auth{display:flex;align-items:center;gap:0.8rem;}
+.rev-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:500;color:white;flex-shrink:0;}
+.ra-1{background:var(--terra);}
+.ra-2{background:var(--sage);}
+.ra-3{background:var(--stone-dk);}
+.rev-name{font-size:0.83rem;font-weight:500;color:var(--text);}
+.rev-srv{font-size:0.72rem;color:var(--muted);}
+
+/* AGENDA */
+.agenda-wrap{background:var(--text);margin:0 6% 5.5rem;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;}
+.ag-left{background:linear-gradient(135deg,#3D2A1A,#1E1A14);padding:4rem;display:flex;flex-direction:column;justify-content:center;}
+.ag-left h2{font-family:'Gilda Display',serif;font-size:clamp(2rem,3vw,3rem);color:var(--terra-lt);line-height:1.15;margin-bottom:1.2rem;}
+.ag-left h2 em{font-style:italic;color:var(--terra2);}
+.ag-left p{font-size:0.88rem;color:rgba(255,255,255,0.4);line-height:1.85;margin-bottom:2rem;font-weight:300;}
+.ag-data{display:flex;flex-direction:column;gap:0;}
+.ag-row{display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.82rem;}
+.ag-row:last-child{border-bottom:none;}
+.ag-key{color:rgba(255,255,255,0.3);}
+.ag-val{color:rgba(255,255,255,0.6);}
+.ag-right{background:var(--terra-pale);padding:4rem 3rem;}
+.ag-right h3{font-family:'Gilda Display',serif;font-size:1.5rem;color:var(--text);margin-bottom:2rem;}
+.fg{margin-bottom:1.2rem;}
+.fl{display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;font-weight:500;}
+.fi,.fs{width:100%;background:white;border:1.5px solid var(--warm);color:var(--text);padding:0.82rem 1rem;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.87rem;outline:none;transition:border-color 0.3s;appearance:none;}
+.fi:focus,.fs:focus{border-color:var(--terra);}
+.fi::placeholder{color:var(--stone-dk);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.btn-ag{width:100%;background:var(--terra);color:white;border:none;padding:1rem;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.85rem;cursor:pointer;margin-top:0.5rem;transition:background 0.3s;}
+.btn-ag:hover{background:var(--terra2);}
+
+/* FOOTER */
+footer{background:var(--text);padding:3.5rem 6% 2rem;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fl-logo{font-family:'Gilda Display',serif;font-size:1.1rem;color:var(--terra-lt);margin-bottom:0.8rem;}
+.fl-logo span{color:var(--terra2);font-style:italic;}
+.fl-desc{font-size:0.82rem;color:rgba(255,255,255,0.3);line-height:1.7;font-weight:300;max-width:250px;}
+.fc-h{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:1rem;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.fc a{text-decoration:none;color:rgba(255,255,255,0.35);font-size:0.82rem;transition:color 0.3s;font-weight:300;}
+.fc a:hover{color:var(--terra-lt);}
+.fb{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;font-size:0.73rem;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:0.5rem;}
+.fp{color:rgba(196,112,74,0.3);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .svs-grid,.packs-grid,.reviews-grid{grid-template-columns:1fr 1fr;}
+  .agenda-wrap{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Bloom<span> Wellness</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#packs">Packs</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#agenda">Reservas</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-badge">✦ Primera sesión -20%</span>
+    <button class="nav-cta" onclick="document.getElementById('agenda').scrollIntoView({behavior:'smooth'})">Reservar turno</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-chip">🌸 Masajes & Bienestar · Palermo Soho, CABA</div>
+    <h1>Florecé<br>desde <em>adentro.</em></h1>
+    <p class="hero-sub">En Bloom Wellness creemos que el bienestar no es un lujo, es una necesidad. Masajes, drenajes, faciales y tratamientos corporales diseñados para restaurarte de verdad.</p>
+    <div class="hero-btns">
+      <a href="#agenda" class="btn-terra">Reservar turno</a>
+      <a href="#servicios" class="btn-outline-t">Ver servicios</a>
+    </div>
+    <div class="hero-trust">
+      <div class="ht">⭐ 4.9 en Google</div>
+      <div class="ht-sep"></div>
+      <div class="ht">✦ +600 sesiones</div>
+      <div class="ht-sep"></div>
+      <div class="ht">🌿 Productos orgánicos</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <div class="hm-block hm-1"><div class="hm-ico">💆</div><div class="hm-label">Masajes</div><div class="hm-stat">+200 sesiones</div></div>
+      <div class="hm-block hm-2"><div class="hm-ico">🌊</div><div class="hm-label">Drenaje</div></div>
+      <div class="hm-block hm-3"><div class="hm-ico">✨</div><div class="hm-label">Facial</div></div>
+      <div class="hm-block hm-4"><div class="hm-ico">🕯️</div><div class="hm-label">Ritual completo · desde $35.000</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="si">Masaje Relajante</span>
+  <span class="si">Descontracturante</span>
+  <span class="si">Piedras Calientes</span>
+  <span class="si">Drenaje Linfático</span>
+  <span class="si">Facial Orgánico</span>
+  <span class="si">Reflexología</span>
+  <span class="si">Aromaterapia</span>
+  <span class="si">Ritual Bloom</span>
+</div>
+
+<!-- SERVICIOS -->
+<section class="section svs-bg" id="servicios">
+  <div class="sec-top">
+    <div><div class="sec-tag">Nuestros servicios</div><h2 class="sec-h">Tratamientos para <em>cada momento</em></h2></div>
+    <a href="#agenda" class="sec-ver">Reservar →</a>
+  </div>
+  <div class="svs-grid">
+    <div class="sv">
+      <div class="sv-top"><div class="sv-accent sa-terra"></div><div class="sv-ico-ring sir-terra">💆</div><div class="sv-name">Masaje Relajante</div><p class="sv-desc">Técnica sueca que libera la tensión acumulada. Aceites esenciales orgánicos, música ambiente y calma total.</p></div>
+      <div class="sv-bot"><span class="sv-meta">60 min / 90 min</span><span class="sv-price">desde $18.000</span></div>
+    </div>
+    <div class="sv">
+      <div class="sv-top"><div class="sv-accent sa-terra"></div><div class="sv-ico-ring sir-terra">💪</div><div class="sv-name">Descontracturante</div><p class="sv-desc">Maniobras profundas sobre zonas tensas. Alivia contracturas, libera puntos gatillo y mejora la movilidad.</p></div>
+      <div class="sv-bot"><span class="sv-meta">60 min / 90 min</span><span class="sv-price">desde $20.000</span></div>
+    </div>
+    <div class="sv">
+      <div class="sv-top"><div class="sv-accent sa-sage"></div><div class="sv-ico-ring sir-sage">🌊</div><div class="sv-name">Drenaje Linfático</div><p class="sv-desc">Movimientos suaves y rítmicos para activar el sistema linfático. Reduce retención, mejora circulación y desintoxica.</p></div>
+      <div class="sv-bot"><span class="sv-meta">60 min</span><span class="sv-price">desde $19.000</span></div>
+    </div>
+    <div class="sv">
+      <div class="sv-top"><div class="sv-accent sa-warm"></div><div class="sv-ico-ring sir-warm">🪨</div><div class="sv-name">Piedras Calientes</div><p class="sv-desc">Basalto volcánico a temperatura controlada. El calor penetra profundo en el músculo para una relajación sin igual.</p></div>
+      <div class="sv-bot"><span class="sv-meta">75 min</span><span class="sv-price">desde $24.000</span></div>
+    </div>
+    <div class="sv">
+      <div class="sv-top"><div class="sv-accent sa-sage"></div><div class="sv-ico-ring sir-sage">✨</div><div class="sv-name">Facial Orgánico</div><p class="sv-desc">Limpieza, exfoliación enzimática, sérum vitamina C y máscara hidratante con cosméticos 100% naturales.</p></div>
+      <div class="sv-bot"><span class="sv-meta">75 min</span><span class="sv-price">desde $22.000</span></div>
+    </div>
+    <div class="sv">
+      <div class="sv-top"><div class="sv-accent sa-terra"></div><div class="sv-ico-ring sir-terra">🦶</div><div class="sv-name">Reflexología Podal</div><p class="sv-desc">Presión en puntos reflejos de los pies que corresponden a órganos y sistemas del cuerpo. Equilibrio total.</p></div>
+      <div class="sv-bot"><span class="sv-meta">50 min</span><span class="sv-price">desde $15.000</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKS -->
+<section class="section" id="packs">
+  <div class="sec-tag">Packs & Promociones</div>
+  <h2 class="sec-h">Más sesiones, <em>mejor precio</em></h2>
+  <div class="packs-grid">
+    <div class="pack">
+      <div class="pack-ico">🌱</div>
+      <div class="pack-name">Pack Inicio</div>
+      <div class="pack-tagline">Para empezar a cuidarte</div>
+      <div class="pack-price">$52.000</div>
+      <div class="pack-note">3 sesiones · ahorrás $2.000</div>
+      <ul class="pack-list">
+        <li>3 masajes relajantes 60 min</li>
+        <li>Validez 2 meses</li>
+        <li>Elección de horario prioritaria</li>
+        <li>Kit de bienvenida Bloom</li>
+      </ul>
+      <button class="btn-pack">Elegir pack</button>
+    </div>
+    <div class="pack pop">
+      <div class="pack-badge">El más elegido</div>
+      <div class="pack-ico">🌸</div>
+      <div class="pack-name">Pack Bloom</div>
+      <div class="pack-tagline">La experiencia completa</div>
+      <div class="pack-price">$95.000</div>
+      <div class="pack-note">6 sesiones · ahorrás $13.000</div>
+      <ul class="pack-list">
+        <li>4 masajes a elección</li>
+        <li>1 drenaje linfático</li>
+        <li>1 facial orgánico</li>
+        <li>Validez 3 meses</li>
+        <li>20% off en productos</li>
+      </ul>
+      <button class="btn-pack">Elegir pack</button>
+    </div>
+    <div class="pack">
+      <div class="pack-ico">🎁</div>
+      <div class="pack-name">Gift Card</div>
+      <div class="pack-tagline">El mejor regalo</div>
+      <div class="pack-price">Libre</div>
+      <div class="pack-note">Cargá el monto que quieras</div>
+      <ul class="pack-list">
+        <li>Válida por 6 meses</li>
+        <li>Para cualquier servicio</li>
+        <li>Enviamos por correo o digital</li>
+        <li>Personalizable con mensaje</li>
+      </ul>
+      <button class="btn-pack">Comprar gift card</button>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="section reviews-bg" id="resenas">
+  <div class="sec-tag">Lo que dicen</div>
+  <h2 class="sec-h">Clientes que <em>volvieron</em></h2>
+  <div class="reviews-grid">
+    <div class="rev">
+      <div class="rev-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="rev-text">"El mejor masaje descontracturante que recibí en mi vida. Salí sintiéndome una persona nueva después de meses con el cuello destrozado por el trabajo."</p>
+      <div class="rev-auth"><div class="rev-av ra-1">MF</div><div><div class="rev-name">María Fernández</div><div class="rev-srv">Masaje Descontracturante</div></div></div>
+    </div>
+    <div class="rev">
+      <div class="rev-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="rev-text">"El Pack Bloom fue el mejor regalo que me di en mucho tiempo. El facial orgánico dejó mi piel increíble y el drenaje redujo la retención que tenía desde el embarazo."</p>
+      <div class="rev-auth"><div class="rev-av ra-2">LP</div><div><div class="rev-name">Laura Ponce</div><div class="rev-srv">Pack Bloom</div></div></div>
+    </div>
+    <div class="rev">
+      <div class="rev-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="rev-text">"El ambiente es precioso, las terapeutas son un amor y los productos huelen a gloria. Ya compré la gift card para mi mamá para su cumpleaños."</p>
+      <div class="rev-auth"><div class="rev-av ra-3">VG</div><div><div class="rev-name">Valentina García</div><div class="rev-srv">Masaje + Facial</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda" style="padding:0 0 5rem;">
+  <div class="agenda-wrap">
+    <div class="ag-left">
+      <h2>Reservá tu<br><em>momento Bloom</em></h2>
+      <p>Completá el formulario y te confirmamos en menos de una hora. También podés escribirnos por WhatsApp.</p>
+      <div class="ag-data">
+        <div class="ag-row"><span class="ag-key">Dirección</span><span class="ag-val">Thames 1234, Palermo</span></div>
+        <div class="ag-row"><span class="ag-key">Lun–Vie</span><span class="ag-val">9:00 – 21:00</span></div>
+        <div class="ag-row"><span class="ag-key">Sáb–Dom</span><span class="ag-val">10:00 – 18:00</span></div>
+        <div class="ag-row"><span class="ag-key">WhatsApp</span><span class="ag-val">+54 11 4567-8900</span></div>
+      </div>
+    </div>
+    <div class="ag-right">
+      <h3>Reservar sesión</h3>
+      <div class="fg"><label class="fl">Nombre</label><input class="fi" type="text" placeholder="Tu nombre completo"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Servicio</label>
+          <select class="fs"><option>Masaje Relajante</option><option>Descontracturante</option><option>Drenaje Linfático</option><option>Piedras Calientes</option><option>Facial Orgánico</option><option>Reflexología</option><option>Pack Bloom</option></select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Fecha</label><input class="fi" type="date"></div>
+        <div class="fg"><label class="fl">Horario</label>
+          <select class="fs"><option>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option></select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Zona a trabajar o consideraciones</label><input class="fi" type="text" placeholder="Ej: tensión en la espalda baja, alergia a..."></div>
+      <button class="btn-ag">Confirmar turno 🌸</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-logo">Bloom <span>Wellness</span></div>
+      <p class="fl-desc">Masajes, drenaje y bienestar integral en Palermo. Porque cuidarte no es un lujo, es una necesidad.</p>
+    </div>
+    <div class="fc"><div class="fc-h">Servicios</div><ul><li><a href="#">Masaje Relajante</a></li><li><a href="#">Descontracturante</a></li><li><a href="#">Drenaje</a></li><li><a href="#">Facial</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+    <div class="fc"><div class="fc-h">Contacto</div><ul><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Ubicación</a></li><li><a href="#">Packs</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2025 Bloom Wellness · Palermo, Buenos Aires</span><span class="fp">Sitio web por Presence ✦</span></div>
+</footer>
+</body>
+</html>

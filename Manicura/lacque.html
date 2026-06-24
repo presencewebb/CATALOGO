@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lacqué Studio | Nail & Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --ink:     #0C0C0C;
+  --ink2:    #141414;
+  --ink3:    #1E1E1E;
+  --ink4:    #2A2A2A;
+  --fuchsia: #F0047F;
+  --fuchsia2:#FF3D9A;
+  --fuchsia-dim: rgba(240,4,127,0.12);
+  --text:    #F2EEE8;
+  --muted:   #888077;
+  --rule:    rgba(242,238,232,0.08);
+}
+
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; background:var(--ink); color:var(--text); overflow-x:hidden; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.2rem 6%;
+  border-bottom:1px solid var(--rule);
+  background:rgba(12,12,12,0.9);
+  backdrop-filter:blur(14px);
+}
+.nav-logo {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem; letter-spacing:0.12em; color:var(--text);
+}
+.nav-logo span { color:var(--fuchsia); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { text-decoration:none; color:var(--muted); font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; transition:color 0.3s; }
+.nav-links a:hover { color:var(--fuchsia2); }
+.nav-cta {
+  background:var(--fuchsia); color:white; border:none;
+  padding:0.6rem 1.5rem; font-size:0.76rem; letter-spacing:0.1em;
+  text-transform:uppercase; font-family:'DM Sans',sans-serif; font-weight:500;
+  cursor:pointer; transition:background 0.3s;
+}
+.nav-cta:hover { background:var(--fuchsia2); }
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh; padding:0 6%; padding-top:70px;
+  display:grid; grid-template-columns:1fr 1fr;
+  align-items:center; gap:4rem;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; bottom:-120px; right:-120px;
+  width:500px; height:500px;
+  background:var(--fuchsia); border-radius:50%;
+  opacity:0.06; filter:blur(80px);
+}
+
+.hero-eyebrow {
+  font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--fuchsia); margin-bottom:1.4rem; font-weight:400;
+}
+
+.hero h1 {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,7vw,7.5rem);
+  line-height:0.92; letter-spacing:0.04em;
+  margin-bottom:1.8rem;
+}
+.hero h1 .ital {
+  font-family:'DM Serif Display',serif;
+  font-style:italic; color:var(--fuchsia);
+  font-size:0.75em; letter-spacing:0.01em;
+  display:block;
+}
+
+.hero-sub {
+  font-size:0.95rem; color:var(--muted); line-height:1.8;
+  max-width:400px; margin-bottom:2.5rem; font-weight:300;
+}
+
+.hero-actions { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+
+.btn-fuchsia {
+  background:var(--fuchsia); color:white; border:none;
+  padding:1rem 2.2rem; font-size:0.8rem; letter-spacing:0.1em;
+  text-transform:uppercase; font-family:'DM Sans',sans-serif; font-weight:500;
+  cursor:pointer; transition:all 0.3s; text-decoration:none; display:inline-block;
+}
+.btn-fuchsia:hover { background:var(--fuchsia2); }
+
+.btn-ghost {
+  background:transparent; color:var(--text); border:none;
+  font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;
+  font-family:'DM Sans',sans-serif; cursor:pointer;
+  display:flex; align-items:center; gap:0.5rem; text-decoration:none;
+  transition:color 0.3s;
+}
+.btn-ghost:hover { color:var(--fuchsia); }
+
+.hero-visual {
+  display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+  gap:1rem; height:520px;
+}
+
+.hero-block {
+  border-radius:4px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'DM Serif Display',serif; font-style:italic;
+  color:rgba(242,238,232,0.12); font-size:1.1rem;
+  flex-direction:column; gap:0.5rem;
+  position:relative;
+}
+
+.hb-1 { background:var(--ink3); grid-row:span 2; }
+.hb-2 { background:var(--fuchsia-dim); border:1px solid rgba(240,4,127,0.2); }
+.hb-3 { background:var(--ink4); }
+
+.hb-ico { font-size:2.8rem; opacity:0.35; }
+.hb-label {
+  font-family:'DM Sans',sans-serif; font-style:normal;
+  font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
+  color:rgba(242,238,232,0.25);
+}
+.hb-tag {
+  position:absolute; bottom:0.8rem; left:0.8rem;
+  background:var(--fuchsia); color:white;
+  font-family:'DM Sans',sans-serif; font-style:normal;
+  font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
+  padding:0.25rem 0.7rem; font-weight:500;
+}
+
+/* ── TICKER ── */
+.ticker {
+  background:var(--fuchsia); padding:0.7rem 0; overflow:hidden;
+}
+.ticker-inner {
+  display:flex; gap:3rem; animation:tick 18s linear infinite;
+  width:max-content;
+}
+.ticker-item {
+  font-family:'Bebas Neue',sans-serif; font-size:1rem;
+  letter-spacing:0.12em; color:white; white-space:nowrap;
+  display:flex; align-items:center; gap:3rem;
+}
+.ticker-item::after { content:'✦'; opacity:0.6; }
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── SERVICIOS ── */
+.section { padding:5.5rem 6%; }
+
+.s-eyebrow { font-size:0.67rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--fuchsia); margin-bottom:0.7rem; }
+.s-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.2rem,3.5vw,3.2rem); letter-spacing:0.05em;
+  margin-bottom:3.5rem; line-height:1;
+}
+.s-title em {
+  font-family:'DM Serif Display',serif; font-style:italic;
+  color:var(--fuchsia); font-size:0.85em; letter-spacing:0.01em;
+}
+
+.services-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--rule);
+  border:1px solid var(--rule);
+}
+
+.srv {
+  background:var(--ink2); padding:2.5rem 2rem;
+  transition:background 0.3s; cursor:default; position:relative;
+}
+.srv:hover { background:var(--ink3); }
+.srv::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:2px; background:var(--fuchsia);
+  transition:width 0.4s;
+}
+.srv:hover::after { width:100%; }
+
+.srv-ico { font-size:2rem; margin-bottom:1.2rem; }
+.srv-name {
+  font-family:'Bebas Neue',sans-serif; font-size:1.3rem;
+  letter-spacing:0.06em; margin-bottom:0.6rem;
+}
+.srv-desc { font-size:0.82rem; color:var(--muted); line-height:1.7; font-weight:300; margin-bottom:1.2rem; }
+.srv-price { font-size:0.82rem; color:var(--fuchsia); font-weight:500; letter-spacing:0.04em; }
+
+/* ── PROCESO ── */
+.proceso-section { background:var(--ink2); }
+
+.proceso-steps {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; margin-top:3.5rem;
+  border:1px solid var(--rule);
+}
+
+.step {
+  padding:2.5rem 1.8rem; border-right:1px solid var(--rule);
+  position:relative;
+}
+.step:last-child { border-right:none; }
+
+.step-num {
+  font-family:'Bebas Neue',sans-serif; font-size:3.5rem;
+  color:rgba(240,4,127,0.15); line-height:1; margin-bottom:1rem;
+}
+.step-name {
+  font-family:'DM Serif Display',serif; font-size:1.1rem;
+  font-style:italic; margin-bottom:0.6rem; color:var(--text);
+}
+.step-desc { font-size:0.8rem; color:var(--muted); line-height:1.7; font-weight:300; }
+
+/* ── RESERVA ── */
+.booking-wrap {
+  display:grid; grid-template-columns:1fr 1fr;
+}
+
+.booking-left {
+  background:var(--fuchsia);
+  padding:5rem 4rem;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.booking-left h2 {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,4vw,4rem); letter-spacing:0.05em;
+  color:white; line-height:1.0; margin-bottom:1.2rem;
+}
+.booking-left h2 em {
+  font-family:'DM Serif Display',serif; font-style:italic;
+  display:block; font-size:0.8em;
+}
+.booking-left p { font-size:0.88rem; color:rgba(255,255,255,0.7); line-height:1.8; margin-bottom:2.5rem; font-weight:300; }
+
+.booking-info-list { display:flex; flex-direction:column; gap:0.8rem; }
+.bi {
+  display:flex; align-items:center; gap:0.8rem;
+  font-size:0.83rem; color:rgba(255,255,255,0.85); font-weight:400;
+}
+
+.booking-right { background:var(--ink3); padding:4.5rem 4rem; }
+.booking-right h3 {
+  font-family:'Bebas Neue',sans-serif; font-size:1.5rem;
+  letter-spacing:0.08em; margin-bottom:2rem; color:var(--text);
+}
+
+.fg { margin-bottom:1.3rem; }
+.fl {
+  display:block; font-size:0.67rem; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem;
+}
+.fi, .fs {
+  width:100%; background:var(--ink4); border:1px solid rgba(242,238,232,0.1);
+  color:var(--text); padding:0.85rem 1rem; font-family:'DM Sans',sans-serif;
+  font-size:0.88rem; outline:none; transition:border-color 0.3s; appearance:none;
+}
+.fi:focus, .fs:focus { border-color:var(--fuchsia); }
+.fi::placeholder { color:var(--muted); }
+.fs option { background:var(--ink3); }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+.btn-book {
+  width:100%; background:var(--fuchsia); color:white; border:none;
+  padding:1.1rem; font-size:0.8rem; letter-spacing:0.12em;
+  text-transform:uppercase; font-family:'DM Sans',sans-serif; font-weight:500;
+  cursor:pointer; margin-top:0.5rem; transition:background 0.3s;
+}
+.btn-book:hover { background:var(--fuchsia2); }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--ink2); padding:3.5rem 6% 2rem;
+  border-top:1px solid var(--rule);
+}
+.footer-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; flex-wrap:wrap; gap:1.5rem; }
+.footer-logo { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.12em; color:var(--text); }
+.footer-logo span { color:var(--fuchsia); }
+.footer-nav { display:flex; gap:2rem; list-style:none; }
+.footer-nav a { text-decoration:none; color:var(--muted); font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; transition:color 0.3s; }
+.footer-nav a:hover { color:var(--fuchsia); }
+.footer-bottom { border-top:1px solid var(--rule); padding-top:1.5rem; display:flex; justify-content:space-between; font-size:0.73rem; color:var(--muted); flex-wrap:wrap; gap:0.5rem; }
+.footer-presence { color:rgba(240,4,127,0.35); }
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr; padding-top:90px;}
+  .hero-visual{height:280px; grid-template-rows:auto;}
+  .hb-1{grid-row:auto;}
+  .services-grid{grid-template-columns:1fr;}
+  .proceso-steps{grid-template-columns:1fr 1fr;}
+  .booking-wrap{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">LACQ<span>U</span>É</div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#reserva">Reservas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('reserva').scrollIntoView({behavior:'smooth'})">Pedir turno</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Nail Studio · Palermo, Buenos Aires</div>
+    <h1>
+      El arte<br>
+      <span class="ital">de tus uñas.</span>
+      PERFECTO.
+    </h1>
+    <p class="hero-sub">Diseños a medida, técnicas de vanguardia y una experiencia que va más allá del color. Tu próxima sesión te está esperando.</p>
+    <div class="hero-actions">
+      <a href="#reserva" class="btn-fuchsia">Reservar turno</a>
+      <a href="#servicios" class="btn-ghost">Ver servicios →</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-block hb-1">
+      <div class="hb-ico">💅</div>
+      <div class="hb-label">Nail Art</div>
+      <div class="hb-tag">Diseño a medida</div>
+    </div>
+    <div class="hero-block hb-2">
+      <div class="hb-ico">✨</div>
+      <div class="hb-label">Gel & Acrílico</div>
+    </div>
+    <div class="hero-block hb-3">
+      <div class="hb-ico">🌸</div>
+      <div class="hb-label">Semipermanente</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Nail Art</span>
+    <span class="ticker-item">Semipermanente</span>
+    <span class="ticker-item">Acrílico</span>
+    <span class="ticker-item">Gel</span>
+    <span class="ticker-item">Press-On</span>
+    <span class="ticker-item">Manicuría Rusa</span>
+    <span class="ticker-item">Pedicuría</span>
+    <span class="ticker-item">Diseños Personalizados</span>
+    <span class="ticker-item">Nail Art</span>
+    <span class="ticker-item">Semipermanente</span>
+    <span class="ticker-item">Acrílico</span>
+    <span class="ticker-item">Gel</span>
+    <span class="ticker-item">Press-On</span>
+    <span class="ticker-item">Manicuría Rusa</span>
+    <span class="ticker-item">Pedicuría</span>
+    <span class="ticker-item">Diseños Personalizados</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="s-eyebrow">Lo que ofrecemos</div>
+  <h2 class="s-title">Nuestros <em>servicios</em></h2>
+
+  <div class="services-grid">
+    <div class="srv">
+      <div class="srv-ico">💅</div>
+      <div class="srv-name">Semipermanente</div>
+      <p class="srv-desc">Esmalte de larga duración que dura hasta 3 semanas sin astillarse. Acabado brillante o mate, todos los colores.</p>
+      <div class="srv-price">desde $8.000</div>
+    </div>
+    <div class="srv">
+      <div class="srv-ico">💎</div>
+      <div class="srv-name">Gel & Acrílico</div>
+      <p class="srv-desc">Extensiones y formas personalizadas en gel biab o acrílico. Alargamiento, relleno y remoción sin dañar la uña natural.</p>
+      <div class="srv-price">desde $12.000</div>
+    </div>
+    <div class="srv">
+      <div class="srv-ico">🎨</div>
+      <div class="srv-name">Nail Art</div>
+      <p class="srv-desc">Diseños únicos: francesita, degradé, cromado, encapsulado, flores 3D, piedras, foil y lo que imagines.</p>
+      <div class="srv-price">desde $10.000</div>
+    </div>
+    <div class="srv">
+      <div class="srv-ico">✂️</div>
+      <div class="srv-name">Manicuría Rusa</div>
+      <p class="srv-desc">Técnica de cutícula seca con broca eléctrica. El acabado más limpio y duradero del mercado.</p>
+      <div class="srv-price">desde $9.500</div>
+    </div>
+    <div class="srv">
+      <div class="srv-ico">🌸</div>
+      <div class="srv-name">Pedicuría Completa</div>
+      <p class="srv-desc">Tratamiento de pies con limado, hidratación, cutícula y esmalte semipermanente. Relax total.</p>
+      <div class="srv-price">desde $7.500</div>
+    </div>
+    <div class="srv">
+      <div class="srv-ico">✨</div>
+      <div class="srv-name">Press-On Personalizados</div>
+      <p class="srv-desc">Uñas postizas diseñadas a mano en medidas exactas. Las llevás puestas o te las mandamos a casa.</p>
+      <div class="srv-price">desde $15.000</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="section proceso-section" id="proceso">
+  <div class="s-eyebrow">Cómo trabajamos</div>
+  <h2 class="s-title">Tu experiencia en <em>Lacqué</em></h2>
+
+  <div class="proceso-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-name">Elegís tu diseño</div>
+      <p class="step-desc">Compartís referencias, colores o ideas. Nuestras técnicas te aseoran para crear algo único que te represente.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-name">Preparación</div>
+      <p class="step-desc">Limado, cutícula y preparación de la uña natural para garantizar adherencia y duración máxima.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-name">Aplicación</div>
+      <p class="step-desc">Color, diseño y terminación con productos de alta gama. Cada detalle ejecutado con precisión.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-name">Resultado final</div>
+      <p class="step-desc">Salís con uñas perfectas que duran semanas. Garantía de retoque en los primeros 5 días.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVA -->
+<section id="reserva">
+  <div class="booking-wrap">
+    <div class="booking-left">
+      <h2>Reservá<br><em>tu turno</em></h2>
+      <p>Elegí el servicio, contanos tu idea y confirmamos en minutos. También podés escribirnos por Instagram o WhatsApp.</p>
+      <div class="booking-info-list">
+        <div class="bi">📍 Av. Santa Fe 2345, Palermo · CABA</div>
+        <div class="bi">📱 +54 11 4567-8901</div>
+        <div class="bi">⏰ Mar–Sáb · 10:00 a 20:00</div>
+        <div class="bi">📸 @lacque.studio</div>
+      </div>
+    </div>
+    <div class="booking-right">
+      <h3>NUEVO TURNO</h3>
+      <div class="fg">
+        <label class="fl">Tu nombre</label>
+        <input class="fi" type="text" placeholder="Nombre completo">
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">WhatsApp</label>
+          <input class="fi" type="tel" placeholder="+54 11...">
+        </div>
+        <div class="fg">
+          <label class="fl">Servicio</label>
+          <select class="fs">
+            <option>Semipermanente</option>
+            <option>Gel & Acrílico</option>
+            <option>Nail Art</option>
+            <option>Manicuría Rusa</option>
+            <option>Pedicuría Completa</option>
+            <option>Press-On</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Fecha</label>
+          <input class="fi" type="date">
+        </div>
+        <div class="fg">
+          <label class="fl">Horario</label>
+          <select class="fs">
+            <option>10:00</option><option>11:00</option><option>12:00</option>
+            <option>13:00</option><option>15:00</option><option>16:00</option>
+            <option>17:00</option><option>18:00</option><option>19:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl">Contanos tu idea / referencias</label>
+        <input class="fi" type="text" placeholder="Ej: francesita nude con puntos dorados...">
+      </div>
+      <button class="btn-book">Confirmar turno</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-top">
+    <div class="footer-logo">LACQ<span>U</span>É</div>
+    <ul class="footer-nav">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">WhatsApp</a></li>
+      <li><a href="#">Ubicación</a></li>
+      <li><a href="#">Servicios</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lacqué Studio · Buenos Aires</span>
+    <span class="footer-presence">Sitio web por Presence ✦</span>
+  </div>
+</footer>
+
+</body>
+</html>

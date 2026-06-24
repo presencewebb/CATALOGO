@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse Gym | Tu Gym en Buenos Aires</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --orange:#FF6B1A;--orange2:#FF8C4A;--orange-dim:rgba(255,107,26,0.1);
+  --white:#FFFFFF;--off:#F8F7F4;--gray:#EBEBЕ6;--gray2:#D8D8D2;
+  --black:#0D0D0D;--black2:#161616;--text:#0D0D0D;--muted:#888882;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #EBEBЕ6;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 6%;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-0.01em;color:var(--text);}
+.nav-logo span{color:var(--orange);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.82rem;font-weight:400;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-tel{font-size:0.8rem;color:var(--muted);}
+.nav-cta{background:var(--orange);color:white;border:none;padding:0.65rem 1.5rem;border-radius:8px;font-size:0.82rem;font-family:'Syne',sans-serif;font-weight:700;cursor:pointer;transition:background 0.2s;letter-spacing:0.02em;}
+.nav-cta:hover{background:var(--orange2);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:65px;display:grid;grid-template-columns:1fr 1fr;background:var(--black);}
+.hero-left{padding:4rem 3rem 4rem 6%;display:flex;flex-direction:column;justify-content:center;position:relative;}
+.hero-left::after{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,107,26,0.3),transparent);}
+
+.hero-kicker{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:1.8rem;display:flex;align-items:center;gap:0.8rem;font-weight:500;}
+.hero-kicker::before{content:'';width:20px;height:2px;background:var(--orange);}
+
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,5.5vw,5.5rem);line-height:1.0;letter-spacing:-0.02em;color:var(--white);margin-bottom:1.5rem;}
+.hero h1 .orange{color:var(--orange);}
+
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.4);line-height:1.85;max-width:440px;margin-bottom:3rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+
+.btn-orange{background:var(--orange);color:white;border:none;padding:1rem 2rem;border-radius:8px;font-size:0.85rem;font-family:'Syne',sans-serif;font-weight:700;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;letter-spacing:0.02em;}
+.btn-orange:hover{background:var(--orange2);transform:translateY(-1px);}
+.btn-outline-w{background:transparent;color:rgba(255,255,255,0.6);border:1.5px solid rgba(255,255,255,0.15);padding:1rem 2rem;border-radius:8px;font-size:0.85rem;font-family:'Syne',sans-serif;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline-w:hover{border-color:rgba(255,255,255,0.4);color:white;}
+
+.hero-stats-row{display:flex;gap:0;border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;}
+.hsr-item{flex:1;padding:1.2rem;border-right:1px solid rgba(255,255,255,0.08);text-align:center;}
+.hsr-item:last-child{border-right:none;}
+.hsr-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;color:var(--orange);line-height:1;}
+.hsr-label{font-size:0.65rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.3rem;}
+
+.hero-right{display:flex;flex-direction:column;gap:0;position:relative;}
+.hero-big-block{flex:1;background:var(--orange-dim);border-left:3px solid var(--orange);display:flex;align-items:center;justify-content:center;padding:3rem;flex-direction:column;gap:1rem;}
+.hbb-ico{font-size:5rem;opacity:0.3;}
+.hbb-label{font-family:'Syne',sans-serif;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+
+.hero-small-grid{display:grid;grid-template-columns:1fr 1fr;flex-shrink:0;}
+.hsm-card{background:var(--black2);border-top:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);padding:1.5rem;display:flex;flex-direction:column;gap:0.4rem;}
+.hsm-card:nth-child(2n){border-right:none;}
+.hsm-ico{font-size:1.2rem;margin-bottom:0.3rem;}
+.hsm-title{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;color:var(--white);}
+.hsm-sub{font-size:0.7rem;color:rgba(255,255,255,0.3);font-weight:300;}
+
+/* STRIP */
+.strip{background:var(--orange);padding:0.85rem 6%;display:flex;gap:2.5rem;overflow-x:auto;scrollbar-width:none;}
+.strip::-webkit-scrollbar{display:none;}
+.strip-item{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;color:white;white-space:nowrap;letter-spacing:0.04em;display:flex;align-items:center;gap:2.5rem;}
+.strip-item::after{content:'•';color:rgba(255,255,255,0.4);}
+.strip-item:last-child::after{display:none;}
+
+/* SECCIÓN GENERAL */
+.section{padding:5rem 6%;}
+.sec-kicker{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:0.6rem;font-weight:500;}
+.sec-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-0.02em;line-height:1.0;color:var(--text);}
+.sec-h .orange{color:var(--orange);}
+.sec-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+.sec-link{font-size:0.78rem;color:var(--orange);text-decoration:none;display:flex;align-items:center;gap:0.4rem;font-weight:500;transition:gap 0.2s;}
+.sec-link:hover{gap:0.8rem;}
+
+/* CLASES */
+.clases-bg{background:var(--off);}
+.clases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.clase-card{background:var(--white);border-radius:12px;overflow:hidden;border:1.5px solid #EBEBЕ6;cursor:default;transition:all 0.3s;}
+.clase-card:hover{border-color:var(--orange);box-shadow:0 8px 32px rgba(255,107,26,0.1);transform:translateY(-2px);}
+.clase-header{padding:2rem 2rem 1.5rem;position:relative;}
+.clase-color-bar{position:absolute;top:0;left:0;right:0;height:4px;}
+.cb-orange{background:var(--orange);}
+.cb-blue{background:#3B82F6;}
+.cb-green{background:#22C55E;}
+.cb-purple{background:#A855F7;}
+.cb-pink{background:#EC4899;}
+.cb-teal{background:#14B8A6;}
+.clase-ico{font-size:2rem;margin-bottom:1rem;}
+.clase-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;}
+.clase-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;font-weight:300;}
+.clase-footer{padding:1rem 2rem 1.5rem;border-top:1px solid #EBEBЕ6;display:flex;justify-content:space-between;align-items:center;}
+.clase-meta{font-size:0.72rem;color:var(--muted);}
+.clase-nivel{font-size:0.68rem;padding:0.2rem 0.6rem;border-radius:50px;font-weight:500;}
+.cn-todos{background:#FFF3E0;color:var(--orange);}
+.cn-inter{background:#EBF5FB;color:#3B82F6;}
+.cn-avanz{background:#E8F8F5;color:#22C55E;}
+
+/* PLANES */
+.planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.plan{border:2px solid #EBEBЕ6;border-radius:12px;padding:2rem;transition:border-color 0.3s;position:relative;}
+.plan:hover{border-color:var(--orange);}
+.plan.best{border-color:var(--orange);background:var(--orange);}
+.plan-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--orange);color:white;font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;padding:0.2rem 1rem;border-radius:50px;}
+.plan.best .plan-tag{background:white;color:var(--orange);}
+.plan-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1.5rem;color:var(--text);}
+.plan.best .plan-name{color:white;}
+.plan-price{font-family:'Syne',sans-serif;font-weight:800;font-size:2.8rem;line-height:1;color:var(--text);}
+.plan.best .plan-price{color:white;}
+.plan-per{font-size:0.75rem;color:var(--muted);margin-bottom:1.5rem;}
+.plan.best .plan-per{color:rgba(255,255,255,0.6);}
+.plan-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.8rem;}
+.plan-list li{font-size:0.83rem;display:flex;gap:0.6rem;color:var(--muted);}
+.plan.best .plan-list li{color:rgba(255,255,255,0.8);}
+.plan-list li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;}
+.plan.best .plan-list li::before{color:white;}
+.btn-plan-o{width:100%;background:var(--orange);color:white;border:none;padding:0.9rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:background 0.2s;}
+.btn-plan-o:hover{background:var(--orange2);}
+.plan.best .btn-plan-o{background:white;color:var(--orange);}
+.plan.best .btn-plan-o:hover{background:var(--off);}
+
+/* INSTALACIONES */
+.inst-section{background:var(--black);}
+.inst-section .sec-h{color:var(--white);}
+.inst-section .sec-kicker{color:var(--orange);}
+.inst-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;}
+.inst-block{border-radius:10px;padding:2rem 1.5rem;display:flex;flex-direction:column;gap:0.5rem;transition:transform 0.3s;}
+.inst-block:hover{transform:translateY(-3px);}
+.ib-1{background:var(--orange-dim);border:1px solid rgba(255,107,26,0.2);}
+.ib-2{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);}
+.ib-3{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);}
+.ib-4{background:var(--orange-dim);border:1px solid rgba(255,107,26,0.2);}
+.inst-ico{font-size:1.8rem;margin-bottom:0.5rem;}
+.inst-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:white;}
+.inst-desc{font-size:0.78rem;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.6;}
+
+/* CONTACTO */
+.contact-outer{padding:5rem 6%;}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.co-left h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,3vw,3rem);letter-spacing:-0.02em;margin-bottom:1rem;line-height:1;}
+.co-left h2 span{color:var(--orange);}
+.co-left p{font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;font-weight:300;}
+.co-info{display:flex;flex-direction:column;gap:1rem;}
+.co-info-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem;background:var(--off);border-radius:10px;}
+.coi-ico{width:38px;height:38px;background:var(--orange-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.coi-title{font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:0.15rem;}
+.coi-sub{font-size:0.76rem;color:var(--muted);font-weight:300;}
+.co-form{background:var(--off);border-radius:16px;padding:2.5rem;}
+.co-form h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:1.8rem;}
+.fg{margin-bottom:1.1rem;}
+.fl{display:block;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;font-weight:500;}
+.fi,.fs{width:100%;background:var(--white);border:1.5px solid #EBEBЕ6;color:var(--text);padding:0.82rem 1rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;appearance:none;}
+.fi:focus,.fs:focus{border-color:var(--orange);}
+.fi::placeholder{color:var(--muted);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.btn-cf{width:100%;background:var(--orange);color:white;border:none;padding:1rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;letter-spacing:0.02em;}
+.btn-cf:hover{background:var(--orange2);}
+
+/* FOOTER */
+footer{background:var(--black);padding:3.5rem 6% 2rem;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fl-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--white);margin-bottom:0.8rem;}
+.fl-logo span{color:var(--orange);}
+.fl-desc{font-size:0.82rem;color:rgba(255,255,255,0.3);line-height:1.7;font-weight:300;max-width:250px;}
+.fc-h{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;font-weight:500;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.fc a{text-decoration:none;color:rgba(255,255,255,0.35);font-size:0.82rem;transition:color 0.2s;}
+.fc a:hover{color:var(--orange);}
+.fb{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;font-size:0.73rem;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:0.5rem;}
+.fp{color:rgba(255,107,26,0.25);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .clases-grid{grid-template-columns:1fr 1fr;}
+  .planes-grid{grid-template-columns:1fr;}
+  .inst-grid{grid-template-columns:1fr 1fr;}
+  .contact-inner{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .nav-tel{display:none;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Pulse<span>Gym</span></div>
+  <ul class="nav-links">
+    <li><a href="#clases">Clases</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#instalaciones">Instalaciones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-tel">11 4567-8900</span>
+    <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Probá gratis</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">Tu gym en Caballito · Buenos Aires</div>
+    <h1>Movete.<br>Superá.<br><span class="orange">Crecé.</span></h1>
+    <p class="hero-sub">Pulse Gym es el espacio donde el entrenamiento serio se encuentra con el ambiente que te da ganas de volver. Equipamiento de primera, clases todos los días y coaches que te conocen por nombre.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-orange">Clase de prueba gratis</a>
+      <a href="#planes" class="btn-outline-w">Ver planes y precios</a>
+    </div>
+    <div class="hero-stats-row">
+      <div class="hsr-item"><div class="hsr-num">500+</div><div class="hsr-label">Socios activos</div></div>
+      <div class="hsr-item"><div class="hsr-num">20+</div><div class="hsr-label">Clases/semana</div></div>
+      <div class="hsr-item"><div class="hsr-num">8</div><div class="hsr-label">Años abiertos</div></div>
+      <div class="hsr-item"><div class="hsr-num">4.9★</div><div class="hsr-label">Google</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-big-block">
+      <div class="hbb-ico">💪</div>
+      <div class="hbb-label">Pulse Gym</div>
+    </div>
+    <div class="hero-small-grid">
+      <div class="hsm-card"><div class="hsm-ico">🏋️</div><div class="hsm-title">Musculación</div><div class="hsm-sub">Equipamiento completo</div></div>
+      <div class="hsm-card"><div class="hsm-ico">🔥</div><div class="hsm-title">Cardio</div><div class="hsm-sub">Zona dedicada</div></div>
+      <div class="hsm-card"><div class="hsm-ico">🧘</div><div class="hsm-title">Clases grupales</div><div class="hsm-sub">20+ por semana</div></div>
+      <div class="hsm-card"><div class="hsm-ico">🥤</div><div class="hsm-title">Nutrición</div><div class="hsm-sub">Asesoramiento incluido</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-item">Musculación</span>
+  <span class="strip-item">Cardio</span>
+  <span class="strip-item">Spinning</span>
+  <span class="strip-item">Funcional</span>
+  <span class="strip-item">Pilates</span>
+  <span class="strip-item">Zumba</span>
+  <span class="strip-item">Box</span>
+  <span class="strip-item">Yoga</span>
+  <span class="strip-item">Entrenamiento Personal</span>
+</div>
+
+<!-- CLASES -->
+<section class="section clases-bg" id="clases">
+  <div class="sec-top">
+    <div>
+      <div class="sec-kicker">Clases grupales</div>
+      <h2 class="sec-h">Una para <span class="orange">cada uno</span></h2>
+    </div>
+    <a href="#contacto" class="sec-link">Ver horarios completos →</a>
+  </div>
+  <div class="clases-grid">
+    <div class="clase-card">
+      <div class="clase-header"><div class="clase-color-bar cb-orange"></div><div class="clase-ico">🔥</div><div class="clase-name">Funcional & HIIT</div><p class="clase-desc">Alta intensidad, resultados reales. Combinación de fuerza y cardio para quemar calorías y tonificar todo el cuerpo.</p></div>
+      <div class="clase-footer"><span class="clase-meta">45 min · Lun a Vie</span><span class="clase-nivel cn-todos">Todos los niveles</span></div>
+    </div>
+    <div class="clase-card">
+      <div class="clase-header"><div class="clase-color-bar cb-blue"></div><div class="clase-ico">🚴</div><div class="clase-name">Spinning</div><p class="clase-desc">Bicicleta fija con música y un instructor que te lleva al límite. Cardio puro para quemar y desestresarte.</p></div>
+      <div class="clase-footer"><span class="clase-meta">50 min · Lun, Mié, Vie</span><span class="clase-nivel cn-todos">Todos los niveles</span></div>
+    </div>
+    <div class="clase-card">
+      <div class="clase-header"><div class="clase-color-bar cb-purple"></div><div class="clase-ico">🧘</div><div class="clase-name">Pilates</div><p class="clase-desc">Trabajo de core, postura y flexibilidad. Método Pilates clásico con elementos de suelo para todos los cuerpos.</p></div>
+      <div class="clase-footer"><span class="clase-meta">50 min · Mar, Jue, Sáb</span><span class="clase-nivel cn-todos">Todos los niveles</span></div>
+    </div>
+    <div class="clase-card">
+      <div class="clase-header"><div class="clase-color-bar cb-green"></div><div class="clase-ico">🥊</div><div class="clase-name">Box & Kickboxing</div><p class="clase-desc">Técnica de boxeo adaptada para fitness. Cardio, coordinación y una descarga de adrenalina que no tiene precio.</p></div>
+      <div class="clase-footer"><span class="clase-meta">60 min · Lun, Mié, Vie</span><span class="clase-nivel cn-inter">Intermedio</span></div>
+    </div>
+    <div class="clase-card">
+      <div class="clase-header"><div class="clase-color-bar cb-pink"></div><div class="clase-ico">💃</div><div class="clase-name">Zumba</div><p class="clase-desc">Bailá y quemá calorías sin darte cuenta. La clase más divertida del gym, para toda edad y ritmo.</p></div>
+      <div class="clase-footer"><span class="clase-meta">60 min · Mar, Jue</span><span class="clase-nivel cn-todos">Todos los niveles</span></div>
+    </div>
+    <div class="clase-card">
+      <div class="clase-header"><div class="clase-color-bar cb-teal"></div><div class="clase-ico">🏋️</div><div class="clase-name">Musculación Guiada</div><p class="clase-desc">Rutina de pesas con coach presencial. Técnica, series y cargas diseñadas para que avances semana a semana.</p></div>
+      <div class="clase-footer"><span class="clase-meta">60 min · Lun a Sáb</span><span class="clase-nivel cn-avanz">Avanzado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="section" id="planes">
+  <div class="sec-kicker">Membresías</div>
+  <h2 class="sec-h">Planes para <span class="orange">cada bolsillo</span></h2>
+  <div class="planes-grid">
+    <div class="plan">
+      <div class="plan-name">Plan Básico</div>
+      <div class="plan-price">$32.000</div>
+      <div class="plan-per">por mes</div>
+      <ul class="plan-list">
+        <li>Musculación libre</li>
+        <li>Zona de cardio</li>
+        <li>3 clases grupales/sem</li>
+        <li>Vestuarios y duchas</li>
+      </ul>
+      <button class="btn-plan-o">Elegir plan</button>
+    </div>
+    <div class="plan best">
+      <div class="plan-tag">El más elegido</div>
+      <div class="plan-name">Plan Total</div>
+      <div class="plan-price">$52.000</div>
+      <div class="plan-per">por mes</div>
+      <ul class="plan-list">
+        <li>Musculación + Cardio libre</li>
+        <li>Clases grupales ilimitadas</li>
+        <li>Evaluación física inicial</li>
+        <li>Asesoramiento nutricional</li>
+        <li>App de seguimiento</li>
+        <li>Vestuarios y duchas</li>
+      </ul>
+      <button class="btn-plan-o">Elegir plan</button>
+    </div>
+    <div class="plan">
+      <div class="plan-name">Plan Premium</div>
+      <div class="plan-price">$72.000</div>
+      <div class="plan-per">por mes</div>
+      <ul class="plan-list">
+        <li>Todo el Plan Total</li>
+        <li>2 sesiones PT por mes</li>
+        <li>Plan nutricional personalizado</li>
+        <li>Acceso prioritario</li>
+        <li>Invitados 2x/mes</li>
+      </ul>
+      <button class="btn-plan-o">Elegir plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALACIONES -->
+<section class="section inst-section" id="instalaciones">
+  <div class="sec-kicker">Las instalaciones</div>
+  <h2 class="sec-h">Un gym que <span style="color:var(--orange)">da ganas de venir</span></h2>
+  <div class="inst-grid">
+    <div class="inst-block ib-1"><div class="inst-ico">🏋️</div><div class="inst-name">Sala de musculación</div><p class="inst-desc">500m² con equipamiento de última generación. Máquinas selectorizadas, barras, mancuernas y más.</p></div>
+    <div class="inst-block ib-2"><div class="inst-ico">🚴</div><div class="inst-name">Sala de cardio</div><p class="inst-desc">Cintas, elípticas, bicicletas y remos. Pantallas individuales para que el tiempo vuele.</p></div>
+    <div class="inst-block ib-3"><div class="inst-ico">🎯</div><div class="inst-name">Sala de clases</div><p class="inst-desc">Espacio amplio con piso flotante, espejos y audio profesional para todas las actividades grupales.</p></div>
+    <div class="inst-block ib-4"><div class="inst-ico">🚿</div><div class="inst-name">Vestuarios premium</div><p class="inst-desc">Vestuarios amplios con duchas calientes, lockers digitales y amenities de cortesía.</p></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact-outer" id="contacto">
+  <div class="contact-inner">
+    <div class="co-left">
+      <div class="sec-kicker">Contacto</div>
+      <h2>Tu primera semana <span>es gratis.</span></h2>
+      <p>Vení a conocer el gym sin compromiso. Una semana completa para que pruebes todas las clases y decidas si Pulse es para vos.</p>
+      <div class="co-info">
+        <div class="co-info-item"><div class="coi-ico">📍</div><div><div class="coi-title">Ubicación</div><div class="coi-sub">Av. Rivadavia 5678, Caballito · CABA</div></div></div>
+        <div class="co-info-item"><div class="coi-ico">⏰</div><div><div class="coi-title">Horarios</div><div class="coi-sub">Lun–Vie 6:00–23:00 · Sáb 8:00–20:00 · Dom 9:00–14:00</div></div></div>
+        <div class="co-info-item"><div class="coi-ico">📱</div><div><div class="coi-title">WhatsApp</div><div class="coi-sub">+54 11 4567-8900</div></div></div>
+        <div class="co-info-item"><div class="coi-ico">📸</div><div><div class="coi-title">Instagram</div><div class="coi-sub">@pulsegym.ba</div></div></div>
+      </div>
+    </div>
+    <div class="co-form">
+      <h3>¡Quiero mi semana gratis!</h3>
+      <div class="fg"><label class="fl">Nombre</label><input class="fi" type="text" placeholder="Tu nombre completo"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Objetivo</label>
+          <select class="fs"><option>Bajar de peso</option><option>Ganar músculo</option><option>Mejorar estado físico</option><option>Reducir estrés</option><option>Deporte / competición</option></select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">¿Cuándo querés empezar?</label>
+        <select class="fs"><option>Esta semana</option><option>La semana que viene</option><option>Este mes</option></select>
+      </div>
+      <div class="fg"><label class="fl">¿Ya entrenás en algún gym?</label>
+        <select class="fs"><option>No, soy principiante</option><option>Sí, tengo experiencia</option><option>Volviendo después de un tiempo</option></select>
+      </div>
+      <button class="btn-cf">Reservar mi semana gratis →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-logo">Pulse<span>Gym</span></div>
+      <p class="fl-desc">El gym que te hace volver. Caballito, Buenos Aires. Desde 2017.</p>
+    </div>
+    <div class="fc"><div class="fc-h">Clases</div><ul><li><a href="#">Funcional</a></li><li><a href="#">Spinning</a></li><li><a href="#">Pilates</a></li><li><a href="#">Box</a></li><li><a href="#">Zumba</a></li></ul></div>
+    <div class="fc"><div class="fc-h">Info</div><ul><li><a href="#">Planes</a></li><li><a href="#">Instalaciones</a></li><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Ubicación</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2025 Pulse Gym · Caballito, Buenos Aires</span><span class="fp">Sitio web por Presence ✦</span></div>
+</footer>
+</body>
+</html>

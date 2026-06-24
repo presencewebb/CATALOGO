@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pétale Studio | Nail & Care</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --peach:    #F2C4A8;
+  --peach-dk: #D99A78;
+  --peach-lt: #FAE8DA;
+  --blush:    #F7EDE4;
+  --warm:     #F0E4D8;
+  --mauve:    #C49A8A;
+  --bg:       #FDFAF7;
+  --bg2:      #F8F1EB;
+  --text:     #221810;
+  --text-mid: #4A3328;
+  --muted:    #9A8070;
+  --white:    #FFFFFF;
+}
+
+html { scroll-behavior:smooth; }
+body { font-family:'Jost',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:1.3rem 6%;
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(253,250,247,0.94); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--warm);
+}
+.nav-logo {
+  font-family:'Cormorant',serif; font-size:1.3rem; font-weight:400;
+  color:var(--text); letter-spacing:0.06em;
+}
+.nav-logo em { font-style:italic; color:var(--peach-dk); }
+.nav-links { display:flex; gap:2.2rem; list-style:none; }
+.nav-links a { text-decoration:none; color:var(--muted); font-size:0.82rem; letter-spacing:0.04em; transition:color 0.3s; }
+.nav-links a:hover { color:var(--peach-dk); }
+.nav-cta {
+  background:var(--text); color:white; border:none;
+  padding:0.6rem 1.5rem; border-radius:50px;
+  font-size:0.78rem; font-family:'Jost',sans-serif; font-weight:400;
+  letter-spacing:0.06em; cursor:pointer; transition:background 0.3s;
+}
+.nav-cta:hover { background:var(--peach-dk); }
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh; padding-top:70px;
+  display:grid; grid-template-columns:5fr 4fr;
+  align-items:center;
+  background:var(--blush);
+  position:relative; overflow:hidden;
+}
+.hero::after {
+  content:'';
+  position:absolute; top:-200px; right:-200px;
+  width:600px; height:600px; border-radius:50%;
+  background:var(--peach); opacity:0.25; filter:blur(60px);
+}
+
+.hero-left { padding:4rem 3rem 4rem 6%; position:relative; z-index:1; }
+
+.hero-tag {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  border:1px solid var(--peach); background:var(--peach-lt);
+  color:var(--peach-dk); border-radius:50px;
+  font-size:0.7rem; padding:0.35rem 1rem; letter-spacing:0.06em;
+  margin-bottom:2rem;
+}
+
+.hero h1 {
+  font-family:'Cormorant',serif;
+  font-size:clamp(3rem,5vw,5.5rem);
+  font-weight:300; line-height:1.05; letter-spacing:-0.01em;
+  margin-bottom:1.5rem; color:var(--text);
+}
+.hero h1 em { font-style:italic; color:var(--peach-dk); }
+
+.hero-sub {
+  font-size:0.95rem; color:var(--muted); line-height:1.85;
+  max-width:400px; margin-bottom:2.5rem; font-weight:300;
+}
+
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+
+.btn-peach {
+  background:var(--peach-dk); color:white; border:none;
+  padding:0.9rem 2rem; border-radius:50px;
+  font-size:0.82rem; font-family:'Jost',sans-serif; font-weight:400;
+  letter-spacing:0.06em; cursor:pointer; transition:all 0.3s;
+  text-decoration:none; display:inline-block;
+}
+.btn-peach:hover { background:var(--mauve); transform:translateY(-2px); }
+
+.btn-link {
+  background:transparent; border:none; color:var(--text-mid);
+  font-size:0.82rem; font-family:'Jost',sans-serif; cursor:pointer;
+  display:flex; align-items:center; gap:0.4rem; letter-spacing:0.04em;
+  text-decoration:none; transition:color 0.3s;
+}
+.btn-link:hover { color:var(--peach-dk); }
+
+.hero-right {
+  height:100%; min-height:500px;
+  display:flex; flex-direction:column; gap:1rem; padding:2rem 4rem 2rem 1rem;
+  justify-content:center; position:relative; z-index:1;
+}
+
+.hero-pill-big {
+  background:white; border-radius:200px; padding:2.5rem;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  gap:0.5rem; aspect-ratio:1; align-self:center; width:200px;
+  box-shadow:0 8px 40px rgba(195,130,100,0.12);
+}
+.hpb-ico { font-size:3rem; }
+.hpb-label { font-family:'Cormorant',serif; font-size:0.9rem; font-style:italic; color:var(--muted); }
+
+.hero-cards-row { display:flex; gap:1rem; }
+.hero-mini-card {
+  background:white; border-radius:16px; padding:1.2rem 1.5rem;
+  flex:1; box-shadow:0 4px 20px rgba(195,130,100,0.08);
+  display:flex; flex-direction:column; gap:0.3rem;
+}
+.hmc-ico { font-size:1.2rem; margin-bottom:0.2rem; }
+.hmc-title { font-size:0.82rem; font-weight:500; color:var(--text); }
+.hmc-sub { font-size:0.7rem; color:var(--muted); font-weight:300; }
+
+.hero-stat-card {
+  background:var(--peach); border-radius:16px; padding:1.5rem;
+  box-shadow:0 4px 20px rgba(195,130,100,0.15);
+}
+.hsc-num { font-family:'Cormorant',serif; font-size:2.5rem; font-weight:300; color:var(--text); line-height:1; }
+.hsc-label { font-size:0.72rem; color:var(--text-mid); letter-spacing:0.06em; margin-top:0.3rem; }
+
+/* ── WAVE ── */
+.wave-strip {
+  background:var(--peach-dk);
+  padding:1.1rem 6%;
+  display:flex; gap:3rem; align-items:center; overflow:hidden;
+  flex-wrap:nowrap;
+}
+.ws-item {
+  display:flex; align-items:center; gap:0.5rem;
+  font-size:0.78rem; color:white; white-space:nowrap; font-weight:300;
+}
+.ws-dot { width:3px; height:3px; background:rgba(255,255,255,0.4); border-radius:50%; flex-shrink:0; }
+
+/* ── SERVICIOS ── */
+.section { padding:5.5rem 6%; }
+
+.se { font-size:0.67rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--peach-dk); margin-bottom:0.7rem; font-weight:500; }
+.sh {
+  font-family:'Cormorant',serif; font-size:clamp(2rem,3vw,2.8rem);
+  font-weight:300; line-height:1.15; color:var(--text);
+}
+.sh em { font-style:italic; color:var(--peach-dk); }
+
+.svs-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;
+  margin-top:3rem;
+}
+
+.sv-card {
+  background:white; border-radius:16px; padding:2rem;
+  border:1px solid var(--warm); cursor:default;
+  transition:all 0.3s; position:relative; overflow:hidden;
+}
+.sv-card:hover { box-shadow:0 12px 40px rgba(195,130,100,0.12); transform:translateY(-3px); border-color:var(--peach); }
+
+.sv-ico-wrap {
+  width:52px; height:52px; border-radius:14px;
+  background:var(--peach-lt); display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; margin-bottom:1.2rem;
+}
+
+.sv-name { font-family:'Cormorant',serif; font-size:1.3rem; font-weight:600; color:var(--text); margin-bottom:0.5rem; }
+.sv-desc { font-size:0.82rem; color:var(--muted); line-height:1.75; margin-bottom:1.2rem; font-weight:300; }
+
+.sv-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.2rem; }
+.sv-tag {
+  background:var(--blush); color:var(--peach-dk);
+  font-size:0.65rem; padding:0.22rem 0.7rem; border-radius:50px; font-weight:500; letter-spacing:0.04em;
+}
+
+.sv-price { font-size:0.9rem; color:var(--peach-dk); font-weight:500; }
+.sv-desde { font-size:0.7rem; color:var(--muted); margin-right:0.3rem; }
+
+/* ── PORQUÉ ── */
+.porque-section { background:var(--bg2); }
+
+.porque-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:5rem;
+  align-items:center; margin-top:3rem;
+}
+
+.porque-visual {
+  display:grid; grid-template-columns:1fr 1fr; grid-template-rows:240px 180px;
+  gap:1rem;
+}
+
+.pv-block {
+  border-radius:16px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:0.6rem;
+}
+.pv-1 { background:var(--peach-lt); grid-row:span 2; }
+.pv-2 { background:var(--peach); }
+.pv-3 { background:var(--warm); }
+
+.pv-ico { font-size:2.5rem; opacity:0.5; }
+.pv-lbl { font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+
+.porque-list { display:flex; flex-direction:column; gap:1.8rem; }
+.pq-item { display:flex; gap:1.2rem; align-items:flex-start; }
+.pq-ico {
+  width:42px; height:42px; flex-shrink:0;
+  background:var(--peach-lt); border-radius:12px;
+  display:flex; align-items:center; justify-content:center; font-size:1rem;
+}
+.pq-title { font-family:'Cormorant',serif; font-size:1.05rem; font-weight:600; color:var(--text); margin-bottom:0.3rem; }
+.pq-desc { font-size:0.82rem; color:var(--muted); line-height:1.7; font-weight:300; }
+
+/* ── AGENDA ── */
+.agenda-wrap {
+  background:var(--text); border-radius:20px;
+  margin:0 6% 6rem;
+  display:grid; grid-template-columns:1fr 1fr;
+  overflow:hidden;
+}
+
+.agenda-left {
+  padding:4rem;
+  background:linear-gradient(135deg, #3D2018, #221810);
+  display:flex; flex-direction:column; justify-content:center;
+}
+.agenda-left h2 {
+  font-family:'Cormorant',serif; font-size:2.8rem; font-weight:300;
+  color:var(--peach-lt); line-height:1.1; margin-bottom:1.2rem;
+}
+.agenda-left h2 em { font-style:italic; color:var(--peach); }
+.agenda-left p { font-size:0.87rem; color:rgba(255,255,255,0.45); line-height:1.8; margin-bottom:2rem; font-weight:300; }
+
+.al-info { display:flex; flex-direction:column; gap:0.8rem; }
+.al-row { display:flex; justify-content:space-between; align-items:center; padding-bottom:0.8rem; border-bottom:1px solid rgba(255,255,255,0.07); font-size:0.82rem; color:rgba(255,255,255,0.5); }
+.al-row span:last-child { color:var(--peach-lt); }
+
+.agenda-right { background:var(--blush); padding:4rem 3.5rem; }
+.agenda-right h3 { font-family:'Cormorant',serif; font-size:1.6rem; font-weight:600; color:var(--text); margin-bottom:2rem; }
+
+.fg { margin-bottom:1.2rem; }
+.fl { display:block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; font-weight:500; }
+.fi, .fs {
+  width:100%; background:white; border:1.5px solid var(--warm);
+  color:var(--text); padding:0.82rem 1rem; border-radius:10px;
+  font-family:'Jost',sans-serif; font-size:0.87rem; outline:none;
+  transition:border-color 0.3s; appearance:none;
+}
+.fi:focus, .fs:focus { border-color:var(--peach-dk); }
+.fi::placeholder { color:var(--muted); }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
+
+.btn-agenda {
+  width:100%; background:var(--text); color:white; border:none;
+  padding:1rem; border-radius:10px; font-size:0.82rem;
+  font-family:'Jost',sans-serif; letter-spacing:0.06em;
+  cursor:pointer; margin-top:0.5rem; transition:background 0.3s;
+}
+.btn-agenda:hover { background:var(--peach-dk); }
+
+/* ── FOOTER ── */
+footer { background:var(--bg2); padding:3.5rem 6% 2rem; border-top:1px solid var(--warm); }
+.ft { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2.5rem; }
+.fl-logo { font-family:'Cormorant',serif; font-size:1.2rem; color:var(--text); margin-bottom:0.8rem; }
+.fl-logo em { font-style:italic; color:var(--peach-dk); }
+.fl-desc { font-size:0.82rem; color:var(--muted); line-height:1.7; font-weight:300; max-width:260px; }
+.fc-h { font-size:0.67rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; font-weight:500; }
+.fc ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+.fc a { text-decoration:none; color:var(--muted); font-size:0.82rem; transition:color 0.3s; }
+.fc a:hover { color:var(--peach-dk); }
+.fb { border-top:1px solid var(--warm); padding-top:1.5rem; display:flex; justify-content:space-between; font-size:0.73rem; color:var(--muted); flex-wrap:wrap; gap:0.5rem; }
+.fp { color:rgba(210,150,110,0.4); }
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .svs-grid{grid-template-columns:1fr 1fr;}
+  .porque-grid{grid-template-columns:1fr;}
+  .agenda-wrap{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><em>Pétale</em> Studio</div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#porque">Nosotras</a></li>
+    <li><a href="#agenda">Turnos</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('agenda').scrollIntoView({behavior:'smooth'})">Pedir turno</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">✿ Nail Studio · Villa Crespo, Buenos Aires</div>
+    <h1>Uñas que<br>cuentan tu<br><em>historia.</em></h1>
+    <p class="hero-sub">Cada diseño es único, cada sesión es una experiencia. Técnicas modernas, productos de primera y la atención que merecés.</p>
+    <div class="hero-actions">
+      <a href="#agenda" class="btn-peach">Reservar mi turno</a>
+      <a href="#servicios" class="btn-link">Ver servicios →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div style="display:flex; gap:1rem; align-items:center;">
+      <div class="hero-pill-big">
+        <div class="hpb-ico">💅</div>
+        <div class="hpb-label">Nail Art</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem; flex:1;">
+        <div class="hero-mini-card">
+          <div class="hmc-ico">✨</div>
+          <div class="hmc-title">Semipermanente</div>
+          <div class="hmc-sub">Dura hasta 3 semanas</div>
+        </div>
+        <div class="hero-mini-card">
+          <div class="hmc-ico">💎</div>
+          <div class="hmc-title">Gel & Acrílico</div>
+          <div class="hmc-sub">Extensiones a medida</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; gap:1rem;">
+      <div class="hero-stat-card" style="flex:1;">
+        <div class="hsc-num">4.9★</div>
+        <div class="hsc-label">Calificación promedio</div>
+      </div>
+      <div class="hero-stat-card" style="flex:1; background:var(--warm);">
+        <div class="hsc-num">500+</div>
+        <div class="hsc-label">Clientas felices</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="wave-strip">
+  <div class="ws-item">✿ Semipermanente</div><div class="ws-dot"></div>
+  <div class="ws-item">✿ Nail Art</div><div class="ws-dot"></div>
+  <div class="ws-item">✿ Gel & Acrílico</div><div class="ws-dot"></div>
+  <div class="ws-item">✿ Manicuría Rusa</div><div class="ws-dot"></div>
+  <div class="ws-item">✿ Pedicuría</div><div class="ws-dot"></div>
+  <div class="ws-item">✿ Press-On</div><div class="ws-dot"></div>
+  <div class="ws-item">✿ Diseños Personalizados</div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="se">Nuestros servicios</div>
+  <h2 class="sh">Todo lo que tus uñas<br><em>necesitan</em></h2>
+
+  <div class="svs-grid">
+    <div class="sv-card">
+      <div class="sv-ico-wrap">💅</div>
+      <div class="sv-name">Semipermanente</div>
+      <p class="sv-desc">Color de larga duración hasta 3 semanas. Sin astillarse, sin rajarse. Colores ilimitados, acabado brillante o mate.</p>
+      <div class="sv-tags"><span class="sv-tag">3 semanas</span><span class="sv-tag">Sin daño</span><span class="sv-tag">Todos los colores</span></div>
+      <div class="sv-price"><span class="sv-desde">desde</span>$8.000</div>
+    </div>
+    <div class="sv-card">
+      <div class="sv-ico-wrap">💎</div>
+      <div class="sv-name">Gel & Acrílico</div>
+      <p class="sv-desc">Extensiones y remodelado en gel biab o acrílico. Alargamiento, cuadradas, almendradas, stiletto o lo que imagines.</p>
+      <div class="sv-tags"><span class="sv-tag">Extensiones</span><span class="sv-tag">Relleno</span><span class="sv-tag">Todas las formas</span></div>
+      <div class="sv-price"><span class="sv-desde">desde</span>$12.000</div>
+    </div>
+    <div class="sv-card">
+      <div class="sv-ico-wrap">🎨</div>
+      <div class="sv-name">Nail Art</div>
+      <p class="sv-desc">Desde una francesita minimal hasta diseños 3D, flores, cromado, encapsulado con botanicals o foil holográfico.</p>
+      <div class="sv-tags"><span class="sv-tag">Diseños únicos</span><span class="sv-tag">3D</span><span class="sv-tag">Cromado</span></div>
+      <div class="sv-price"><span class="sv-desde">desde</span>$10.000</div>
+    </div>
+    <div class="sv-card">
+      <div class="sv-ico-wrap">✂️</div>
+      <div class="sv-name">Manicuría Rusa</div>
+      <p class="sv-desc">Técnica de cutícula en seco con broca eléctrica. El acabado más prolijo y duradero. Ideal para pieles sensibles.</p>
+      <div class="sv-tags"><span class="sv-tag">Cutícula en seco</span><span class="sv-tag">Larga duración</span></div>
+      <div class="sv-price"><span class="sv-desde">desde</span>$9.500</div>
+    </div>
+    <div class="sv-card">
+      <div class="sv-ico-wrap">🌸</div>
+      <div class="sv-name">Pedicuría</div>
+      <p class="sv-desc">Tratamiento completo de pies: limado, hidratación, cutícula y esmalte semipermanente. Te vas caminando en nubes.</p>
+      <div class="sv-tags"><span class="sv-tag">Hidratación</span><span class="sv-tag">Semipermanente</span></div>
+      <div class="sv-price"><span class="sv-desde">desde</span>$7.500</div>
+    </div>
+    <div class="sv-card">
+      <div class="sv-ico-wrap">📦</div>
+      <div class="sv-name">Press-On Custom</div>
+      <p class="sv-desc">Uñas postizas diseñadas a mano en tu medida exacta. Las pedís por encargo y las usás cuando quieras.</p>
+      <div class="sv-tags"><span class="sv-tag">A medida</span><span class="sv-tag">Reutilizables</span><span class="sv-tag">Envío</span></div>
+      <div class="sv-price"><span class="sv-desde">desde</span>$15.000</div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ -->
+<section class="section porque-section" id="porque">
+  <div class="se">Por qué elegirnos</div>
+  <h2 class="sh">Más que uñas,<br><em>una experiencia</em></h2>
+
+  <div class="porque-grid">
+    <div class="porque-visual">
+      <div class="pv-block pv-1"><div class="pv-ico">💅</div><div class="pv-lbl">Nail Art</div></div>
+      <div class="pv-block pv-2"><div class="pv-ico">✨</div><div class="pv-lbl">Gel</div></div>
+      <div class="pv-block pv-3"><div class="pv-ico">🌸</div><div class="pv-lbl">Pedicuría</div></div>
+    </div>
+    <div class="porque-list">
+      <div class="pq-item">
+        <div class="pq-ico">🌿</div>
+        <div>
+          <div class="pq-title">Productos de alta gama</div>
+          <p class="pq-desc">Solo trabajamos con marcas profesionales libres de tóxicos. Tu salud no es negociable.</p>
+        </div>
+      </div>
+      <div class="pq-item">
+        <div class="pq-ico">⏰</div>
+        <div>
+          <div class="pq-title">Turnos puntuales, siempre</div>
+          <p class="pq-desc">Respetamos tu tiempo. Cada turno tiene su espacio y nunca te hacemos esperar más de lo acordado.</p>
+        </div>
+      </div>
+      <div class="pq-item">
+        <div class="pq-ico">✅</div>
+        <div>
+          <div class="pq-title">Garantía de resultado</div>
+          <p class="pq-desc">Si algo falla en los primeros 5 días, lo arreglamos sin costo. Así de simple.</p>
+        </div>
+      </div>
+      <div class="pq-item">
+        <div class="pq-ico">💬</div>
+        <div>
+          <div class="pq-title">Asesoramiento personalizado</div>
+          <p class="pq-desc">Te orientamos en colores, formas y técnicas según tu tipo de uña y tu estilo de vida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda">
+  <div class="agenda-wrap">
+    <div class="agenda-left">
+      <h2>Reservá tu<br><em>próxima sesión</em></h2>
+      <p>Completá el formulario y te confirmamos en menos de una hora. También podés escribirnos por WhatsApp.</p>
+      <div class="al-info">
+        <div class="al-row"><span>Ubicación</span><span>Villa Crespo, CABA</span></div>
+        <div class="al-row"><span>Martes a Sábados</span><span>10:00 – 19:00</span></div>
+        <div class="al-row"><span>WhatsApp</span><span>+54 11 4567-8901</span></div>
+        <div class="al-row"><span>Instagram</span><span>@petale.studio</span></div>
+      </div>
+    </div>
+    <div class="agenda-right">
+      <h3>Nuevo turno</h3>
+      <div class="fg"><label class="fl">Nombre</label><input class="fi" type="text" placeholder="Tu nombre completo"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Servicio</label>
+          <select class="fs">
+            <option>Semipermanente</option>
+            <option>Gel & Acrílico</option>
+            <option>Nail Art</option>
+            <option>Manicuría Rusa</option>
+            <option>Pedicuría</option>
+            <option>Press-On Custom</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Fecha</label><input class="fi" type="date"></div>
+        <div class="fg"><label class="fl">Horario</label>
+          <select class="fs">
+            <option>10:00</option><option>11:00</option><option>12:00</option>
+            <option>13:00</option><option>15:00</option><option>16:00</option>
+            <option>17:00</option><option>18:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Referencia o idea de diseño</label><input class="fi" type="text" placeholder="Ej: minimalista nude con líneas doradas..."></div>
+      <button class="btn-agenda">Confirmar turno ✿</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-logo"><em>Pétale</em> Studio</div>
+      <p class="fl-desc">El espacio donde tus uñas se convierten en arte. Villa Crespo, Buenos Aires.</p>
+    </div>
+    <div class="fc">
+      <div class="fc-h">Servicios</div>
+      <ul>
+        <li><a href="#">Semipermanente</a></li>
+        <li><a href="#">Gel & Acrílico</a></li>
+        <li><a href="#">Nail Art</a></li>
+        <li><a href="#">Manicuría Rusa</a></li>
+        <li><a href="#">Press-On</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <div class="fc-h">Contacto</div>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Ubicación</a></li>
+        <li><a href="#">Turnos online</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb">
+    <span>© 2025 Pétale Studio · Buenos Aires</span>
+    <span class="fp">Sitio web por Presence ✦</span>
+  </div>
+</footer>
+
+</body>
+</html>

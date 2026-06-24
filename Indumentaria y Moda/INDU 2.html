@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIBE · Moda Urbana</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#f5f2ee;color:#111;overflow-x:hidden;}
+:root{--bg:#f5f2ee;--bg2:#edeae4;--bg3:#e4e0d8;--dark:#111;--dark2:#1e1e1e;--orange:#e8621a;--orange2:#f07830;--text:#111;--muted:rgba(17,17,17,0.55);--faint:rgba(17,17,17,0.28);--border:rgba(17,17,17,0.1);}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--orange);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;background:rgba(245,242,238,0.97);backdrop-filter:blur(10px);border-bottom:0.5px solid var(--border);}
+.nav-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--dark);letter-spacing:-0.02em;text-decoration:none;}
+.nav-logo span{color:var(--orange);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--orange);}
+.nav-cta{font-size:13px;font-weight:700;padding:9px 22px;background:var(--dark);color:var(--bg);border-radius:100px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:var(--orange);}
+
+/* HERO */
+#inicio{min-height:100vh;padding:100px 5% 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden;}
+.hero-circle{position:absolute;width:600px;height:600px;border-radius:50%;background:rgba(232,98,26,0.06);top:-100px;right:-100px;pointer-events:none;}
+.hero-left{}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);background:rgba(232,98,26,0.08);border:0.5px solid rgba(232,98,26,0.2);padding:5px 16px;border-radius:100px;margin-bottom:24px;}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(48px,6vw,82px);font-weight:800;line-height:0.95;letter-spacing:-0.04em;color:var(--dark);margin-bottom:20px;}
+.hero-h1 .outline{-webkit-text-stroke:2px var(--dark);color:transparent;}
+.hero-h1 .orange{color:var(--orange);}
+.hero-sub{font-size:15px;color:var(--muted);max-width:400px;line-height:1.75;margin-bottom:36px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+.btn-dark{font-size:14px;font-weight:700;padding:14px 28px;background:var(--dark);color:var(--bg);border-radius:100px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-dark:hover{background:var(--orange);transform:translateY(-1px);}
+.btn-orange{font-size:14px;font-weight:700;padding:14px 28px;background:var(--orange);color:#fff;border-radius:100px;text-decoration:none;cursor:pointer;transition:background .2s;}
+.btn-orange:hover{background:var(--orange2);}
+.hero-badges{display:flex;gap:16px;flex-wrap:wrap;}
+.hbadge{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--faint);font-weight:500;}
+.hbadge-dot{width:5px;height:5px;border-radius:50%;background:var(--orange);}
+.hero-right{position:relative;}
+.hero-img-main{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:20px;filter:brightness(0.9);}
+.hero-img-float{position:absolute;bottom:-20px;left:-30px;width:45%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border-radius:14px;filter:brightness(0.88);border:4px solid var(--bg);}
+.hero-badge-pill{position:absolute;top:20px;right:-10px;background:#fff;border-radius:12px;padding:12px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.1);}
+.hbp-val{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--orange);line-height:1;}
+.hbp-lbl{font-size:10px;color:var(--faint);margin-top:2px;}
+
+/* MARQUEE */
+.marquee{background:var(--dark);padding:13px 0;overflow:hidden;white-space:nowrap;margin:0;}
+.m-track{display:inline-flex;animation:marquee 18s linear infinite;}
+.m-item{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,242,238,0.4);padding:0 24px;}
+.m-dot{color:var(--orange);}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+section{padding:88px 5%;}
+.sec-tag{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+.sec-h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:800;letter-spacing:-0.03em;line-height:1.05;color:var(--dark);margin-bottom:16px;}
+.sec-h2 span{color:var(--orange);}
+.sec-sub{font-size:14px;color:var(--muted);max-width:460px;line-height:1.8;}
+
+/* CATEGORÍAS */
+#categorias{background:var(--bg2);}
+.cat-header{margin-bottom:44px;}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.cat-card{position:relative;overflow:hidden;border-radius:14px;cursor:pointer;aspect-ratio:3/4;}
+.cat-card img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(0.8);transition:transform .5s,filter .3s;}
+.cat-card:hover img{transform:scale(1.05);filter:brightness(0.65);}
+.cat-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(17,17,17,0.8));display:flex;flex-direction:column;justify-content:flex-end;padding:20px;}
+.cat-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.02em;margin-bottom:3px;}
+.cat-count{font-size:11px;color:rgba(255,255,255,0.6);}
+.cat-pill{display:inline-block;margin-top:10px;font-size:10px;font-weight:700;padding:4px 12px;background:var(--orange);color:#fff;border-radius:100px;opacity:0;transition:opacity .3s;}
+.cat-card:hover .cat-pill{opacity:1;}
+
+/* PRODUCTOS */
+#productos{background:var(--bg);}
+.prod-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
+.ver-todo{font-size:12px;font-weight:700;color:var(--orange);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+.prod-card{cursor:pointer;}
+.prod-img{overflow:hidden;border-radius:12px;position:relative;margin-bottom:12px;background:var(--bg2);}
+.prod-img img{width:100%;height:280px;object-fit:cover;object-position:top center;filter:brightness(0.9);transition:transform .5s,filter .3s;}
+.prod-card:hover .prod-img img{transform:scale(1.04);filter:brightness(0.78);}
+.prod-badge{position:absolute;top:10px;left:10px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;}
+.b-n{background:var(--dark);color:var(--bg);}
+.b-o{background:var(--orange);color:#fff;}
+.b-s{background:#fff;color:var(--dark);}
+.prod-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:3px;letter-spacing:-0.01em;}
+.prod-cat{font-size:11px;color:var(--faint);margin-bottom:8px;}
+.prod-colors{display:flex;gap:5px;margin-bottom:10px;}
+.cdot{width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(17,17,17,0.12);}
+.prod-row{display:flex;align-items:center;justify-content:space-between;}
+.prod-price{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--dark);}
+.prod-old{font-size:12px;color:var(--faint);text-decoration:line-through;margin-left:6px;}
+.prod-btn{font-size:11px;font-weight:700;padding:8px 16px;background:var(--orange);color:#fff;border-radius:100px;border:none;cursor:pointer;transition:background .2s;}
+.prod-btn:hover{background:var(--orange2);}
+
+/* INSTAGRAM */
+#instagram{background:var(--bg3);}
+.ig-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
+.ig-link{font-size:13px;font-weight:600;color:var(--orange);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.ig-item{overflow:hidden;border-radius:8px;aspect-ratio:1;cursor:pointer;}
+.ig-item img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(0.85);transition:transform .4s,filter .3s;}
+.ig-item:hover img{transform:scale(1.06);filter:brightness(0.7);}
+
+/* RESEÑAS */
+#resenas{background:var(--bg);}
+.res-header{margin-bottom:44px;}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.res-card{background:var(--bg2);border-radius:12px;padding:26px;}
+.res-stars{color:var(--orange);font-size:14px;letter-spacing:3px;margin-bottom:12px;}
+.res-text{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px;}
+.res-author{display:flex;align-items:center;gap:10px;}
+.res-av{width:36px;height:36px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#fff;}
+.res-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--dark);}
+.res-prod{font-size:11px;color:var(--faint);}
+
+/* CTA */
+#cta{background:var(--orange);padding:88px 5%;text-align:center;}
+#cta h2{font-family:'Syne',sans-serif;font-size:clamp(44px,7vw,88px);font-weight:800;letter-spacing:-0.04em;line-height:0.95;color:#fff;margin-bottom:16px;}
+#cta h2 .outline{-webkit-text-stroke:2px #fff;color:transparent;}
+#cta p{font-size:16px;color:rgba(255,255,255,0.75);max-width:400px;margin:0 auto 36px;line-height:1.7;}
+.btn-white{font-size:14px;font-weight:700;padding:15px 36px;background:#fff;color:var(--orange);border-radius:100px;text-decoration:none;display:inline-block;transition:transform .15s;}
+.btn-white:hover{transform:translateY(-2px);}
+
+footer{background:var(--dark);padding:52px 5%;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;}
+.f-logo{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.02em;color:var(--bg);margin-bottom:12px;}
+.f-logo span{color:var(--orange);}
+.f-desc{font-size:12px;color:rgba(245,242,238,0.3);line-height:1.9;}
+.f-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;}
+.f-col a{font-size:12px;color:rgba(245,242,238,0.3);line-height:2.1;text-decoration:none;display:block;transition:color .2s;}
+.f-col a:hover{color:var(--bg);}
+.f-bottom{background:#0a0a0a;padding:16px 5%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.f-bottom p{font-size:11px;color:rgba(245,242,238,0.18);}
+
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:300;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#16a34a,#22c55e);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 28px rgba(34,197,94,0.45);text-decoration:none;transition:transform .2s;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+
+@media(max-width:900px){#inicio{grid-template-columns:1fr;padding-top:120px;}.hero-right{display:none;}.nav-links{display:none;}.ig-grid{grid-template-columns:repeat(2,1fr);}footer{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="#inicio">VI<span>BE</span></a>
+  <div class="nav-links">
+    <a href="#categorias">Categorías</a>
+    <a href="#productos">Shop</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#resenas">Reviews</a>
+    <a href="https://wa.me/541140347468" class="nav-cta" target="_blank">Comprar</a>
+  </div>
+</nav>
+
+<section id="inicio">
+  <div class="hero-circle"></div>
+  <div class="hero-left">
+    <div class="hero-tag">🔥 Nueva colección · Buenos Aires</div>
+    <h1 class="hero-h1">
+      TU ESTILO,<br>
+      <span class="outline">TUS</span><br>
+      <span class="orange">REGLAS.</span>
+    </h1>
+    <p class="hero-sub">Ropa urbana de calidad para los que saben lo que quieren. Diseños originales, materiales premium, entrega en 48hs.</p>
+    <div class="hero-actions">
+      <a href="#productos" class="btn-dark">Shop ahora</a>
+      <a href="https://wa.me/541140347468" class="btn-orange" target="_blank">💬 Consultar</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hbadge"><div class="hbadge-dot"></div>Envío en 48hs</div>
+      <div class="hbadge"><div class="hbadge-dot"></div>12 cuotas sin interés</div>
+      <div class="hbadge"><div class="hbadge-dot"></div>Cambios gratis</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img-main" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=700&q=85" alt="Vibe main">
+    <img class="hero-img-float" src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&q=85" alt="Vibe float">
+    <div class="hero-badge-pill"><div class="hbp-val">4.9⭐</div><div class="hbp-lbl">+600 reseñas</div></div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="m-track">
+    <span class="m-item">Remeras</span><span class="m-dot"> · </span>
+    <span class="m-item">Hoodies</span><span class="m-dot"> · </span>
+    <span class="m-item">Pantalones</span><span class="m-dot"> · </span>
+    <span class="m-item">Accesorios</span><span class="m-dot"> · </span>
+    <span class="m-item">Buzos</span><span class="m-dot"> · </span>
+    <span class="m-item">Shorts</span><span class="m-dot"> · </span>
+    <span class="m-item">Camperas</span><span class="m-dot"> · </span>
+    <span class="m-item">Remeras</span><span class="m-dot"> · </span>
+    <span class="m-item">Hoodies</span><span class="m-dot"> · </span>
+    <span class="m-item">Pantalones</span><span class="m-dot"> · </span>
+    <span class="m-item">Accesorios</span><span class="m-dot"> · </span>
+    <span class="m-item">Buzos</span><span class="m-dot"> · </span>
+    <span class="m-item">Shorts</span><span class="m-dot"> · </span>
+    <span class="m-item">Camperas</span><span class="m-dot"> · </span>
+  </div>
+</div>
+
+<section id="categorias">
+  <div class="cat-header">
+    <div class="sec-tag">Categorías</div>
+    <h2 class="sec-h2">Todo lo que<br><span>necesitás.</span></h2>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=85" alt="Remeras"><div class="cat-overlay"><div class="cat-name">Remeras</div><div class="cat-count">+80 modelos</div><div class="cat-pill">Ver todo →</div></div></div>
+    <div class="cat-card"><img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=500&q=85" alt="Hoodies"><div class="cat-overlay"><div class="cat-name">Hoodies</div><div class="cat-count">+45 modelos</div><div class="cat-pill">Ver todo →</div></div></div>
+    <div class="cat-card"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&q=85" alt="Pantalones"><div class="cat-overlay"><div class="cat-name">Pantalones</div><div class="cat-count">+60 modelos</div><div class="cat-pill">Ver todo →</div></div></div>
+    <div class="cat-card"><img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=500&q=85" alt="Buzos"><div class="cat-overlay"><div class="cat-name">Buzos</div><div class="cat-count">+35 modelos</div><div class="cat-pill">Ver todo →</div></div></div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="prod-header">
+    <div>
+      <div class="sec-tag">Esta semana</div>
+      <h2 class="sec-h2">Lo más <span>pedido.</span></h2>
+    </div>
+    <a href="https://wa.me/541140347468" class="ver-todo" target="_blank">Ver todo →</a>
+  </div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=85" alt="Remera"><div class="prod-badge b-n">Nuevo</div></div>
+      <div class="prod-name">Remera oversized basic</div>
+      <div class="prod-cat">100% algodón · Unisex</div>
+      <div class="prod-colors"><div class="cdot" style="background:#111;"></div><div class="cdot" style="background:#fff;border-color:#ddd;"></div><div class="cdot" style="background:#8b6340;"></div><div class="cdot" style="background:#4a6b8a;"></div></div>
+      <div class="prod-row"><div><span class="prod-price">$24.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=85" alt="Hoodie"><div class="prod-badge b-o">🔥 Top</div></div>
+      <div class="prod-name">Hoodie fleece premium</div>
+      <div class="prod-cat">French terry · Unisex</div>
+      <div class="prod-colors"><div class="cdot" style="background:#111;"></div><div class="cdot" style="background:#6b6b6b;"></div><div class="cdot" style="background:#e8c49a;"></div></div>
+      <div class="prod-row"><div><span class="prod-price">$64.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=85" alt="Cargo"><div class="prod-badge b-s">-20%</div></div>
+      <div class="prod-name">Jogger cargo gris</div>
+      <div class="prod-cat">Cotton blend · Unisex</div>
+      <div class="prod-colors"><div class="cdot" style="background:#6b6b6b;"></div><div class="cdot" style="background:#111;"></div><div class="cdot" style="background:#8b7355;"></div></div>
+      <div class="prod-row"><div><span class="prod-price">$48.990</span><span class="prod-old">$61.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img"><img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=600&q=85" alt="Buzo"><div class="prod-badge b-n">Nuevo</div></div>
+      <div class="prod-name">Buzo crewneck beige</div>
+      <div class="prod-cat">Algodón premium · Unisex</div>
+      <div class="prod-colors"><div class="cdot" style="background:#d4c4a8;"></div><div class="cdot" style="background:#111;"></div><div class="cdot" style="background:#8b4a4a;"></div></div>
+      <div class="prod-row"><div><span class="prod-price">$54.990</span></div><button class="prod-btn">Agregar</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="ig-header">
+    <div>
+      <div class="sec-tag">Instagram</div>
+      <h2 class="sec-h2">Seguinos y<br><span>enterate primero.</span></h2>
+    </div>
+    <a href="https://wa.me/541140347468" class="ig-link" target="_blank">@vibe.ba →</a>
+  </div>
+  <div class="ig-grid">
+    <div class="ig-item"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400&q=85" alt="IG 1"></div>
+    <div class="ig-item"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=85" alt="IG 2"></div>
+    <div class="ig-item"><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400&q=85" alt="IG 3"></div>
+    <div class="ig-item"><img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=400&q=85" alt="IG 4"></div>
+  </div>
+</section>
+
+<section id="resenas">
+  <div class="res-header">
+    <div class="sec-tag">Reviews</div>
+    <h2 class="sec-h2">+600 clientes<br><span>contentos.</span></h2>
+  </div>
+  <div class="res-grid">
+    <div class="res-card"><div class="res-stars">★★★★★</div><div class="res-text">"La remera oversized es perfecta. El algodón es suave, no se deforma al lavar. Ya pedí en 4 colores. La recomiendo a todos."</div><div class="res-author"><div class="res-av">J</div><div><div class="res-name">Julián P.</div><div class="res-prod">Remera Oversized · Verificado</div></div></div></div>
+    <div class="res-card"><div class="res-stars">★★★★★</div><div class="res-text">"El hoodie llegó en 48hs como prometían. La calidad es increíble para el precio. El fleece es muy suave y abriga perfecto."</div><div class="res-author"><div class="res-av">M</div><div><div class="res-name">Martina S.</div><div class="res-prod">Hoodie Fleece · Verificado</div></div></div></div>
+    <div class="res-card"><div class="res-stars">★★★★★</div><div class="res-text">"Los cargo son un básico que no puede faltar. El talle es exacto y el material es de muy buena calidad. Definitivamente vuelvo."</div><div class="res-author"><div class="res-av">L</div><div><div class="res-name">Lucas M.</div><div class="res-prod">Jogger Cargo · Verificado</div></div></div></div>
+  </div>
+</section>
+
+<div id="cta">
+  <h2>NUEVA<br><span class="outline">DROP</span><br>CADA MES.</h2>
+  <p>Seguinos en Instagram para enterarte primero de los drops y las promos exclusivas.</p>
+  <a href="https://wa.me/541140347468" class="btn-white" target="_blank">Comprar ahora →</a>
+</div>
+
+<footer>
+  <div><div class="f-logo">VI<span>BE</span></div><div class="f-desc">Moda urbana de calidad para los que saben lo que quieren. Buenos Aires.</div></div>
+  <div class="f-col"><h4>Shop</h4><a href="#">Remeras</a><a href="#">Hoodies</a><a href="#">Pantalones</a><a href="#">Buzos</a></div>
+  <div class="f-col"><h4>Info</h4><a href="#">Guía de talles</a><a href="#">Envíos</a><a href="#">Cambios</a><a href="#">FAQ</a></div>
+  <div class="f-col"><h4>Contacto</h4><a href="https://wa.me/541140347468">WhatsApp</a><a href="#">Instagram</a><a href="#">Email</a></div>
+</footer>
+<div class="f-bottom"><p>© 2025 VIBE · Buenos Aires</p><p>Diseño por <span style="color:var(--orange);">Presence</span></p></div>
+
+<a class="wa-float" href="https://wa.me/541140347468" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 1.998C6.475 1.998 2 6.473 2 11.996c0 1.76.463 3.513 1.34 5.053L2 22l5.109-1.322A9.946 9.946 0 0 0 12 21.994c5.523 0 9.998-4.475 9.998-9.998s-4.475-9.998-9.998-9.998z"/></svg>
+</a>
+</body>
+</html>

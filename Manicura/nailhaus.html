@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAILHAUS | Nail Studio Buenos Aires</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --lime:   #C8F135;
+  --lime-dk:#A0C420;
+  --black:  #0A0A0A;
+  --black2: #111111;
+  --white:  #FFFFFF;
+  --off:    #F5F5F0;
+  --gray:   #E8E8E2;
+  --gray2:  #D0D0C8;
+  --muted:  #888882;
+  --text:   #0A0A0A;
+}
+
+html { scroll-behavior:smooth; }
+body { font-family:'Inter',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:var(--black); padding:0 6%;
+  display:flex; align-items:stretch; justify-content:space-between;
+  border-bottom:2px solid var(--lime);
+}
+.nav-logo {
+  font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800;
+  color:var(--white); letter-spacing:0.04em; padding:1.1rem 0;
+}
+.nav-logo span { color:var(--lime); }
+
+.nav-links { display:flex; gap:0; list-style:none; }
+.nav-links li a {
+  text-decoration:none; color:rgba(255,255,255,0.45);
+  font-size:0.78rem; font-weight:400; letter-spacing:0.06em; text-transform:uppercase;
+  padding:0 1.3rem; display:flex; align-items:center; height:100%;
+  transition:all 0.2s; border-right:1px solid rgba(255,255,255,0.06);
+}
+.nav-links li a:hover { color:var(--lime); background:rgba(200,241,53,0.06); }
+
+.nav-cta {
+  background:var(--lime); color:var(--black); border:none;
+  padding:0 1.8rem; font-size:0.78rem; font-family:'Syne',sans-serif; font-weight:700;
+  letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition:background 0.2s;
+  border-left:2px solid var(--lime);
+}
+.nav-cta:hover { background:var(--lime-dk); }
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh; padding-top:62px;
+  background:var(--black);
+  display:flex; flex-direction:column;
+  position:relative; overflow:hidden;
+}
+
+.hero-body {
+  flex:1; display:grid; grid-template-columns:1fr 420px;
+  align-items:center; padding:0 6%;
+  gap:3rem;
+}
+
+.hero-left {}
+
+.hero-kicker {
+  font-family:'Space Mono',monospace; font-size:0.72rem;
+  color:var(--lime); letter-spacing:0.12em; text-transform:uppercase;
+  margin-bottom:2rem; display:flex; align-items:center; gap:0.8rem;
+}
+.hero-kicker::before { content:''; width:24px; height:1px; background:var(--lime); }
+
+.hero h1 {
+  font-family:'Syne',sans-serif; font-weight:800;
+  font-size:clamp(3.5rem,7vw,7rem);
+  line-height:0.9; letter-spacing:-0.02em;
+  color:var(--white); margin-bottom:2.5rem;
+}
+.hero h1 .lime { color:var(--lime); }
+.hero h1 .outline {
+  -webkit-text-stroke:2px var(--white); color:transparent;
+}
+.hero h1 .outline-lime {
+  -webkit-text-stroke:2px var(--lime); color:transparent;
+}
+
+.hero-sub { font-size:0.92rem; color:rgba(255,255,255,0.45); line-height:1.8; max-width:420px; margin-bottom:3rem; font-weight:300; }
+
+.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+
+.btn-lime {
+  background:var(--lime); color:var(--black); border:none;
+  padding:1rem 2.2rem; font-size:0.82rem; font-family:'Syne',sans-serif;
+  font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+  cursor:pointer; transition:all 0.2s; text-decoration:none; display:inline-block;
+  border:2px solid var(--lime);
+}
+.btn-lime:hover { background:var(--lime-dk); border-color:var(--lime-dk); }
+
+.btn-outline-lime {
+  background:transparent; color:var(--lime);
+  border:2px solid rgba(200,241,53,0.3); padding:1rem 2.2rem;
+  font-size:0.82rem; font-family:'Syne',sans-serif; font-weight:700;
+  letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition:all 0.2s;
+  text-decoration:none; display:inline-block;
+}
+.btn-outline-lime:hover { border-color:var(--lime); }
+
+.hero-right {
+  display:flex; flex-direction:column; gap:1rem;
+  padding:4rem 0;
+}
+
+.hero-stat-block {
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+  padding:1.5rem; display:flex; align-items:center; gap:1.2rem;
+  transition:border-color 0.3s;
+}
+.hero-stat-block:hover { border-color:rgba(200,241,53,0.3); }
+
+.hsb-ico { font-size:1.6rem; width:46px; text-align:center; flex-shrink:0; }
+.hsb-num { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800; color:var(--lime); line-height:1; }
+.hsb-label { font-size:0.72rem; color:rgba(255,255,255,0.35); margin-top:0.2rem; letter-spacing:0.06em; text-transform:uppercase; }
+
+.hero-service-preview {
+  background:var(--lime); padding:1.5rem; display:flex; align-items:center; justify-content:space-between;
+}
+.hsp-text { font-family:'Syne',sans-serif; font-size:0.85rem; font-weight:700; color:var(--black); letter-spacing:0.04em; }
+.hsp-sub { font-size:0.72rem; color:rgba(0,0,0,0.55); margin-top:0.2rem; }
+.hsp-ico { font-size:1.8rem; }
+
+.hero-bottom-bar {
+  background:rgba(200,241,53,0.06); border-top:1px solid rgba(200,241,53,0.15);
+  padding:1.2rem 6%; display:flex; gap:3rem; overflow-x:auto;
+  scrollbar-width:none;
+}
+.hero-bottom-bar::-webkit-scrollbar { display:none; }
+.hbb-item {
+  display:flex; align-items:center; gap:0.6rem;
+  font-size:0.75rem; color:rgba(255,255,255,0.4); white-space:nowrap;
+  font-family:'Space Mono',monospace; letter-spacing:0.04em;
+}
+.hbb-dot { width:6px; height:6px; background:var(--lime); border-radius:50%; flex-shrink:0; }
+
+/* ── SERVICIOS ── */
+.section { padding:5.5rem 6%; }
+
+.sec-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem; flex-wrap:wrap; gap:1rem; }
+
+.sec-kicker { font-family:'Space Mono',monospace; font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-bottom:0.6rem; }
+.sec-h { font-family:'Syne',sans-serif; font-size:clamp(2rem,3.5vw,3rem); font-weight:800; letter-spacing:-0.02em; color:var(--text); line-height:1; }
+.sec-h .lime { color:var(--lime-dk); }
+
+.ver-mas { font-size:0.75rem; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:0.4rem; font-family:'Space Mono',monospace; transition:color 0.2s; }
+.ver-mas:hover { color:var(--text); }
+
+.services-table { border:2px solid var(--black); }
+
+.st-row {
+  display:grid; grid-template-columns:3rem 1fr 2fr auto auto;
+  align-items:center; gap:1.5rem; padding:1.3rem 1.5rem;
+  border-bottom:1px solid var(--gray); cursor:default;
+  transition:background 0.15s;
+}
+.st-row:last-child { border-bottom:none; }
+.st-row:hover { background:var(--off); }
+
+.st-row.header {
+  background:var(--black); color:rgba(255,255,255,0.4);
+  font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase;
+  font-family:'Space Mono',monospace; padding:0.9rem 1.5rem;
+  cursor:default;
+}
+.st-row.header:hover { background:var(--black); }
+
+.st-num { font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; color:var(--gray2); }
+.st-ico { font-size:1.4rem; }
+.st-name { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; }
+.st-desc { font-size:0.8rem; color:var(--muted); font-weight:300; line-height:1.5; }
+.st-tags { display:flex; gap:0.4rem; flex-wrap:wrap; }
+.st-tag {
+  background:var(--off); border:1px solid var(--gray);
+  font-size:0.62rem; padding:0.2rem 0.55rem; letter-spacing:0.04em;
+  font-weight:500; color:var(--muted);
+}
+.st-price { font-family:'Syne',sans-serif; font-weight:800; font-size:0.95rem; white-space:nowrap; text-align:right; }
+
+/* ── FAQ / PROCESO ── */
+.proceso-bg { background:var(--off); }
+
+.proceso-grid {
+  display:grid; grid-template-columns:repeat(2, 1fr);
+  gap:1px; background:var(--gray);
+  border:1px solid var(--gray);
+  margin-top:3rem;
+}
+
+.pr-cell {
+  background:var(--off); padding:2.5rem;
+  transition:background 0.2s;
+}
+.pr-cell:hover { background:var(--white); }
+
+.pr-num {
+  font-family:'Space Mono',monospace; font-size:0.72rem;
+  color:var(--lime-dk); letter-spacing:0.1em; margin-bottom:1rem;
+}
+
+.pr-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:0.6rem; }
+.pr-desc { font-size:0.82rem; color:var(--muted); line-height:1.75; font-weight:300; }
+
+/* ── BOOKING ── */
+.booking-outer {
+  background:var(--black);
+  padding:5.5rem 6%;
+}
+
+.booking-inner {
+  display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;
+}
+
+.bl h2 {
+  font-family:'Syne',sans-serif; font-weight:800;
+  font-size:clamp(2.5rem,4vw,4rem); letter-spacing:-0.02em;
+  color:var(--white); line-height:0.95; margin-bottom:1.5rem;
+}
+.bl h2 .lime { color:var(--lime); }
+
+.bl p { font-size:0.88rem; color:rgba(255,255,255,0.4); line-height:1.8; margin-bottom:2.5rem; font-weight:300; }
+
+.info-rows { display:flex; flex-direction:column; gap:0; border:1px solid rgba(255,255,255,0.08); }
+.ir {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.06);
+  font-size:0.82rem;
+}
+.ir:last-child { border-bottom:none; }
+.ir-label { color:rgba(255,255,255,0.3); font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; }
+.ir-val { color:rgba(255,255,255,0.7); font-weight:400; }
+
+.br { background:var(--white); padding:3rem; }
+.br h3 { font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:2rem; }
+
+.fg { margin-bottom:1.2rem; }
+.fl { display:block; font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:0.5rem; }
+.fi, .fs {
+  width:100%; background:var(--off); border:2px solid var(--gray);
+  color:var(--text); padding:0.85rem 1rem; font-family:'Inter',sans-serif;
+  font-size:0.88rem; outline:none; transition:border-color 0.2s; appearance:none;
+}
+.fi:focus, .fs:focus { border-color:var(--black); }
+.fi::placeholder { color:var(--gray2); }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
+
+.btn-booking {
+  width:100%; background:var(--black); color:var(--white); border:none;
+  padding:1.1rem; font-family:'Syne',sans-serif; font-weight:800;
+  font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase;
+  cursor:pointer; margin-top:0.5rem; transition:background 0.2s;
+  border:2px solid var(--black);
+}
+.btn-booking:hover { background:var(--lime); color:var(--black); border-color:var(--lime); }
+
+/* ── FOOTER ── */
+footer { background:var(--black); padding:3.5rem 6% 2rem; border-top:2px solid var(--lime); }
+.ft { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+.fl-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:var(--white); margin-bottom:0.8rem; }
+.fl-logo span { color:var(--lime); }
+.fl-desc { font-size:0.8rem; color:rgba(255,255,255,0.3); line-height:1.7; font-weight:300; max-width:250px; }
+.fc-h { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:1rem; }
+.fc ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+.fc a { text-decoration:none; color:rgba(255,255,255,0.35); font-size:0.82rem; transition:color 0.2s; }
+.fc a:hover { color:var(--lime); }
+.fb { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem; display:flex; justify-content:space-between; font-size:0.72rem; color:rgba(255,255,255,0.2); flex-wrap:wrap; gap:0.5rem; }
+.fp { color:rgba(200,241,53,0.25); }
+
+@media(max-width:900px){
+  .hero-body{grid-template-columns:1fr; padding-top:3rem;}
+  .hero-right{display:none;}
+  .st-row{grid-template-columns:auto 1fr auto; gap:1rem;}
+  .st-desc,.st-tags,.st-num{display:none;}
+  .st-row.header{display:none;}
+  .proceso-grid{grid-template-columns:1fr;}
+  .booking-inner{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">NAIL<span>HAUS</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#turno">Turnos</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('turno').scrollIntoView({behavior:'smooth'})">Book now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="hero-left">
+      <div class="hero-kicker">Nail Studio · Buenos Aires · Est. 2020</div>
+      <h1>
+        <span class="outline">NAIL</span><br>
+        <span class="lime">ART</span><br>
+        <span class="outline-lime">SIN</span><br>
+        LÍMITES
+      </h1>
+      <p class="hero-sub">Diseños únicos, técnicas de vanguardia y una estética que no le pide permiso a nadie. Tu próxima sesión en NAILHAUS.</p>
+      <div class="hero-btns">
+        <a href="#turno" class="btn-lime">Reservar turno</a>
+        <a href="#servicios" class="btn-outline-lime">Ver servicios</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stat-block">
+        <div class="hsb-ico">⭐</div>
+        <div>
+          <div class="hsb-num">4.9</div>
+          <div class="hsb-label">Rating en Google</div>
+        </div>
+      </div>
+      <div class="hero-stat-block">
+        <div class="hsb-ico">💅</div>
+        <div>
+          <div class="hsb-num">800+</div>
+          <div class="hsb-label">Clientas atendidas</div>
+        </div>
+      </div>
+      <div class="hero-stat-block">
+        <div class="hsb-ico">🎨</div>
+        <div>
+          <div class="hsb-num">∞</div>
+          <div class="hsb-label">Diseños posibles</div>
+        </div>
+      </div>
+      <div class="hero-service-preview">
+        <div>
+          <div class="hsp-text">Semipermanente + Diseño</div>
+          <div class="hsp-sub">El combo más pedido</div>
+        </div>
+        <div class="hsp-ico">💎</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom-bar">
+    <div class="hbb-item"><span class="hbb-dot"></span>Semipermanente</div>
+    <div class="hbb-item"><span class="hbb-dot"></span>Gel & Acrílico</div>
+    <div class="hbb-item"><span class="hbb-dot"></span>Nail Art</div>
+    <div class="hbb-item"><span class="hbb-dot"></span>Manicuría Rusa</div>
+    <div class="hbb-item"><span class="hbb-dot"></span>Pedicuría</div>
+    <div class="hbb-item"><span class="hbb-dot"></span>Press-On Custom</div>
+    <div class="hbb-item"><span class="hbb-dot"></span>Diseños 3D</div>
+    <div class="hbb-item"><span class="hbb-dot"></span>Cromado & Foil</div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="sec-header">
+    <div>
+      <div class="sec-kicker">// servicios disponibles</div>
+      <h2 class="sec-h">LO QUE<br><span class="lime">HACEMOS</span></h2>
+    </div>
+    <a href="#turno" class="ver-mas">Reservar turno →</a>
+  </div>
+
+  <div class="services-table">
+    <div class="st-row header">
+      <span></span>
+      <span></span>
+      <span>Descripción</span>
+      <span>Tags</span>
+      <span style="text-align:right;">Precio</span>
+    </div>
+    <div class="st-row">
+      <div class="st-num">01</div>
+      <div>
+        <div class="st-ico">💅</div>
+        <div class="st-name">Semipermanente</div>
+      </div>
+      <div class="st-desc">Esmalte de larga duración hasta 3 semanas. Colores ilimitados, acabado brillante o mate. Sin astillar, sin astillar.</div>
+      <div class="st-tags"><span class="st-tag">3 semanas</span><span class="st-tag">Sin daño</span></div>
+      <div class="st-price">desde $8.000</div>
+    </div>
+    <div class="st-row">
+      <div class="st-num">02</div>
+      <div>
+        <div class="st-ico">💎</div>
+        <div class="st-name">Gel & Acrílico</div>
+      </div>
+      <div class="st-desc">Extensiones y remodelado en gel biab o acrílico. Alargamiento, relleno y remoción sin dañar la uña natural.</div>
+      <div class="st-tags"><span class="st-tag">Extensiones</span><span class="st-tag">Relleno</span></div>
+      <div class="st-price">desde $12.000</div>
+    </div>
+    <div class="st-row">
+      <div class="st-num">03</div>
+      <div>
+        <div class="st-ico">🎨</div>
+        <div class="st-name">Nail Art</div>
+      </div>
+      <div class="st-desc">Diseños únicos: francesita, cromado, encapsulado, flores 3D, foil holográfico, degradé y todo lo que imagines.</div>
+      <div class="st-tags"><span class="st-tag">3D</span><span class="st-tag">Cromado</span><span class="st-tag">Foil</span></div>
+      <div class="st-price">desde $10.000</div>
+    </div>
+    <div class="st-row">
+      <div class="st-num">04</div>
+      <div>
+        <div class="st-ico">✂️</div>
+        <div class="st-name">Manicuría Rusa</div>
+      </div>
+      <div class="st-desc">Técnica de cutícula en seco con broca eléctrica. El acabado más limpio y duradero del mercado actual.</div>
+      <div class="st-tags"><span class="st-tag">Cutícula seca</span><span class="st-tag">Premium</span></div>
+      <div class="st-price">desde $9.500</div>
+    </div>
+    <div class="st-row">
+      <div class="st-num">05</div>
+      <div>
+        <div class="st-ico">🌸</div>
+        <div class="st-name">Pedicuría Completa</div>
+      </div>
+      <div class="st-desc">Limado, hidratación profunda, tratamiento de cutícula y esmalte semipermanente. Tus pies también merecen arte.</div>
+      <div class="st-tags"><span class="st-tag">Hidratación</span><span class="st-tag">Semi</span></div>
+      <div class="st-price">desde $7.500</div>
+    </div>
+    <div class="st-row">
+      <div class="st-num">06</div>
+      <div>
+        <div class="st-ico">📦</div>
+        <div class="st-name">Press-On Custom</div>
+      </div>
+      <div class="st-desc">Uñas postizas diseñadas a mano en tu medida exacta. Reutilizables, enviamos a todo el país.</div>
+      <div class="st-tags"><span class="st-tag">A medida</span><span class="st-tag">Envío</span></div>
+      <div class="st-price">desde $15.000</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="section proceso-bg" id="proceso">
+  <div class="sec-kicker">// cómo funciona</div>
+  <h2 class="sec-h" style="margin-top:0.5rem;">EL PROCESO<br><span class="lime">NAILHAUS</span></h2>
+
+  <div class="proceso-grid">
+    <div class="pr-cell">
+      <div class="pr-num">STEP_01</div>
+      <div class="pr-title">Elegís y reservás</div>
+      <p class="pr-desc">Seleccionás el servicio, elegís fecha y horario online. Confirmación automática en segundos.</p>
+    </div>
+    <div class="pr-cell">
+      <div class="pr-num">STEP_02</div>
+      <div class="pr-title">Nos mandás tu inspo</div>
+      <p class="pr-desc">Referencias, colores, ideas. Nuestras técnicas lo analizan y te proponen el diseño perfecto para vos.</p>
+    </div>
+    <div class="pr-cell">
+      <div class="pr-num">STEP_03</div>
+      <div class="pr-title">La sesión</div>
+      <p class="pr-desc">Preparación, color, diseño y terminación con productos de primera. Cada detalle ejecutado con precisión.</p>
+    </div>
+    <div class="pr-cell">
+      <div class="pr-num">STEP_04</div>
+      <div class="pr-title">Garantía incluida</div>
+      <p class="pr-desc">5 días de garantía en todos los servicios. Si algo falla, lo arreglamos sin costo, sin drama.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TURNO -->
+<section class="booking-outer" id="turno">
+  <div class="booking-inner">
+    <div class="bl">
+      <h2>BOOK<br>YOUR<br><span class="lime">SPOT.</span></h2>
+      <p>Completá el form y te confirmamos tu turno en menos de una hora. También por Instagram o WhatsApp si preferís.</p>
+      <div class="info-rows">
+        <div class="ir"><span class="ir-label">Ubicación</span><span class="ir-val">Palermo, CABA</span></div>
+        <div class="ir"><span class="ir-label">Martes – Sábado</span><span class="ir-val">10:00 – 20:00</span></div>
+        <div class="ir"><span class="ir-label">WhatsApp</span><span class="ir-val">+54 11 4567-8901</span></div>
+        <div class="ir"><span class="ir-label">Instagram</span><span class="ir-val">@nailhaus.ba</span></div>
+        <div class="ir"><span class="ir-label">Garantía</span><span class="ir-val">5 días incluidos</span></div>
+      </div>
+    </div>
+    <div class="br">
+      <h3>New booking</h3>
+      <div class="fg"><label class="fl">Nombre</label><input class="fi" type="text" placeholder="Tu nombre"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Servicio</label>
+          <select class="fs">
+            <option>Semipermanente</option>
+            <option>Gel & Acrílico</option>
+            <option>Nail Art</option>
+            <option>Manicuría Rusa</option>
+            <option>Pedicuría</option>
+            <option>Press-On Custom</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Fecha</label><input class="fi" type="date"></div>
+        <div class="fg"><label class="fl">Horario</label>
+          <select class="fs">
+            <option>10:00</option><option>11:00</option><option>12:00</option>
+            <option>13:00</option><option>15:00</option><option>16:00</option>
+            <option>17:00</option><option>18:00</option><option>19:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">Referencia o idea</label><input class="fi" type="text" placeholder="Inspo, colores, forma de uña..."></div>
+      <button class="btn-booking">Confirmar turno →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-logo">NAIL<span>HAUS</span></div>
+      <p class="fl-desc">Nail art sin límites en Buenos Aires. Diseños únicos, técnicas de vanguardia y la estética que te merecés.</p>
+    </div>
+    <div class="fc">
+      <div class="fc-h">Servicios</div>
+      <ul>
+        <li><a href="#">Semipermanente</a></li>
+        <li><a href="#">Gel & Acrílico</a></li>
+        <li><a href="#">Nail Art</a></li>
+        <li><a href="#">Press-On</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <div class="fc-h">Links</div>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Ubicación</a></li>
+        <li><a href="#">Turnos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb">
+    <span>© 2025 NAILHAUS · Buenos Aires</span>
+    <span class="fp">Sitio web por Presence ✦</span>
+  </div>
+</footer>
+
+</body>
+</html>

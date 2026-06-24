@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZEN.BA | Centro de Bienestar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --red:#CC2200;--red2:#E83A1A;
+  --black:#080808;--white:#FFFFFF;--off:#F8F8F6;--gray:#EBEBЕ8;--gray2:#D8D8D4;
+  --text:#080808;--muted:#888885;--mid:#4A4A47;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:1.3rem 8%;border-bottom:1px solid var(--gray);}
+.nav-logo{font-family:'Cormorant',serif;font-size:1.1rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);}
+.nav-logo span{color:var(--red);}
+.nav-center{display:flex;gap:2.5rem;list-style:none;}
+.nav-center a{text-decoration:none;color:var(--muted);font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;transition:color 0.3s;}
+.nav-center a:hover{color:var(--text);}
+.nav-cta{background:var(--black);color:white;border:none;padding:0.6rem 1.5rem;font-size:0.72rem;font-family:'Space Mono',monospace;letter-spacing:0.06em;cursor:pointer;transition:background 0.3s;}
+.nav-cta:hover{background:var(--red);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--gray);}
+.hero-left{padding:6rem 4rem 6rem 8%;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--gray);}
+
+.hero-mono{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--muted);margin-bottom:3rem;}
+
+.hero h1{font-family:'Cormorant',serif;font-size:clamp(4rem,7vw,7rem);font-weight:300;line-height:0.92;letter-spacing:0.02em;margin-bottom:2.5rem;color:var(--text);}
+.hero h1 em{font-style:italic;color:var(--red);}
+.hero h1 .outline{-webkit-text-stroke:1px var(--text);color:transparent;}
+
+.hero-sub{font-size:0.9rem;color:var(--muted);line-height:2;max-width:380px;margin-bottom:3rem;font-weight:300;border-left:2px solid var(--red);padding-left:1.2rem;}
+
+.hero-btns{display:flex;gap:0;margin-bottom:4rem;}
+.btn-black{background:var(--black);color:white;border:none;padding:1rem 2rem;font-size:0.72rem;font-family:'Space Mono',monospace;letter-spacing:0.06em;cursor:pointer;transition:background 0.3s;text-decoration:none;display:inline-block;}
+.btn-black:hover{background:var(--red);}
+.btn-border{background:transparent;color:var(--text);border:1px solid var(--text);border-left:none;padding:1rem 2rem;font-size:0.72rem;font-family:'Space Mono',monospace;letter-spacing:0.06em;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-border:hover{background:var(--off);}
+
+.hero-nums{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--gray);}
+.hn{padding:1.5rem 0;border-right:1px solid var(--gray);text-align:center;}
+.hn:last-child{border-right:none;}
+.hn-num{font-family:'Cormorant',serif;font-size:2.5rem;font-weight:300;color:var(--text);line-height:1;}
+.hn-label{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);margin-top:0.3rem;text-transform:uppercase;}
+
+.hero-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+.hr-block{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.8rem;border-right:1px solid var(--gray);border-bottom:1px solid var(--gray);padding:3rem 2rem;transition:background 0.3s;cursor:default;}
+.hr-block:nth-child(2n){border-right:none;}
+.hr-block:nth-child(3),.hr-block:nth-child(4){border-bottom:none;}
+.hr-block:hover{background:var(--off);}
+.hrb-ico{font-size:2.5rem;}
+.hrb-title{font-family:'Cormorant',serif;font-size:1.1rem;font-weight:300;font-style:italic;color:var(--text);text-align:center;}
+.hrb-sub{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;color:var(--muted);text-align:center;}
+.hrb-red{position:absolute;top:0;left:0;width:3px;background:var(--red);}
+.hr-block.featured{background:var(--black);position:relative;}
+.hr-block.featured .hrb-title{color:white;}
+.hr-block.featured .hrb-sub{color:rgba(255,255,255,0.4);}
+.hr-block.featured:hover{background:var(--red);}
+
+/* MANIFESTO */
+.manifesto{padding:6rem 8%;border-bottom:1px solid var(--gray);display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:center;}
+.mf-left{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;color:var(--muted);line-height:2;}
+.mf-right h2{font-family:'Cormorant',serif;font-size:clamp(2rem,3.5vw,3.5rem);font-weight:300;line-height:1.15;color:var(--text);}
+.mf-right h2 em{font-style:italic;color:var(--red);}
+
+/* TRATAMIENTOS */
+.trats{padding:0;border-bottom:1px solid var(--gray);}
+.trats-header{padding:3rem 8%;border-bottom:1px solid var(--gray);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.trats-header h2{font-family:'Cormorant',serif;font-size:clamp(1.8rem,2.5vw,2.5rem);font-weight:300;color:var(--text);}
+.trats-header h2 em{font-style:italic;color:var(--red);}
+.th-link{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.th-link:hover{color:var(--red);}
+
+.trat-list{}
+.tr-row{display:grid;grid-template-columns:4rem 1fr 2fr auto auto;gap:2rem;padding:2rem 8%;border-bottom:1px solid var(--gray);align-items:center;transition:background 0.15s;cursor:default;}
+.tr-row:hover{background:var(--off);}
+.tr-row:last-child{border-bottom:none;}
+.tr-n{font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--gray2);letter-spacing:0.06em;}
+.tr-ico{font-size:1.5rem;text-align:center;}
+.tr-name{font-family:'Cormorant',serif;font-size:1.15rem;font-weight:300;color:var(--text);}
+.tr-desc{font-size:0.8rem;color:var(--muted);line-height:1.6;font-weight:300;}
+.tr-dur{font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--muted);white-space:nowrap;}
+.tr-price{font-family:'Cormorant',serif;font-size:1.1rem;font-weight:300;color:var(--text);white-space:nowrap;text-align:right;}
+
+/* FILOSOFÍA */
+.filo{background:var(--black);padding:6rem 8%;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.fi-item{padding:3rem;border-right:1px solid rgba(255,255,255,0.06);}
+.fi-item:last-child{border-right:none;}
+.fi-num{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;color:var(--red);margin-bottom:1.5rem;}
+.fi-title{font-family:'Cormorant',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:white;margin-bottom:0.8rem;}
+.fi-desc{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.8;font-weight:300;}
+
+/* RESERVA */
+.reserva{padding:6rem 8%;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;border-bottom:1px solid var(--gray);}
+.rl h2{font-family:'Cormorant',serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:300;line-height:1.0;margin-bottom:1.5rem;color:var(--text);}
+.rl h2 em{font-style:italic;color:var(--red);}
+.rl p{font-size:0.85rem;color:var(--muted);line-height:1.9;margin-bottom:2.5rem;font-weight:300;}
+.rl-data{display:flex;flex-direction:column;gap:0;}
+.rl-row{display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid var(--gray);font-size:0.82rem;}
+.rl-row:last-child{border-bottom:none;}
+.rl-k{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:var(--muted);}
+.rl-v{color:var(--mid);font-weight:300;}
+
+.rr{}
+.rr-label{font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;}
+.fg{margin-bottom:1.2rem;}
+.fl{display:block;font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
+.fi,.fs{width:100%;background:var(--off);border:1px solid var(--gray);color:var(--text);padding:0.85rem 1rem;font-family:'Inter',sans-serif;font-size:0.87rem;outline:none;transition:border-color 0.3s;appearance:none;font-weight:300;border-radius:0;}
+.fi:focus,.fs:focus{border-color:var(--text);}
+.fi::placeholder{color:var(--gray2);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.btn-res{width:100%;background:var(--black);color:white;border:none;padding:1.1rem;font-family:'Space Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;margin-top:0.5rem;transition:background 0.3s;}
+.btn-res:hover{background:var(--red);}
+
+/* FOOTER */
+footer{background:var(--black);padding:4rem 8% 2rem;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.fl-name{font-family:'Cormorant',serif;font-size:1.1rem;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1rem;}
+.fl-name span{color:var(--red);}
+.fl-desc{font-size:0.8rem;color:rgba(255,255,255,0.2);line-height:1.8;font-weight:300;max-width:240px;}
+.fc-h{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.15);margin-bottom:1.2rem;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
+.fc a{text-decoration:none;color:rgba(255,255,255,0.25);font-size:0.8rem;transition:color 0.3s;font-weight:300;}
+.fc a:hover{color:rgba(255,255,255,0.7);}
+.fb{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.12);letter-spacing:0.06em;flex-wrap:wrap;gap:0.5rem;}
+.fp{color:rgba(204,34,0,0.2);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .manifesto{grid-template-columns:1fr;gap:2rem;}
+  .tr-row{grid-template-columns:auto 1fr auto;gap:1rem;}
+  .tr-desc,.tr-n,.tr-dur{display:none;}
+  .filo{grid-template-columns:1fr;}
+  .reserva{grid-template-columns:1fr;gap:3rem;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-center{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ZEN<span>.</span>BA</div>
+  <ul class="nav-center">
+    <li><a href="#tratamientos">tratamientos</a></li>
+    <li><a href="#filosofia">filosofía</a></li>
+    <li><a href="#reserva">reservas</a></li>
+    <li><a href="#">contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('reserva').scrollIntoView({behavior:'smooth'})">reservar</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-mono">// centro de bienestar · san telmo, buenos aires</div>
+    <h1>
+      <span class="outline">El</span><br>
+      silencio<br>
+      <em>sana.</em>
+    </h1>
+    <p class="hero-sub">ZEN.BA es un espacio de quietud en el centro de Buenos Aires. Masajes, tratamientos y rituales inspirados en filosofías orientales de bienestar.</p>
+    <div class="hero-btns">
+      <a href="#reserva" class="btn-black">Reservar sesión</a>
+      <a href="#tratamientos" class="btn-border">Ver tratamientos</a>
+    </div>
+    <div class="hero-nums">
+      <div class="hn"><div class="hn-num">8</div><div class="hn-label">Años</div></div>
+      <div class="hn"><div class="hn-num">4.9</div><div class="hn-label">Rating</div></div>
+      <div class="hn"><div class="hn-num">5K+</div><div class="hn-label">Sesiones</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hr-block"><div class="hrb-ico">💆</div><div class="hrb-title">Masaje Shiatsu</div><div class="hrb-sub">Técnica japonesa</div></div>
+    <div class="hr-block featured"><div class="hrb-ico">🕯️</div><div class="hrb-title">Ritual Zen</div><div class="hrb-sub">Experiencia completa</div></div>
+    <div class="hr-block"><div class="hrb-ico">🌊</div><div class="hrb-title">Drenaje Linfático</div><div class="hrb-sub">Técnica Vodder</div></div>
+    <div class="hr-block"><div class="hrb-ico">✨</div><div class="hrb-title">Facial Signature</div><div class="hrb-sub">Cosmética natural</div></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="mf-left">
+    — manifiesto zen.ba<br><br>
+    bienestar como práctica<br>
+    no como destino
+  </div>
+  <div class="mf-right">
+    <h2>No venís a relajarte<br>una vez. Venís a<br>aprender a <em>detenerte.</em></h2>
+  </div>
+</div>
+
+<!-- TRATAMIENTOS -->
+<section id="tratamientos">
+  <div class="trats">
+    <div class="trats-header">
+      <h2>Tratamientos <em>disponibles</em></h2>
+      <a href="#reserva" class="th-link">→ reservar sesión</a>
+    </div>
+    <div class="trat-list">
+      <div class="tr-row">
+        <div class="tr-n">001</div>
+        <div class="tr-ico">💆</div>
+        <div><div class="tr-name">Masaje Shiatsu</div></div>
+        <div class="tr-desc">Técnica japonesa de presión sobre meridianos energéticos. Restaura el flujo de energía vital, alivia tensiones profundas y equilibra el sistema nervioso.</div>
+        <div class="tr-dur">60 / 90 min</div>
+        <div class="tr-price">desde $22.000</div>
+      </div>
+      <div class="tr-row">
+        <div class="tr-n">002</div>
+        <div class="tr-ico">🤲</div>
+        <div><div class="tr-name">Masaje Ayurvédico</div></div>
+        <div class="tr-desc">Técnica milenaria india con aceites calientes medicinales. Sincroniza los doshas, nutre la piel en profundidad y produce un estado de calma extraordinaria.</div>
+        <div class="tr-dur">75 / 90 min</div>
+        <div class="tr-price">desde $26.000</div>
+      </div>
+      <div class="tr-row">
+        <div class="tr-n">003</div>
+        <div class="tr-ico">🪨</div>
+        <div><div class="tr-name">Piedras Volcánicas</div></div>
+        <div class="tr-desc">Basalto negro a temperatura precisa. El calor penetra capas musculares profundas liberando tensiones que el masaje manual no alcanza.</div>
+        <div class="tr-dur">75 min</div>
+        <div class="tr-price">desde $24.000</div>
+      </div>
+      <div class="tr-row">
+        <div class="tr-n">004</div>
+        <div class="tr-ico">🌊</div>
+        <div><div class="tr-name">Drenaje Linfático Manual</div></div>
+        <div class="tr-desc">Técnica Vodder original. Movimientos suaves y rítmicos que activan el sistema linfático para desintoxicar, reducir edemas y mejorar la inmunidad.</div>
+        <div class="tr-dur">60 min</div>
+        <div class="tr-price">desde $20.000</div>
+      </div>
+      <div class="tr-row">
+        <div class="tr-n">005</div>
+        <div class="tr-ico">✨</div>
+        <div><div class="tr-name">Facial Signature ZEN</div></div>
+        <div class="tr-desc">Limpieza, exfoliación enzimática, gua sha facial, sérum de vitamina C y mascarilla de arcilla. Protocolo completo con cosmética 100% natural y libre de tóxicos.</div>
+        <div class="tr-dur">80 min</div>
+        <div class="tr-price">desde $25.000</div>
+      </div>
+      <div class="tr-row">
+        <div class="tr-n">006</div>
+        <div class="tr-ico">🕯️</div>
+        <div><div class="tr-name">Ritual Zen Completo</div></div>
+        <div class="tr-desc">La experiencia total. Exfoliación corporal + masaje ayurvédico + facial signature + sesión de aromaterapia. Tres horas de restauración profunda.</div>
+        <div class="tr-dur">180 min</div>
+        <div class="tr-price">desde $55.000</div>
+      </div>
+      <div class="tr-row">
+        <div class="tr-n">007</div>
+        <div class="tr-ico">🫧</div>
+        <div><div class="tr-name">Flotación Sensorial</div></div>
+        <div class="tr-desc">Sesión en tanque de flotación con agua saturada de sal de Epsom. Privación sensorial controlada para una relajación profunda del sistema nervioso.</div>
+        <div class="tr-dur">60 min</div>
+        <div class="tr-price">desde $28.000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFÍA -->
+<section class="filo" id="filosofia">
+  <div class="fi-item">
+    <div class="fi-num">// 01</div>
+    <div class="fi-title">Ma — el espacio entre</div>
+    <p class="fi-desc">La filosofía japonesa del Ma reconoce el valor del vacío y la pausa. Cada sesión en ZEN.BA es un espacio de silencio intencional en medio de la ciudad.</p>
+  </div>
+  <div class="fi-item">
+    <div class="fi-num">// 02</div>
+    <div class="fi-title">Wabi-sabi — la imperfección</div>
+    <p class="fi-desc">No buscamos la perfección, sino la autenticidad. Nuestro espacio, nuestros materiales y nuestra práctica abrazan la belleza de lo genuino y lo efímero.</p>
+  </div>
+  <div class="fi-item">
+    <div class="fi-num">// 03</div>
+    <div class="fi-title">Ikigai — tu razón de ser</div>
+    <p class="fi-desc">El bienestar es el camino hacia tu ikigai. Cuando el cuerpo descansa, la mente se aclara. Cuando la mente se aclara, emerge lo que verdaderamente importa.</p>
+  </div>
+</section>
+
+<!-- RESERVA -->
+<section class="reserva" id="reserva">
+  <div class="rl">
+    <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--red);margin-bottom:1rem;">// reservas</div>
+    <h2>Reservá<br>tu sesión<br><em>de paz.</em></h2>
+    <p>Confirmamos tu turno en menos de dos horas. El espacio tiene capacidad limitada para garantizar la tranquilidad de cada sesión.</p>
+    <div class="rl-data">
+      <div class="rl-row"><span class="rl-k">ubicación</span><span class="rl-v">Chile 1234, San Telmo · CABA</span></div>
+      <div class="rl-row"><span class="rl-k">martes – sábado</span><span class="rl-v">10:00 – 21:00</span></div>
+      <div class="rl-row"><span class="rl-k">domingos</span><span class="rl-v">11:00 – 17:00</span></div>
+      <div class="rl-row"><span class="rl-k">whatsapp</span><span class="rl-v">+54 11 4567-8900</span></div>
+      <div class="rl-row"><span class="rl-k">instagram</span><span class="rl-v">@zen.ba</span></div>
+    </div>
+  </div>
+  <div class="rr">
+    <div class="rr-label">// nueva reserva</div>
+    <div class="fg"><label class="fl">nombre</label><input class="fi" type="text" placeholder="Tu nombre completo"></div>
+    <div class="frow">
+      <div class="fg"><label class="fl">whatsapp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+      <div class="fg"><label class="fl">tratamiento</label>
+        <select class="fs">
+          <option>Masaje Shiatsu</option>
+          <option>Masaje Ayurvédico</option>
+          <option>Piedras Volcánicas</option>
+          <option>Drenaje Linfático</option>
+          <option>Facial Signature ZEN</option>
+          <option>Ritual Zen Completo</option>
+          <option>Flotación Sensorial</option>
+        </select>
+      </div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label class="fl">fecha</label><input class="fi" type="date"></div>
+      <div class="fg"><label class="fl">horario</label>
+        <select class="fs">
+          <option>10:00</option><option>11:00</option><option>12:00</option>
+          <option>13:00</option><option>15:00</option><option>16:00</option>
+          <option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">consideraciones (lesiones, alergias, intenciones)</label><input class="fi" type="text" placeholder="Ej: tensión crónica cervical, primer masaje..."></div>
+    <button class="btn-res">confirmar reserva</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-name">ZEN<span>.</span>BA</div>
+      <p class="fl-desc">Centro de bienestar en San Telmo, Buenos Aires. Masajes, rituales y un espacio de silencio en el centro de la ciudad.</p>
+    </div>
+    <div class="fc"><div class="fc-h">tratamientos</div><ul><li><a href="#">Shiatsu</a></li><li><a href="#">Ayurvédico</a></li><li><a href="#">Piedras Volcánicas</a></li><li><a href="#">Drenaje</a></li><li><a href="#">Ritual Zen</a></li></ul></div>
+    <div class="fc"><div class="fc-h">contacto</div><ul><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Ubicación</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+  </div>
+  <div class="fb">
+    <span>© 2025 ZEN.BA · San Telmo, Buenos Aires</span>
+    <span class="fp">sitio web por Presence ✦</span>
+  </div>
+</footer>
+</body>
+</html>

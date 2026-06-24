@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Flow | Pilates · Yoga · Bienestar</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --sage:#7A9E7E;--sage-dk:#4E7554;--sage-lt:#B8D4BB;--sage-pale:#EBF3EC;--sage-ultra:#F4F8F4;
+  --terracota:#C4785A;--terracota-lt:#F0D4C8;
+  --cream:#FBF8F5;--warm:#F0EAE2;--stone:#E0D8CE;--stone-dk:#B8A898;
+  --text:#1A1A18;--text-mid:#4A4540;--muted:#8A8075;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,248,245,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--stone);display:flex;align-items:center;justify-content:space-between;padding:1.2rem 6%;}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:300;letter-spacing:0.04em;color:var(--text);}
+.nav-logo em{font-style:italic;color:var(--sage-dk);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.82rem;font-weight:400;transition:color 0.3s;}
+.nav-links a:hover{color:var(--sage-dk);}
+.nav-cta{background:var(--sage-dk);color:white;border:none;padding:0.6rem 1.4rem;border-radius:50px;font-size:0.8rem;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;transition:background 0.3s;letter-spacing:0.04em;}
+.nav-cta:hover{background:var(--sage);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;background:var(--sage-pale);overflow:hidden;position:relative;}
+.hero::after{content:'';position:absolute;bottom:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:var(--sage-lt);opacity:0.3;filter:blur(60px);}
+
+.hero-left{padding:4rem 3rem 4rem 6%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
+
+.hero-pill{display:inline-flex;align-items:center;gap:0.5rem;background:white;border:1px solid var(--sage-lt);border-radius:50px;padding:0.4rem 1rem;font-size:0.7rem;color:var(--sage-dk);letter-spacing:0.06em;margin-bottom:2rem;}
+
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;line-height:1.08;letter-spacing:-0.01em;margin-bottom:1.5rem;color:var(--text);}
+.hero h1 em{font-style:italic;color:var(--sage-dk);}
+.hero h1 strong{font-weight:400;}
+
+.hero-sub{font-size:0.95rem;color:var(--muted);line-height:1.85;max-width:400px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+
+.btn-sage{background:var(--sage-dk);color:white;border:none;padding:0.9rem 2rem;border-radius:50px;font-size:0.85rem;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;letter-spacing:0.04em;}
+.btn-sage:hover{background:var(--sage);transform:translateY(-1px);}
+.btn-ghost-sage{background:transparent;color:var(--text-mid);border:1.5px solid var(--stone);padding:0.9rem 2rem;border-radius:50px;font-size:0.85rem;font-family:'Jost',sans-serif;font-weight:400;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;letter-spacing:0.04em;}
+.btn-ghost-sage:hover{border-color:var(--sage-dk);color:var(--sage-dk);}
+
+.hero-trust{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.ht-item{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--muted);font-weight:300;}
+.ht-dot{width:4px;height:4px;background:var(--stone-dk);border-radius:50%;}
+
+.hero-right{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;padding:3rem 4rem 3rem 1rem;}
+
+.hero-visual-main{width:100%;max-width:380px;position:relative;}
+.hvm-card-big{background:white;border-radius:20px;padding:3rem 2.5rem;box-shadow:0 20px 60px rgba(78,117,84,0.1);text-align:center;margin-bottom:1.5rem;}
+.hvc-ico{font-size:4rem;margin-bottom:1rem;display:block;}
+.hvc-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:300;font-style:italic;color:var(--text);margin-bottom:0.4rem;}
+.hvc-sub{font-size:0.8rem;color:var(--muted);font-weight:300;}
+
+.hero-mini-row{display:flex;gap:1rem;}
+.hmr-card{flex:1;background:white;border-radius:14px;padding:1.2rem;box-shadow:0 8px 24px rgba(78,117,84,0.07);display:flex;flex-direction:column;gap:0.3rem;}
+.hmr-ico{font-size:1.2rem;}
+.hmr-title{font-size:0.8rem;font-weight:500;color:var(--text);}
+.hmr-sub{font-size:0.7rem;color:var(--muted);font-weight:300;}
+
+.hero-float{position:absolute;top:2rem;right:0;background:var(--sage-dk);color:white;border-radius:12px;padding:0.8rem 1.2rem;font-size:0.78rem;box-shadow:0 4px 16px rgba(78,117,84,0.25);}
+.hf-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:300;line-height:1;}
+.hf-label{font-size:0.65rem;opacity:0.75;letter-spacing:0.06em;}
+
+/* STRIP */
+.strip{background:var(--sage-dk);padding:1rem 6%;display:flex;gap:2.5rem;overflow-x:auto;scrollbar-width:none;align-items:center;}
+.strip::-webkit-scrollbar{display:none;}
+.si{display:flex;align-items:center;gap:2.5rem;font-size:0.78rem;color:rgba(255,255,255,0.7);white-space:nowrap;font-weight:300;}
+.si::after{content:'✦';color:rgba(255,255,255,0.25);}
+.si:last-child::after{display:none;}
+
+/* SECCIÓN */
+.section{padding:5rem 6%;}
+.sec-eye{font-size:0.67rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-dk);margin-bottom:0.7rem;font-weight:500;}
+.sec-h{font-family:'Fraunces',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;line-height:1.15;color:var(--text);}
+.sec-h em{font-style:italic;color:var(--sage-dk);}
+
+/* DISCIPLINAS */
+.disc-bg{background:var(--warm);}
+.disc-list{display:flex;flex-direction:column;gap:0;margin-top:3rem;border:1px solid var(--stone);}
+.disc-row{display:grid;grid-template-columns:60px 1fr 2fr auto auto;gap:2rem;padding:1.8rem;border-bottom:1px solid var(--stone);align-items:center;cursor:default;transition:background 0.2s;}
+.disc-row:last-child{border-bottom:none;}
+.disc-row:hover{background:var(--sage-pale);}
+.dr-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;color:var(--sage-lt);}
+.dr-ico{font-size:1.5rem;text-align:center;}
+.dr-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:var(--text);}
+.dr-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;font-weight:300;}
+.dr-dur{font-size:0.72rem;color:var(--muted);white-space:nowrap;}
+.dr-price{font-family:'Fraunces',serif;font-size:1rem;color:var(--sage-dk);font-weight:400;white-space:nowrap;text-align:right;}
+
+/* PLANES */
+.planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.plan-flow{border:1.5px solid var(--stone);border-radius:16px;padding:2.5rem;transition:all 0.3s;position:relative;}
+.plan-flow:hover{border-color:var(--sage);box-shadow:0 12px 40px rgba(78,117,84,0.08);}
+.plan-flow.feature{background:var(--sage-dk);border-color:var(--sage-dk);}
+.pf-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--terracota);color:white;font-size:0.7rem;font-weight:500;padding:0.2rem 1rem;border-radius:50px;white-space:nowrap;letter-spacing:0.04em;}
+.pf-name{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--text);margin-bottom:1.5rem;}
+.plan-flow.feature .pf-name{color:white;}
+.pf-price{font-family:'Fraunces',serif;font-size:3rem;font-weight:300;line-height:1;color:var(--text);}
+.plan-flow.feature .pf-price{color:white;}
+.pf-per{font-size:0.75rem;color:var(--muted);margin-bottom:1.8rem;}
+.plan-flow.feature .pf-per{color:rgba(255,255,255,0.55);}
+.pf-list{list-style:none;display:flex;flex-direction:column;gap:0.65rem;margin-bottom:2rem;}
+.pf-list li{font-size:0.83rem;display:flex;align-items:flex-start;gap:0.6rem;color:var(--muted);font-weight:300;}
+.plan-flow.feature .pf-list li{color:rgba(255,255,255,0.75);}
+.pf-list li::before{content:'✦';color:var(--sage);font-size:0.6rem;flex-shrink:0;margin-top:0.2rem;}
+.plan-flow.feature .pf-list li::before{color:var(--sage-lt);}
+.btn-pf{width:100%;background:var(--sage-dk);color:white;border:none;padding:0.9rem;border-radius:10px;font-family:'Jost',sans-serif;font-weight:500;font-size:0.85rem;cursor:pointer;transition:background 0.3s;letter-spacing:0.04em;}
+.btn-pf:hover{background:var(--sage);}
+.plan-flow.feature .btn-pf{background:white;color:var(--sage-dk);}
+.plan-flow.feature .btn-pf:hover{background:var(--sage-pale);color:var(--sage-dk);}
+
+/* BENEFICIOS */
+.benef-section{background:var(--sage-ultra);}
+.benef-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+.benef-visual{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 160px;gap:1rem;}
+.bv-block{border-radius:14px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;}
+.bv-1{background:var(--sage-pale);grid-row:span 2;}
+.bv-2{background:var(--terracota-lt);}
+.bv-3{background:var(--warm);}
+.bv-ico{font-size:2.5rem;opacity:0.45;}
+.bv-lbl{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.benef-list{display:flex;flex-direction:column;gap:1.5rem;}
+.bi{display:flex;gap:1.2rem;align-items:flex-start;padding:1.2rem;border-radius:12px;transition:background 0.2s;cursor:default;}
+.bi:hover{background:var(--warm);}
+.bi-ico{width:44px;height:44px;background:var(--sage-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.bi-title{font-family:'Fraunces',serif;font-size:1rem;font-weight:400;color:var(--text);margin-bottom:0.25rem;}
+.bi-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;font-weight:300;}
+
+/* TURNO */
+.turno-outer{background:var(--text);padding:5rem 6%;}
+.turno-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.tl h2{font-family:'Fraunces',serif;font-size:clamp(2.2rem,3.5vw,3.5rem);font-weight:300;color:var(--sage-lt);line-height:1.1;margin-bottom:1.2rem;}
+.tl h2 em{font-style:italic;color:var(--sage);}
+.tl p{font-size:0.88rem;color:rgba(255,255,255,0.4);line-height:1.85;margin-bottom:2rem;font-weight:300;}
+.tl-data{display:flex;flex-direction:column;gap:0;border:1px solid rgba(255,255,255,0.08);border-radius:10px;overflow:hidden;}
+.tl-row{display:flex;justify-content:space-between;padding:1rem 1.3rem;border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.82rem;}
+.tl-row:last-child{border-bottom:none;}
+.tl-key{color:rgba(255,255,255,0.28);font-size:0.75rem;letter-spacing:0.06em;}
+.tl-val{color:rgba(255,255,255,0.65);font-weight:300;}
+.tr{background:var(--cream);border-radius:16px;padding:2.5rem;}
+.tr h3{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:400;margin-bottom:1.8rem;color:var(--text);}
+.fg{margin-bottom:1.2rem;}
+.fl{display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;font-weight:500;}
+.fi,.fs{width:100%;background:white;border:1.5px solid var(--stone);color:var(--text);padding:0.82rem 1rem;border-radius:10px;font-family:'Jost',sans-serif;font-size:0.87rem;outline:none;transition:border-color 0.3s;appearance:none;}
+.fi:focus,.fs:focus{border-color:var(--sage-dk);}
+.fi::placeholder{color:var(--stone-dk);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.btn-turno{width:100%;background:var(--sage-dk);color:white;border:none;padding:1rem;border-radius:10px;font-family:'Jost',sans-serif;font-weight:500;font-size:0.88rem;cursor:pointer;margin-top:0.5rem;transition:background 0.3s;letter-spacing:0.04em;}
+.btn-turno:hover{background:var(--sage);}
+
+/* FOOTER */
+footer{background:var(--text);padding:3.5rem 6% 2rem;border-top:1px solid rgba(255,255,255,0.06);}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fl-name{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:300;color:var(--sage-lt);margin-bottom:0.8rem;}
+.fl-name em{font-style:italic;}
+.fl-desc{font-size:0.82rem;color:rgba(255,255,255,0.3);line-height:1.7;font-weight:300;max-width:250px;}
+.fc-h{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;font-weight:400;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.fc a{text-decoration:none;color:rgba(255,255,255,0.35);font-size:0.82rem;transition:color 0.3s;font-weight:300;}
+.fc a:hover{color:var(--sage-lt);}
+.fb{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;font-size:0.73rem;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:0.5rem;}
+.fp{color:rgba(122,158,126,0.3);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .disc-row{grid-template-columns:auto 1fr auto;gap:1rem;}
+  .dr-desc,.dr-num{display:none;}
+  .planes-grid{grid-template-columns:1fr;}
+  .benef-grid{grid-template-columns:1fr;}
+  .turno-inner{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><em>Studio</em> Flow</div>
+  <ul class="nav-links">
+    <li><a href="#disciplinas">Clases</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#nosotras">Nosotras</a></li>
+    <li><a href="#turno">Turnos</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('turno').scrollIntoView({behavior:'smooth'})">Reservar clase</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pill">🌿 Pilates · Yoga · Bienestar · Belgrano, CABA</div>
+    <h1>Encontrá<br>tu <em>centro.</em><br><strong>Movete bien.</strong></h1>
+    <p class="hero-sub">Studio Flow es un espacio de movimiento consciente donde el cuerpo y la mente trabajan juntos. Pilates, yoga y bienestar integral para todas las etapas de la vida.</p>
+    <div class="hero-btns">
+      <a href="#turno" class="btn-sage">Reservar mi clase</a>
+      <a href="#disciplinas" class="btn-ghost-sage">Ver disciplinas</a>
+    </div>
+    <div class="hero-trust">
+      <div class="ht-item">✦ Instructoras certificadas</div>
+      <div class="ht-dot"></div>
+      <div class="ht-item">✦ Grupos reducidos</div>
+      <div class="ht-dot"></div>
+      <div class="ht-item">✦ Primera clase gratis</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual-main">
+      <div class="hvm-card-big">
+        <span class="hvc-ico">🧘</span>
+        <div class="hvc-title">Studio Flow</div>
+        <div class="hvc-sub">Pilates · Yoga · Bienestar</div>
+      </div>
+      <div class="hero-mini-row">
+        <div class="hmr-card"><div class="hmr-ico">🌿</div><div class="hmr-title">Grupos pequeños</div><div class="hmr-sub">Máx. 8 personas</div></div>
+        <div class="hmr-card"><div class="hmr-ico">⭐</div><div class="hmr-title">4.9 en Google</div><div class="hmr-sub">+200 reseñas</div></div>
+      </div>
+      <div class="hero-float">
+        <div class="hf-num">300+</div>
+        <div class="hf-label">Alumnas activas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="si">Pilates Reformer</span>
+  <span class="si">Pilates Mat</span>
+  <span class="si">Yoga Flow</span>
+  <span class="si">Yoga Restaurativo</span>
+  <span class="si">Meditación</span>
+  <span class="si">Elongación</span>
+  <span class="si">Prenatal</span>
+  <span class="si">Funcional Suave</span>
+</div>
+
+<!-- DISCIPLINAS -->
+<section class="section disc-bg" id="disciplinas">
+  <div class="sec-eye">Nuestras disciplinas</div>
+  <h2 class="sec-h">Un movimiento para <em>cada una</em></h2>
+  <div class="disc-list">
+    <div class="disc-row">
+      <div class="dr-num">01</div>
+      <div><div class="dr-ico">🧘</div><div class="dr-name">Pilates Reformer</div></div>
+      <div class="dr-desc">Trabajo en máquina reformer con muelles de resistencia. Mejorá postura, tonificá sin impacto y desarrollá conciencia corporal profunda.</div>
+      <div class="dr-dur">55 min · Grupos de 4</div>
+      <div class="dr-price">desde $9.000</div>
+    </div>
+    <div class="disc-row">
+      <div class="dr-num">02</div>
+      <div><div class="dr-ico">🌿</div><div class="dr-name">Pilates Mat</div></div>
+      <div class="dr-desc">El método clásico en colchoneta. Fortalecimiento del core, flexibilidad y alineación postural con y sin accesorios.</div>
+      <div class="dr-dur">50 min · Grupos de 8</div>
+      <div class="dr-price">desde $6.500</div>
+    </div>
+    <div class="disc-row">
+      <div class="dr-num">03</div>
+      <div><div class="dr-ico">✨</div><div class="dr-name">Yoga Flow</div></div>
+      <div class="dr-desc">Secuencias dinámicas que conectan respiración y movimiento. Fuerza, flexibilidad y presencia en cada clase.</div>
+      <div class="dr-dur">60 min · Grupos de 8</div>
+      <div class="dr-price">desde $6.000</div>
+    </div>
+    <div class="disc-row">
+      <div class="dr-num">04</div>
+      <div><div class="dr-ico">🌙</div><div class="dr-name">Yoga Restaurativo</div></div>
+      <div class="dr-desc">Posturas pasivas con mucho soporte y tiempo. Ideal para reducir el estrés, mejorar el sueño y recuperar el cuerpo.</div>
+      <div class="dr-dur">60 min · Grupos de 6</div>
+      <div class="dr-price">desde $7.000</div>
+    </div>
+    <div class="disc-row">
+      <div class="dr-num">05</div>
+      <div><div class="dr-ico">🤰</div><div class="dr-name">Pilates Prenatal</div></div>
+      <div class="dr-desc">Método adaptado para el embarazo. Preparación del cuerpo para el parto y recuperación en el postparto.</div>
+      <div class="dr-dur">50 min · Grupos de 4</div>
+      <div class="dr-price">desde $9.500</div>
+    </div>
+    <div class="disc-row">
+      <div class="dr-num">06</div>
+      <div><div class="dr-ico">🕯️</div><div class="dr-name">Meditación & Mindfulness</div></div>
+      <div class="dr-desc">Sesiones guiadas de meditación, respiración consciente y técnicas de atención plena para el día a día.</div>
+      <div class="dr-dur">45 min · Grupos de 10</div>
+      <div class="dr-price">desde $5.000</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="section" id="planes">
+  <div class="sec-eye">Membresías</div>
+  <h2 class="sec-h">Elegí tu <em>ritmo</em></h2>
+  <div class="planes-grid">
+    <div class="plan-flow">
+      <div class="pf-name">Plan Exploración</div>
+      <div class="pf-price">$28.000</div>
+      <div class="pf-per">por mes</div>
+      <ul class="pf-list">
+        <li>4 clases por mes</li>
+        <li>Acceso a Mat y Yoga</li>
+        <li>Clase de evaluación inicial</li>
+        <li>App de reservas incluida</li>
+      </ul>
+      <button class="btn-pf">Comenzar</button>
+    </div>
+    <div class="plan-flow feature">
+      <div class="pf-badge">Más elegido</div>
+      <div class="pf-name">Plan Flujo</div>
+      <div class="pf-price">$52.000</div>
+      <div class="pf-per">por mes</div>
+      <ul class="pf-list">
+        <li>Clases ilimitadas (todas)</li>
+        <li>Reformer incluido</li>
+        <li>Evaluación inicial + seguimiento</li>
+        <li>Acceso a clases de meditación</li>
+        <li>Descuento en talleres</li>
+        <li>App de reservas incluida</li>
+      </ul>
+      <button class="btn-pf">Comenzar</button>
+    </div>
+    <div class="plan-flow">
+      <div class="pf-name">Plan Privado</div>
+      <div class="pf-price">$85.000</div>
+      <div class="pf-per">por mes</div>
+      <ul class="pf-list">
+        <li>4 clases privadas 1 a 1</li>
+        <li>Programa completamente personalizado</li>
+        <li>Seguimiento semanal</li>
+        <li>Flexibilidad total de horarios</li>
+        <li>Acceso al plan Flujo incluido</li>
+      </ul>
+      <button class="btn-pf">Comenzar</button>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="section benef-section" id="nosotras">
+  <div class="sec-eye">Por qué Studio Flow</div>
+  <h2 class="sec-h">Un espacio que<br><em>te contiene</em></h2>
+  <div class="benef-grid">
+    <div class="benef-visual">
+      <div class="bv-block bv-1"><div class="bv-ico">🌿</div><div class="bv-lbl">Pilates</div></div>
+      <div class="bv-block bv-2"><div class="bv-ico">✨</div><div class="bv-lbl">Yoga</div></div>
+      <div class="bv-block bv-3"><div class="bv-ico">🧘</div><div class="bv-lbl">Bienestar</div></div>
+    </div>
+    <div class="benef-list">
+      <div class="bi"><div class="bi-ico">👥</div><div><div class="bi-title">Grupos pequeños, atención real</div><p class="bi-desc">Máximo 8 personas por clase. Tu instructora te conoce, sabe tu historia y adapta cada clase a lo que necesitás.</p></div></div>
+      <div class="bi"><div class="bi-ico">🏆</div><div><div class="bi-title">Instructoras certificadas</div><p class="bi-desc">Formación internacional en Body Control Pilates y Yoga Alliance. Años de experiencia y formación continua.</p></div></div>
+      <div class="bi"><div class="bi-ico">🌱</div><div><div class="bi-title">Para todos los cuerpos</div><p class="bi-desc">Principiantes, adultos mayores, embarazadas, deportistas en recuperación. Adaptamos cada clase a quien la necesite.</p></div></div>
+      <div class="bi"><div class="bi-ico">🕐</div><div><div class="bi-title">Horarios flexibles</div><p class="bi-desc">Mañanas, mediodías y tardes de lunes a sábado. App de reservas para cancelar o cambiar con hasta 4hs de anticipación.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TURNO -->
+<section class="turno-outer" id="turno">
+  <div class="turno-inner">
+    <div class="tl">
+      <div class="sec-eye" style="color:var(--sage-lt);">Reservas</div>
+      <h2>Tu primera<br>clase es <em>gratis.</em></h2>
+      <p>Vení a conocer el estudio, la comunidad y el método sin ningún compromiso. Reservá tu lugar y llegá con ropa cómoda, nosotras ponemos el resto.</p>
+      <div class="tl-data">
+        <div class="tl-row"><span class="tl-key">Ubicación</span><span class="tl-val">Arcos 2345, Belgrano · CABA</span></div>
+        <div class="tl-row"><span class="tl-key">Horarios</span><span class="tl-val">Lun–Vie 8:00–21:00 · Sáb 9:00–15:00</span></div>
+        <div class="tl-row"><span class="tl-key">WhatsApp</span><span class="tl-val">+54 11 4567-8900</span></div>
+        <div class="tl-row"><span class="tl-key">Instagram</span><span class="tl-val">@studioflow.ba</span></div>
+        <div class="tl-row"><span class="tl-key">Primera clase</span><span class="tl-val" style="color:var(--sage-lt);">Completamente gratis ✦</span></div>
+      </div>
+    </div>
+    <div class="tr">
+      <h3>Reservar mi clase gratuita</h3>
+      <div class="fg"><label class="fl">Nombre</label><input class="fi" type="text" placeholder="Tu nombre completo"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Disciplina</label>
+          <select class="fs"><option>Pilates Mat</option><option>Pilates Reformer</option><option>Yoga Flow</option><option>Yoga Restaurativo</option><option>Meditación</option><option>Prenatal</option></select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Fecha</label><input class="fi" type="date"></div>
+        <div class="fg"><label class="fl">Horario</label>
+          <select class="fs"><option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option></select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">¿Tenés experiencia previa?</label>
+        <select class="fs"><option>No, es mi primera vez</option><option>Sí, tengo experiencia básica</option><option>Sí, practico hace tiempo</option></select>
+      </div>
+      <button class="btn-turno">Reservar clase gratis ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-name"><em>Studio</em> Flow</div>
+      <p class="fl-desc">Pilates, yoga y bienestar integral en Belgrano, Buenos Aires. Un espacio para moverte bien y sentirte mejor.</p>
+    </div>
+    <div class="fc"><div class="fc-h">Disciplinas</div><ul><li><a href="#">Pilates Reformer</a></li><li><a href="#">Pilates Mat</a></li><li><a href="#">Yoga Flow</a></li><li><a href="#">Yoga Restaurativo</a></li><li><a href="#">Prenatal</a></li></ul></div>
+    <div class="fc"><div class="fc-h">Contacto</div><ul><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Ubicación</a></li><li><a href="#">Planes</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2025 Studio Flow · Belgrano, Buenos Aires</span><span class="fp">Sitio web por Presence ✦</span></div>
+</footer>
+</body>
+</html>

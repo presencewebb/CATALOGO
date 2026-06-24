@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ánima Spa | Bienestar de Lujo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A55A;--gold2:#E8C87A;--gold-dim:rgba(201,165,90,0.12);--gold-rule:rgba(201,165,90,0.2);
+  --ink:#0E0E0C;--ink2:#141412;--ink3:#1C1C1A;--ink4:#252523;--ink5:#2E2E2C;
+  --text:#F5F0E8;--muted:#8A8578;--rule:rgba(245,240,232,0.06);
+  --cream:#F5F0E8;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(14,14,12,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--gold-rule);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:300;letter-spacing:0.1em;color:var(--gold);}
+.nav-logo em{font-style:italic;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:300;transition:color 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.6rem 1.5rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;cursor:pointer;transition:all 0.3s;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:75px;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,165,90,0.06) 0%,transparent 60%);}
+
+.hero-left{padding:5rem 3rem 5rem 6%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
+
+.hero-pre{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+.hero-pre-line{width:40px;height:1px;background:var(--gold);}
+.hero-pre-text{font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:400;}
+
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:300;line-height:1.1;letter-spacing:0.02em;margin-bottom:2rem;color:var(--text);}
+.hero h1 em{font-style:italic;color:var(--gold);}
+
+.hero-sub{font-size:0.95rem;color:var(--muted);line-height:1.9;max-width:420px;margin-bottom:3rem;font-weight:300;}
+.hero-btns{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:4rem;}
+
+.btn-gold{background:var(--gold);color:var(--ink);border:none;padding:1rem 2.2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-gold:hover{background:var(--gold2);}
+.btn-ghost-gold{background:transparent;color:var(--text);border:1px solid var(--rule);padding:1rem 2.2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:300;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-ghost-gold:hover{border-color:var(--gold);color:var(--gold);}
+
+.hero-awards{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.award{text-align:center;}
+.award-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:300;color:var(--gold);line-height:1;}
+.award-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;}
+
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;gap:1rem;padding:5rem 4rem 5rem 2rem;justify-content:center;}
+
+.hero-feature-big{flex:2;background:var(--gold-dim);border:1px solid var(--gold-rule);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;min-height:280px;position:relative;overflow:hidden;}
+.hero-feature-big::before{content:'✦';position:absolute;font-size:8rem;color:rgba(201,165,90,0.06);font-family:'Playfair Display',serif;}
+.hfb-ico{font-size:3rem;position:relative;}
+.hfb-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--gold);position:relative;}
+.hfb-sub{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);position:relative;}
+
+.hero-sm-row{display:flex;gap:1rem;flex:1;}
+.hero-sm{flex:1;background:var(--ink3);border:1px solid var(--rule);padding:1.5rem;display:flex;flex-direction:column;gap:0.4rem;min-height:130px;justify-content:center;}
+.hsm-ico{font-size:1.4rem;margin-bottom:0.3rem;}
+.hsm-name{font-family:'Playfair Display',serif;font-size:0.9rem;font-style:italic;color:var(--text);}
+.hsm-sub{font-size:0.68rem;letter-spacing:0.08em;color:var(--muted);}
+
+/* DIVIDER */
+.gold-div{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 6%;}
+
+/* SECCIÓN */
+.section{padding:5.5rem 6%;}
+.sec-pre{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;}
+.sec-pre-line{width:24px;height:1px;background:var(--gold);}
+.sec-pre-text{font-size:0.67rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:400;}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;line-height:1.15;color:var(--text);}
+.sec-h em{font-style:italic;color:var(--gold);}
+
+/* TRATAMIENTOS */
+.trat-bg{background:var(--ink2);}
+.trat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:3.5rem;}
+.trat{background:var(--ink3);padding:3rem 2.5rem;position:relative;overflow:hidden;cursor:default;transition:background 0.3s;}
+.trat:hover{background:var(--ink4);}
+.trat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 0.4s;transform-origin:center;}
+.trat:hover::after{transform:scaleX(1);}
+.trat-num{font-family:'Playfair Display',serif;font-size:4rem;font-weight:300;color:rgba(201,165,90,0.1);line-height:1;margin-bottom:1.5rem;}
+.trat-ico{font-size:1.8rem;margin-bottom:1rem;}
+.trat-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;margin-bottom:0.6rem;color:var(--text);}
+.trat-desc{font-size:0.83rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-weight:300;}
+.trat-dur{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);}
+
+/* RITUAL ESPECIAL */
+.ritual-section{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.ritual-left{background:var(--gold);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.ritual-left h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:1rem;}
+.ritual-left h2 em{font-style:italic;}
+.ritual-left p{font-size:0.9rem;color:rgba(14,14,12,0.65);line-height:1.85;margin-bottom:2rem;font-weight:300;}
+.ritual-includes{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2.5rem;}
+.ri-item{display:flex;align-items:center;gap:0.7rem;font-size:0.83rem;color:rgba(14,14,12,0.75);}
+.ri-item::before{content:'✦';color:var(--ink);font-size:0.6rem;flex-shrink:0;}
+.btn-dark{background:var(--ink);color:var(--text);border:none;padding:1rem 2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:400;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;align-self:flex-start;}
+.btn-dark:hover{background:var(--ink3);}
+
+.ritual-right{background:var(--ink3);padding:5rem 4rem;display:flex;flex-direction:column;gap:1rem;justify-content:center;}
+.ritual-block{background:var(--ink4);border:1px solid var(--rule);padding:1.8rem;display:flex;gap:1.2rem;align-items:flex-start;transition:border-color 0.3s;}
+.ritual-block:hover{border-color:var(--gold-rule);}
+.rb-ico{font-size:1.5rem;flex-shrink:0;width:44px;text-align:center;}
+.rb-title{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--text);margin-bottom:0.3rem;}
+.rb-desc{font-size:0.8rem;color:var(--muted);line-height:1.6;font-weight:300;}
+
+/* RESERVA */
+.booking-section{background:var(--ink2);padding:5.5rem 6%;}
+.booking-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+
+.bl-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:var(--text);line-height:1.15;margin-bottom:1.2rem;}
+.bl-title em{font-style:italic;color:var(--gold);}
+.bl-sub{font-size:0.88rem;color:var(--muted);line-height:1.85;margin-bottom:2.5rem;font-weight:300;}
+.bl-info{display:flex;flex-direction:column;gap:0;}
+.bl-row{display:flex;justify-content:space-between;padding:1.1rem 0;border-bottom:1px solid var(--rule);font-size:0.83rem;}
+.bl-row:last-child{border-bottom:none;}
+.bl-key{color:var(--muted);font-weight:300;}
+.bl-val{color:var(--text);font-weight:400;}
+
+.booking-form{background:var(--ink3);padding:3rem;border:1px solid var(--rule);}
+.booking-form h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:300;font-style:italic;color:var(--text);margin-bottom:2rem;}
+.fg{margin-bottom:1.3rem;}
+.fl{display:block;font-size:0.67rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;font-weight:400;}
+.fi,.fs{width:100%;background:var(--ink4);border:1px solid var(--rule);color:var(--text);padding:0.9rem 1rem;font-family:'Jost',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s;appearance:none;font-weight:300;}
+.fi:focus,.fs:focus{border-color:var(--gold);}
+.fi::placeholder{color:var(--muted);}
+.fs option{background:var(--ink3);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.btn-book{width:100%;background:var(--gold);color:var(--ink);border:none;padding:1.1rem;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:500;cursor:pointer;margin-top:0.5rem;transition:background 0.3s;}
+.btn-book:hover{background:var(--gold2);}
+
+/* FOOTER */
+footer{background:var(--ink2);padding:4rem 6% 2rem;border-top:1px solid var(--gold-rule);}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fl-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:300;color:var(--gold);margin-bottom:1rem;letter-spacing:0.1em;}
+.fl-logo em{font-style:italic;}
+.fl-desc{font-size:0.82rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:260px;}
+.fc-h{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.2);margin-bottom:1rem;font-weight:400;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.fc a{text-decoration:none;color:var(--muted);font-size:0.82rem;transition:color 0.3s;font-weight:300;}
+.fc a:hover{color:var(--gold);}
+.fb{border-top:1px solid var(--rule);padding-top:1.5rem;display:flex;justify-content:space-between;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:0.5rem;}
+.fp{color:rgba(201,165,90,0.3);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .trat-grid{grid-template-columns:1fr;}
+  .ritual-section{grid-template-columns:1fr;}
+  .booking-inner{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><em>Ánima</em> Spa</div>
+  <ul class="nav-links">
+    <li><a href="#tratamientos">Tratamientos</a></li>
+    <li><a href="#ritual">Ritual</a></li>
+    <li><a href="#reserva">Reservas</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('reserva').scrollIntoView({behavior:'smooth'})">Reservar</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pre"><div class="hero-pre-line"></div><div class="hero-pre-text">Spa & Bienestar · Recoleta, Buenos Aires</div></div>
+    <h1>El descanso<br>que tu cuerpo<br><em>merece.</em></h1>
+    <p class="hero-sub">Ánima Spa es un refugio en el corazón de Buenos Aires. Masajes, rituales y tratamientos de bienestar diseñados para restaurar cuerpo, mente y espíritu.</p>
+    <div class="hero-btns">
+      <a href="#reserva" class="btn-gold">Reservar experiencia</a>
+      <a href="#tratamientos" class="btn-ghost-gold">Ver tratamientos</a>
+    </div>
+    <div class="hero-awards">
+      <div class="award"><div class="award-num">10</div><div class="award-label">Años de bienestar</div></div>
+      <div class="award"><div class="award-num">5★</div><div class="award-label">Calificación Google</div></div>
+      <div class="award"><div class="award-num">8K+</div><div class="award-label">Sesiones realizadas</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-feature-big">
+      <div class="hfb-ico">🕯️</div>
+      <div class="hfb-title">Ritual Completo</div>
+      <div class="hfb-sub">Cuerpo & Mente</div>
+    </div>
+    <div class="hero-sm-row">
+      <div class="hero-sm"><div class="hsm-ico">💆</div><div class="hsm-name">Masajes</div><div class="hsm-sub">Relajante & Descontracturante</div></div>
+      <div class="hero-sm"><div class="hsm-ico">🌿</div><div class="hsm-name">Aromaterapia</div><div class="hsm-sub">Aceites esenciales puros</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-div"></div>
+
+<!-- TRATAMIENTOS -->
+<section class="section trat-bg" id="tratamientos">
+  <div class="sec-pre"><div class="sec-pre-line"></div><div class="sec-pre-text">Nuestros tratamientos</div></div>
+  <h2 class="sec-h">Una experiencia para <em>cada necesidad</em></h2>
+  <div class="trat-grid">
+    <div class="trat">
+      <div class="trat-num">01</div>
+      <div class="trat-ico">💆</div>
+      <div class="trat-name">Masaje Relajante</div>
+      <p class="trat-desc">Técnica sueca de effleurage y petrissage. Libera la tensión muscular acumulada y activa la circulación con aceites premium de lavanda y sándalo.</p>
+      <div class="trat-dur">60 min · 90 min · desde $18.000</div>
+    </div>
+    <div class="trat">
+      <div class="trat-num">02</div>
+      <div class="trat-ico">💪</div>
+      <div class="trat-name">Masaje Descontracturante</div>
+      <p class="trat-desc">Maniobras profundas sobre puntos gatillo y contracturas. Ideal para estrés crónico, trabajo de escritorio y dolores cervicales o lumbares.</p>
+      <div class="trat-dur">60 min · 90 min · desde $20.000</div>
+    </div>
+    <div class="trat">
+      <div class="trat-num">03</div>
+      <div class="trat-ico">🪨</div>
+      <div class="trat-name">Piedras Calientes</div>
+      <p class="trat-desc">Basalto volcánico calentado a temperatura precisa. El calor penetra en el músculo profundo para una relajación sin igual.</p>
+      <div class="trat-dur">75 min · desde $24.000</div>
+    </div>
+    <div class="trat">
+      <div class="trat-num">04</div>
+      <div class="trat-ico">🌊</div>
+      <div class="trat-name">Drenaje Linfático</div>
+      <p class="trat-desc">Movimientos suaves y rítmicos para activar el sistema linfático. Reduce retención de líquidos, mejora la circulación y desintoxica el organismo.</p>
+      <div class="trat-dur">60 min · desde $19.000</div>
+    </div>
+    <div class="trat">
+      <div class="trat-num">05</div>
+      <div class="trat-ico">✨</div>
+      <div class="trat-name">Facial Signature</div>
+      <p class="trat-desc">Limpieza profunda, exfoliación enzimática, sérum vitamina C y máscara anti-edad. Piel luminosa, tensa e hidratada en una sola sesión.</p>
+      <div class="trat-dur">75 min · desde $22.000</div>
+    </div>
+    <div class="trat">
+      <div class="trat-num">06</div>
+      <div class="trat-ico">🌿</div>
+      <div class="trat-name">Aromaterapia & Chakras</div>
+      <p class="trat-desc">Masaje energético con aceites esenciales puros, cristales y técnicas de equilibrio de chakras. Una experiencia profundamente restauradora.</p>
+      <div class="trat-dur">90 min · desde $28.000</div>
+    </div>
+  </div>
+</section>
+
+<!-- RITUAL ESPECIAL -->
+<section id="ritual">
+  <div class="ritual-section">
+    <div class="ritual-left">
+      <h2>El Ritual<br><em>Ánima</em></h2>
+      <p>Nuestra experiencia más completa. Un viaje de 3 horas que combina los mejores tratamientos del spa en una secuencia diseñada para una restauración total.</p>
+      <div class="ritual-includes">
+        <div class="ri-item">Bienvenida con té de hierbas y snacks saludables</div>
+        <div class="ri-item">Exfoliación corporal con sal del Himalaya</div>
+        <div class="ri-item">Masaje relajante completo de 60 minutos</div>
+        <div class="ri-item">Facial signature de 45 minutos</div>
+        <div class="ri-item">Drenaje linfático express de 30 minutos</div>
+        <div class="ri-item">Envoltura corporal hidratante</div>
+      </div>
+      <a href="#reserva" class="btn-dark">Reservar Ritual Ánima</a>
+    </div>
+    <div class="ritual-right">
+      <div class="ritual-block">
+        <div class="rb-ico">🕯️</div>
+        <div><div class="rb-title">Ambiente exclusivo</div><p class="rb-desc">Sala privada con iluminación tenue, música de meditación y aromatizador difusor de aceites esenciales.</p></div>
+      </div>
+      <div class="ritual-block">
+        <div class="rb-ico">🌸</div>
+        <div><div class="rb-title">Productos de primera línea</div><p class="rb-desc">Trabajamos con marcas premium importadas: aceites orgánicos, sales minerales y cosméticos libres de tóxicos.</p></div>
+      </div>
+      <div class="ritual-block">
+        <div class="rb-ico">👩‍⚕️</div>
+        <div><div class="rb-title">Terapeutas certificadas</div><p class="rb-desc">Todo nuestro equipo tiene formación universitaria en kinesiología o cosmetología, con especializaciones internacionales.</p></div>
+      </div>
+      <div class="ritual-block">
+        <div class="rb-ico">🎁</div>
+        <div><div class="rb-title">Gift cards disponibles</div><p class="rb-desc">Regalá una experiencia Ánima. Disponibles en cualquier valor, válidas por 6 meses y enviamos por correo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVA -->
+<section class="booking-section" id="reserva">
+  <div class="booking-inner">
+    <div>
+      <div class="sec-pre"><div class="sec-pre-line"></div><div class="sec-pre-text">Reservas</div></div>
+      <h2 class="bl-title">Agendá tu<br><em>momento de paz</em></h2>
+      <p class="bl-sub">Confirmamos tu turno en menos de dos horas. También podés escribirnos por WhatsApp para una atención más personalizada.</p>
+      <div class="bl-info">
+        <div class="bl-row"><span class="bl-key">Ubicación</span><span class="bl-val">Av. Callao 1234, Recoleta · CABA</span></div>
+        <div class="bl-row"><span class="bl-key">Lunes a Viernes</span><span class="bl-val">9:00 – 21:00</span></div>
+        <div class="bl-row"><span class="bl-key">Sábados y Domingos</span><span class="bl-val">10:00 – 19:00</span></div>
+        <div class="bl-row"><span class="bl-key">WhatsApp</span><span class="bl-val">+54 11 4567-8900</span></div>
+        <div class="bl-row"><span class="bl-key">Instagram</span><span class="bl-val">@anima.spa.ba</span></div>
+      </div>
+    </div>
+    <div class="booking-form">
+      <h3>Nueva reserva</h3>
+      <div class="fg"><label class="fl">Nombre completo</label><input class="fi" type="text" placeholder="Tu nombre"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Tratamiento</label>
+          <select class="fs">
+            <option>Masaje Relajante 60 min</option>
+            <option>Masaje Relajante 90 min</option>
+            <option>Masaje Descontracturante</option>
+            <option>Piedras Calientes</option>
+            <option>Drenaje Linfático</option>
+            <option>Facial Signature</option>
+            <option>Aromaterapia & Chakras</option>
+            <option>Ritual Ánima (3hs)</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Fecha</label><input class="fi" type="date"></div>
+        <div class="fg"><label class="fl">Horario</label>
+          <select class="fs">
+            <option>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option>
+            <option>14:00</option><option>15:00</option><option>16:00</option>
+            <option>17:00</option><option>18:00</option><option>19:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">¿Alguna consideración especial?</label><input class="fi" type="text" placeholder="Lesiones, alergias, embarazo, preferencias..."></div>
+      <button class="btn-book">Confirmar reserva</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-logo"><em>Ánima</em> Spa</div>
+      <p class="fl-desc">Un refugio de bienestar en el corazón de Buenos Aires. Porque el descanso verdadero también es un acto de amor propio.</p>
+    </div>
+    <div class="fc"><div class="fc-h">Tratamientos</div><ul><li><a href="#">Masajes</a></li><li><a href="#">Drenaje Linfático</a></li><li><a href="#">Piedras Calientes</a></li><li><a href="#">Faciales</a></li><li><a href="#">Ritual Ánima</a></li></ul></div>
+    <div class="fc"><div class="fc-h">Contacto</div><ul><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Ubicación</a></li><li><a href="#">Gift Cards</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2025 Ánima Spa · Recoleta, Buenos Aires</span><span class="fp">Sitio web por Presence ✦</span></div>
+</footer>
+</body>
+</html>

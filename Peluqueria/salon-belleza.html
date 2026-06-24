@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Lumière | Salón de Belleza</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #E8B4B8;
+    --rose-dark: #C4878D;
+    --rose-light: #F5D8DA;
+    --rose-pale: #FBF0F1;
+    --blush: #F9E8E9;
+    --nude: #F2E6E4;
+    --nude-dark: #D4B5B0;
+    --text-dark: #2A1F1F;
+    --text-mid: #5C3F3F;
+    --text-muted: #9C7878;
+    --white: #FFFFFF;
+    --cream: #FDF8F7;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rose-light);
+  }
+
+  .logo-wrap { display: flex; align-items: center; gap: 0.7rem; }
+
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--rose);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: white;
+    font-weight: 400;
+  }
+
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    transition: color 0.3s;
+    font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--rose-dark); }
+
+  .nav-cta {
+    background: var(--rose);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.04em;
+  }
+  .nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 5% 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -150px;
+    width: 600px; height: 600px;
+    background: var(--rose-light);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 300px; height: 300px;
+    background: var(--nude);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  .hero-content { position: relative; z-index: 1; padding-right: 3rem; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--blush);
+    border: 1px solid var(--rose-light);
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    color: var(--rose-dark);
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-badge::before { content: '✿'; font-size: 0.7rem; }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 strong {
+    font-weight: 600;
+    font-style: italic;
+    color: var(--rose-dark);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-main {
+    background: var(--rose-dark);
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.03em;
+  }
+  .btn-main:hover { background: var(--text-mid); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text-mid);
+    border: 1.5px solid var(--nude-dark);
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.03em;
+  }
+  .btn-outline:hover { border-color: var(--rose-dark); color: var(--rose-dark); }
+
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-card-big {
+    width: 320px;
+    height: 420px;
+    background: var(--rose-light);
+    border-radius: 200px 200px 20px 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-card-big::before {
+    content: 'Studio\ALumière';
+    white-space: pre;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(196,135,141,0.25);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+  }
+
+  .hero-floating-1, .hero-floating-2, .hero-floating-3 {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    font-size: 0.78rem;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+  .hero-floating-1 { left: -10px; top: 120px; }
+  .hero-floating-2 { right: -15px; top: 200px; }
+  .hero-floating-3 { left: 0; bottom: 80px; }
+
+  .float-label { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+
+  /* STRIP */
+  .strip {
+    background: var(--rose);
+    padding: 1rem 5%;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    overflow: hidden;
+  }
+
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: white;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+
+  .strip-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.5); border-radius: 50%; }
+
+  /* SERVICIOS */
+  .section { padding: 6rem 5%; }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose-dark);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .section-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--text-dark);
+  }
+
+  .section-h2 em { font-style: italic; color: var(--rose-dark); }
+
+  .services-wrap { margin-top: 3.5rem; }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr 2px 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .service-divider { background: var(--rose-light); }
+
+  .service-item {
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-item:hover { background: var(--blush); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: var(--rose-light);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-item-desc {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .tag {
+    background: var(--rose-pale);
+    color: var(--rose-dark);
+    font-size: 0.68rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .services-border { border: 1px solid var(--rose-light); }
+
+  /* GALERÍA CONCEPTO */
+  .gallery-section { background: var(--cream); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 200px 200px;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .gallery-item {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-item:first-child { grid-row: 1 / 3; }
+
+  .gallery-block {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 300;
+  }
+
+  .gb-1 { background: linear-gradient(135deg, #E8B4B8, #C4878D); }
+  .gb-2 { background: linear-gradient(135deg, #F2E6E4, #D4B5B0); }
+  .gb-3 { background: linear-gradient(135deg, #F9E8E9, #E8B4B8); }
+  .gb-4 { background: linear-gradient(135deg, #D4B5B0, #C4878D); }
+  .gb-5 { background: linear-gradient(135deg, #E8B4B8, #F9E8E9); }
+
+  /* TESTIMONIOS */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--rose-light);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .review-stars {
+    display: flex; gap: 0.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .star { color: var(--rose); font-size: 0.9rem; }
+
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .review-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+  }
+
+  .ra-1 { background: var(--rose); }
+  .ra-2 { background: var(--rose-dark); }
+  .ra-3 { background: var(--nude-dark); }
+
+  .review-name { font-size: 0.85rem; font-weight: 500; color: var(--text-dark); }
+  .review-service { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* AGENDA */
+  .booking-wrap {
+    background: var(--text-dark);
+    border-radius: 24px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 5% 6rem;
+  }
+
+  .booking-info {
+    padding: 4rem;
+    background: linear-gradient(135deg, #3D2929, #2A1F1F);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .booking-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--rose-light);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .booking-info h2 em { font-style: italic; color: var(--rose); }
+
+  .booking-info p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .hours-list { display: flex; flex-direction: column; gap: 0.7rem; }
+  .hours-item {
+    display: flex; justify-content: space-between;
+    font-size: 0.82rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.6);
+  }
+  .hours-item span:last-child { color: var(--rose-light); }
+
+  .booking-form-wrap {
+    background: var(--cream);
+    padding: 4rem 3rem;
+  }
+
+  .booking-form-wrap h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+  }
+
+  .fg { margin-bottom: 1.2rem; }
+  .fl {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .fi, .fs {
+    width: 100%;
+    background: white;
+    border: 1.5px solid var(--rose-light);
+    color: var(--text-dark);
+    padding: 0.8rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+  .fi:focus, .fs:focus { border-color: var(--rose-dark); }
+  .fi::placeholder { color: var(--text-muted); }
+  .fs option { background: white; }
+
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+  .btn-book-rose {
+    width: 100%;
+    background: var(--rose-dark);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.3s;
+    letter-spacing: 0.04em;
+  }
+  .btn-book-rose:hover { background: var(--text-mid); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-dark);
+    padding: 3.5rem 5% 2rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .logo-text { color: var(--rose-light); font-size: 1.2rem; }
+  .footer-brand p {
+    font-size: 0.82rem;
+    margin-top: 1rem;
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.83rem;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--rose-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-made { color: rgba(232,180,184,0.5); }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 100px; padding-bottom: 3rem; }
+    .hero-visual { display: none; }
+    .service-row { grid-template-columns: 1fr; }
+    .service-divider { display: none; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: auto; }
+    .booking-wrap { grid-template-columns: 1fr; }
+    .frow { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-mark">L</div>
+    <div class="logo-text">Studio Lumière</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#trabajos">Trabajos</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#agenda">Agenda</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('agenda').scrollIntoView({behavior:'smooth'})">Pedir turno</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Salón premium · Palermo, Buenos Aires</div>
+    <h1>Tu mejor<br><strong>versión</strong><br>te espera.</h1>
+    <p class="hero-sub">Coloristas expertas, técnicas de vanguardia y un espacio pensado para que te sientas en paz mientras te transformamos.</p>
+    <div class="hero-actions">
+      <a href="#agenda" class="btn-main">Reservar turno</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-big"></div>
+    <div class="hero-floating-1">
+      <div class="float-label">Próximo turno disponible</div>
+      Hoy · 15:30 hs
+    </div>
+    <div class="hero-floating-2">
+      <div class="float-label">Calificación</div>
+      ⭐ 4.9 (328 reseñas)
+    </div>
+    <div class="hero-floating-3">
+      <div class="float-label">Especialidad</div>
+      ✨ Balayage & Color
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">✦ Corte & Peinado</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">✦ Colorimetría</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">✦ Keratina & Alisado</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">✦ Uñas & Manos</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">✦ Tratamientos Capilares</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">✦ Maquillaje</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">✦ Novias</div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="eyebrow">Nuestros servicios</div>
+  <h2 class="section-h2">Todo lo que necesitás<br><em>en un solo lugar</em></h2>
+
+  <div class="services-wrap">
+    <div class="services-border">
+      <div class="service-row">
+        <div class="service-item">
+          <div class="service-icon">✂️</div>
+          <div class="service-item-name">Corte & Peinado</div>
+          <p class="service-item-desc">Corte personalizado según tu tipo de rostro y estilo de vida. Incluye lavado, secado y terminación profesional.</p>
+          <div class="service-tags">
+            <span class="tag">Mujeres</span>
+            <span class="tag">Niñas</span>
+            <span class="tag">Flequillo</span>
+          </div>
+        </div>
+        <div class="service-divider"></div>
+        <div class="service-item">
+          <div class="service-icon">🎨</div>
+          <div class="service-item-name">Color & Iluminación</div>
+          <p class="service-item-desc">Coloristas especializadas en balayage, mechas, tinte completo y técnicas de decoloración segura para tu cabello.</p>
+          <div class="service-tags">
+            <span class="tag">Balayage</span>
+            <span class="tag">Mechas</span>
+            <span class="tag">Tinte</span>
+          </div>
+        </div>
+        <div class="service-divider"></div>
+        <div class="service-item">
+          <div class="service-icon">✨</div>
+          <div class="service-item-name">Tratamientos</div>
+          <p class="service-item-desc">Keratina, alisado progresivo, botox capilar e hidratación profunda. Recuperá la salud y la suavidad de tu cabello.</p>
+          <div class="service-tags">
+            <span class="tag">Keratina</span>
+            <span class="tag">Botox</span>
+            <span class="tag">Hidratación</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-divider" style="width:100%; height:1px;"></div>
+      <div class="service-row">
+        <div class="service-item">
+          <div class="service-icon">💅</div>
+          <div class="service-item-name">Manicuría & Pedicuría</div>
+          <p class="service-item-desc">Semipermanente, acrílico, gel y nail art. Manos y pies perfectos con las mejores marcas del mercado.</p>
+          <div class="service-tags">
+            <span class="tag">Semipermanente</span>
+            <span class="tag">Acrílico</span>
+            <span class="tag">Nail Art</span>
+          </div>
+        </div>
+        <div class="service-divider"></div>
+        <div class="service-item">
+          <div class="service-icon">🌸</div>
+          <div class="service-item-name">Maquillaje</div>
+          <p class="service-item-desc">Social, artístico y novias. Maquillaje de larga duración para eventos, casamientos y producciones fotográficas.</p>
+          <div class="service-tags">
+            <span class="tag">Social</span>
+            <span class="tag">Novias</span>
+            <span class="tag">Artístico</span>
+          </div>
+        </div>
+        <div class="service-divider"></div>
+        <div class="service-item">
+          <div class="service-icon">👰</div>
+          <div class="service-item-name">Paquete Novia</div>
+          <p class="service-item-desc">El día más importante merece lo mejor. Peinado, maquillaje, prueba previa y coordinación completa para tu casamiento.</p>
+          <div class="service-tags">
+            <span class="tag">Prueba incluida</span>
+            <span class="tag">Casamientos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="section gallery-section" id="trabajos">
+  <div class="eyebrow">Nuestros trabajos</div>
+  <h2 class="section-h2">Resultados que<br><em>hablan por sí solos</em></h2>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-block gb-1">Balayage Caramel</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-block gb-2">Mechas Rubias</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-block gb-3">Color Fantasia</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-block gb-4">Keratina</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-block gb-5">Nail Art</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section" id="resenas">
+  <div class="eyebrow">Reseñas</div>
+  <h2 class="section-h2">Lo que dicen<br><em>nuestras clientas</em></h2>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="review-text">"El mejor balayage que me hicieron en la vida. La colorista entendió exactamente lo que quería y el resultado fue increíble."</p>
+      <div class="review-author">
+        <div class="review-avatar ra-1">MG</div>
+        <div>
+          <div class="review-name">María González</div>
+          <div class="review-service">Balayage + Corte</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="review-text">"Vine para la keratina y quedé enamorada del lugar. El ambiente es súper lindo, con música, cafecito y una atención de diez."</p>
+      <div class="review-author">
+        <div class="review-avatar ra-2">VR</div>
+        <div>
+          <div class="review-name">Valentina Ruiz</div>
+          <div class="review-service">Keratina Express</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="review-text">"Me hicieron el look completo para mi casamiento. Prueba, día del evento, todo impecable. Me sentí la novia más linda del mundo."</p>
+      <div class="review-author">
+        <div class="review-avatar ra-3">CM</div>
+        <div>
+          <div class="review-name">Carolina Medina</div>
+          <div class="review-service">Paquete Novia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda">
+  <div class="booking-wrap">
+    <div class="booking-info">
+      <h2>Reservá<br>tu <em>momento</em><br>de belleza</h2>
+      <p>Turno confirmado en minutos. También podés escribirnos por WhatsApp si preferís coordinación personalizada.</p>
+      <div class="hours-list">
+        <div class="hours-item"><span>Lunes a Viernes</span><span>9:00 – 20:00</span></div>
+        <div class="hours-item"><span>Sábados</span><span>9:00 – 18:00</span></div>
+        <div class="hours-item"><span>Domingos</span><span>Solo novias</span></div>
+        <div class="hours-item"><span>Ubicación</span><span>Av. Santa Fe 1234, Palermo</span></div>
+      </div>
+    </div>
+    <div class="booking-form-wrap">
+      <h3>Tu turno en 2 minutos</h3>
+      <div class="fg">
+        <label class="fl">Nombre</label>
+        <input type="text" class="fi" placeholder="Tu nombre completo">
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Teléfono</label>
+          <input type="tel" class="fi" placeholder="+54 11 ...">
+        </div>
+        <div class="fg">
+          <label class="fl">Servicio</label>
+          <select class="fs">
+            <option>Corte & Peinado</option>
+            <option>Balayage / Color</option>
+            <option>Keratina</option>
+            <option>Manicuría</option>
+            <option>Maquillaje</option>
+            <option>Paquete Novia</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Fecha</label>
+          <input type="date" class="fi">
+        </div>
+        <div class="fg">
+          <label class="fl">Horario</label>
+          <select class="fs">
+            <option>09:00</option><option>10:00</option><option>11:00</option>
+            <option>12:00</option><option>14:00</option><option>15:00</option>
+            <option>16:00</option><option>17:00</option><option>18:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl">¿Algo que quieras aclarar?</label>
+        <input type="text" class="fi" placeholder="Ej: cabello muy largo, alergia a colorantes...">
+      </div>
+      <button class="btn-book-rose">Reservar turno ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-wrap">
+        <div class="logo-mark">L</div>
+        <div class="logo-text">Studio Lumière</div>
+      </div>
+      <p>El espacio donde la belleza y el bienestar se encuentran. Palermo, Buenos Aires.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#">Corte & Peinado</a></li>
+        <li><a href="#">Colorimetría</a></li>
+        <li><a href="#">Keratina</a></li>
+        <li><a href="#">Manicuría</a></li>
+        <li><a href="#">Maquillaje</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Google Maps</a></li>
+        <li><a href="#">Av. Santa Fe 1234</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Studio Lumière · Todos los derechos reservados</span>
+    <span class="footer-made">Sitio web por Presence ✦</span>
+  </div>
+</footer>
+
+</body>
+</html>

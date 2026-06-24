@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noir · Restaurante Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#080808;color:#f0ebe0;overflow-x:hidden;}
+:root{
+  --gold:#b8962e;--gold2:#d4af4a;--gold3:#e8c96d;
+  --dark:#080808;--dark2:#0f0f0f;--dark3:#161616;--dark4:#1e1e1e;
+  --text:#f0ebe0;--muted:rgba(240,235,224,0.55);--faint:rgba(240,235,224,0.28);
+  --border:rgba(184,150,46,0.12);--borderl:rgba(184,150,46,0.3);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#080808;}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6%;height:76px;
+  background:rgba(8,8,8,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:0.5px solid var(--border);
+  transition:background .3s;
+}
+.nav-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:300;
+  color:var(--text);letter-spacing:0.18em;text-transform:uppercase;
+}
+.nav-brand span{color:var(--gold);}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{
+  font-size:12px;color:var(--faint);text-decoration:none;
+  letter-spacing:0.12em;text-transform:uppercase;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-res{
+  font-size:11px;font-weight:500;
+  padding:10px 26px;
+  border:0.5px solid var(--gold);color:var(--gold);
+  letter-spacing:0.14em;text-transform:uppercase;
+  text-decoration:none;
+  transition:all .3s;
+}
+.nav-res:hover{background:var(--gold);color:#000;}
+
+/* HERO */
+#inicio{
+  height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+  padding:0 6% 80px;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.1) 30%, rgba(8,8,8,0.7) 70%, rgba(8,8,8,1) 100%),
+    url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1600&q=80') center/cover no-repeat;
+}
+.hero-img::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(184,150,46,0.06),transparent);
+}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-eyebrow{
+  font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+  display:flex;align-items:center;gap:16px;
+}
+.hero-eyebrow::after{content:'';flex:0 0 60px;height:0.5px;background:var(--gold);opacity:0.5;}
+.hero-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(60px,8vw,110px);
+  font-weight:300;line-height:0.95;
+  letter-spacing:0.04em;color:var(--text);
+  margin-bottom:24px;
+}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{
+  font-size:15px;color:var(--muted);
+  max-width:480px;line-height:1.8;
+  margin-bottom:44px;font-weight:300;
+  letter-spacing:0.02em;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-gold{
+  font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;
+  padding:15px 36px;background:var(--gold);color:#000;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background .3s,transform .2s;
+}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-outline{
+  font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;
+  padding:15px 36px;background:transparent;color:var(--text);
+  border:0.5px solid rgba(240,235,224,0.3);text-decoration:none;
+  transition:border-color .3s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+/* SCROLL INDICATOR */
+.scroll-ind{
+  position:absolute;bottom:36px;right:6%;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);
+}
+.scroll-line{width:0.5px;height:48px;background:linear-gradient(var(--gold),transparent);}
+
+/* EXPERIENCIA BAND */
+.exp-band{
+  background:var(--dark2);
+  border-top:0.5px solid var(--border);
+  border-bottom:0.5px solid var(--border);
+  padding:32px 6%;
+  display:flex;align-items:center;justify-content:center;gap:0;
+  overflow:hidden;
+}
+.exp-item{
+  flex:1;text-align:center;padding:0 32px;
+  border-right:0.5px solid var(--border);
+}
+.exp-item:last-child{border-right:none;}
+.exp-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:6px;letter-spacing:0.02em;
+}
+.exp-lbl{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--faint);}
+
+/* SECCIONES */
+section{padding:108px 6%;}
+.sec-eyebrow{
+  font-size:9px;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;opacity:0.7;
+}
+.sec-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4.5vw,62px);
+  font-weight:300;line-height:1.1;
+  color:var(--text);margin-bottom:18px;
+  letter-spacing:0.02em;
+}
+.sec-h2 em{font-style:italic;color:var(--gold);}
+.sec-sub{font-size:14px;color:var(--muted);max-width:480px;line-height:1.8;font-weight:300;}
+
+/* GALERÍA HERO */
+#galeria{background:var(--dark);padding:0;}
+.galeria-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:340px 240px;
+  gap:3px;
+}
+.gal-item{overflow:hidden;position:relative;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;filter:brightness(0.85);}
+.gal-item:hover img{transform:scale(1.04);filter:brightness(1);}
+.gal-item.main{grid-row:1/3;}
+.gal-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,8,0.6),transparent);
+  display:flex;align-items:flex-end;padding:20px;
+  opacity:0;transition:opacity .3s;
+}
+.gal-item:hover .gal-overlay{opacity:1;}
+.gal-overlay span{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);}
+
+/* MENU */
+#menu{background:var(--dark2);}
+.menu-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start;}
+.menu-tabs{display:flex;gap:0;margin-bottom:36px;border-bottom:0.5px solid var(--border);}
+.mtab{
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  padding:12px 22px;cursor:pointer;color:var(--faint);
+  border-bottom:1.5px solid transparent;margin-bottom:-0.5px;
+  transition:all .2s;
+}
+.mtab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.menu-items{display:flex;flex-direction:column;gap:0;}
+.menu-item{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:20px 0;border-bottom:0.5px solid rgba(240,235,224,0.06);
+  gap:20px;transition:padding-left .2s;cursor:default;
+}
+.menu-item:hover{padding-left:8px;}
+.menu-item:last-child{border-bottom:none;}
+.mi-info .mi-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:400;color:var(--text);margin-bottom:4px;
+}
+.mi-info .mi-desc{font-size:12px;color:var(--faint);line-height:1.6;max-width:320px;}
+.mi-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:300;color:var(--gold);
+  white-space:nowrap;
+}
+.menu-right{position:sticky;top:100px;}
+.menu-img-box{
+  position:relative;overflow:hidden;
+  height:420px;
+}
+.menu-img-box img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8);}
+.menu-img-box::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,8,8,0.7) 0%,transparent 60%);
+}
+.menu-img-caption{
+  position:absolute;bottom:24px;left:24px;right:24px;z-index:2;
+}
+.menu-img-caption p{font-size:12px;color:var(--muted);line-height:1.6;}
+.menu-img-caption .cap-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;color:var(--text);margin-bottom:6px;
+}
+
+/* CHEF */
+#chef{background:var(--dark);}
+.chef-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.chef-img-wrap{position:relative;}
+.chef-img{
+  width:100%;height:520px;object-fit:cover;
+  filter:brightness(0.75) contrast(1.1);
+}
+.chef-quote-box{
+  position:absolute;bottom:-24px;right:-24px;
+  background:var(--gold);padding:24px 28px;
+  max-width:260px;
+}
+.chef-quote-box p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-style:italic;color:#000;
+  line-height:1.55;margin-bottom:10px;
+}
+.chef-quote-box cite{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,0.6);}
+.chef-right .sec-sub{margin-bottom:32px;}
+.chef-awards{display:flex;flex-direction:column;gap:12px;}
+.award{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 18px;
+  border:0.5px solid var(--border);
+  transition:border-color .2s;
+}
+.award:hover{border-color:var(--borderl);}
+.award-ico{font-size:22px;flex-shrink:0;}
+.award-text strong{display:block;font-size:13px;color:var(--text);margin-bottom:2px;}
+.award-text span{font-size:11px;color:var(--faint);}
+
+/* RESERVAS */
+#reservas{
+  background:
+    linear-gradient(rgba(8,8,8,0.88),rgba(8,8,8,0.88)),
+    url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1400&q=80') center/cover fixed;
+}
+.res-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.res-left .sec-sub{margin-bottom:36px;}
+.horarios{display:flex;flex-direction:column;gap:10px;}
+.horario{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 20px;
+  border-left:1.5px solid var(--border);
+  transition:border-color .2s;
+}
+.horario:hover{border-left-color:var(--gold);}
+.horario .dia{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;}
+.horario .hora{font-size:13px;font-weight:500;color:var(--gold);}
+.res-form{background:rgba(15,15,15,0.9);border:0.5px solid var(--border);padding:44px 40px;backdrop-filter:blur(10px);}
+.res-form h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:300;color:var(--text);
+  margin-bottom:6px;letter-spacing:0.06em;
+}
+.res-form p{font-size:12px;color:var(--faint);margin-bottom:28px;letter-spacing:0.04em;}
+.fg{margin-bottom:18px;}
+.fg label{
+  display:block;font-size:9px;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:7px;
+}
+.fg input,.fg select{
+  width:100%;background:rgba(255,255,255,0.03);
+  border:none;border-bottom:0.5px solid rgba(240,235,224,0.15);
+  padding:11px 0;font-size:14px;color:var(--text);
+  font-family:inherit;outline:none;
+  transition:border-color .2s;
+}
+.fg input:focus,.fg select:focus{border-bottom-color:var(--gold);}
+.fg select option{background:#161616;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.res-btn{
+  width:100%;padding:16px;margin-top:8px;
+  background:var(--gold);color:#000;border:none;
+  font-size:11px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;cursor:pointer;font-family:inherit;
+  transition:background .3s;
+}
+.res-btn:hover{background:var(--gold2);}
+
+/* TESTIMONIOS */
+#testimonios{background:var(--dark2);}
+.test-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;flex-wrap:wrap;gap:16px;}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);}
+.test-card{
+  background:var(--dark2);padding:36px 32px;
+  transition:background .2s;
+}
+.test-card:hover{background:var(--dark3);}
+.test-stars{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;color:var(--gold);margin-bottom:18px;letter-spacing:4px;
+}
+.test-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-style:italic;color:var(--muted);
+  line-height:1.7;margin-bottom:22px;
+}
+.test-sep{width:24px;height:0.5px;background:var(--gold);margin-bottom:16px;}
+.test-author .name{font-size:12px;font-weight:500;color:var(--text);letter-spacing:0.06em;margin-bottom:2px;}
+.test-author .info{font-size:11px;color:var(--faint);}
+
+footer{
+  background:#040404;
+  border-top:0.5px solid var(--border);
+  padding:52px 6%;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;
+  align-items:start;
+}
+.footer-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:300;color:var(--text);
+  letter-spacing:0.1em;margin-bottom:12px;
+}
+.footer-tagline{font-size:11px;color:var(--faint);letter-spacing:0.1em;text-transform:uppercase;}
+.footer-col h4{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:0.7;}
+.footer-col p,.footer-col a{font-size:12px;color:var(--faint);line-height:1.9;text-decoration:none;display:block;transition:color .2s;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{
+  border-top:0.5px solid var(--border);padding:20px 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  background:#040404;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:11px;color:var(--faint);}
+
+.wa-float{
+  position:fixed;bottom:32px;right:32px;z-index:300;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 28px rgba(34,197,94,0.45);
+  text-decoration:none;transition:transform .2s,box-shadow .2s;
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 8px 36px rgba(34,197,94,0.65);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .galeria-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .gal-item.main{grid-row:auto;}
+  .menu-inner,.chef-inner,.res-inner{grid-template-columns:1fr;gap:48px;}
+  .chef-quote-box{position:relative;bottom:auto;right:auto;max-width:100%;margin-top:16px;}
+  footer{grid-template-columns:1fr;}
+  .exp-band{flex-wrap:wrap;}
+  .exp-item{border-right:none;border-bottom:0.5px solid var(--border);padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">N<span>OI</span>R</div>
+  <div class="nav-links">
+    <a href="#galeria">Galería</a>
+    <a href="#menu">Menú</a>
+    <a href="#chef">El Chef</a>
+    <a href="#reservas">Reservas</a>
+    <a href="#reservas" class="nav-res">Reservar mesa</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="inicio">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Buenos Aires · Fine Dining · Desde 2018</div>
+    <h1 class="hero-h1">Donde cada<br>plato es una<br><em>obra de arte.</em></h1>
+    <p class="hero-sub">Una experiencia gastronómica que fusiona técnica francesa con ingredientes de estación argentinos. Para los que entienden que comer bien es vivir mejor.</p>
+    <div class="hero-actions">
+      <a href="#reservas" class="btn-gold">Reservar mesa</a>
+      <a href="#menu" class="btn-outline">Ver el menú</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+
+<!-- BAND -->
+<div class="exp-band">
+  <div class="exp-item"><div class="exp-num">7</div><div class="exp-lbl">Años de experiencia</div></div>
+  <div class="exp-item"><div class="exp-num">4.9</div><div class="exp-lbl">Estrellas en Google</div></div>
+  <div class="exp-item"><div class="exp-num">620+</div><div class="exp-lbl">Reseñas verificadas</div></div>
+  <div class="exp-item"><div class="exp-num">3</div><div class="exp-lbl">Premios gastronómicos</div></div>
+</div>
+
+<!-- GALERÍA -->
+<div id="galeria">
+  <div class="galeria-grid">
+    <div class="gal-item main">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80" alt="Interior Noir">
+      <div class="gal-overlay"><span>El salón principal</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Plato principal">
+      <div class="gal-overlay"><span>Cocina de autor</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Ambiente">
+      <div class="gal-overlay"><span>Barra de cócteles</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80" alt="Entrante">
+      <div class="gal-overlay"><span>Entrantes de temporada</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1481671703460-040cb8a2d909?w=600&q=80" alt="Postre">
+      <div class="gal-overlay"><span>Postres artesanales</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MENÚ -->
+<section id="menu">
+  <div class="menu-inner">
+    <div>
+      <div class="sec-eyebrow">Carta de temporada</div>
+      <h2 class="sec-h2">Sabores que<br>no se <em>olvidan.</em></h2>
+      <div class="menu-tabs">
+        <div class="mtab active">Entradas</div>
+        <div class="mtab">Principales</div>
+        <div class="mtab">Postres</div>
+        <div class="mtab">Vinos</div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="mi-info">
+            <div class="mi-name">Vieiras selladas con espuma de coliflor</div>
+            <div class="mi-desc">Vieiras de Patagonia, espuma de coliflor ahumada, caviar de trucha y aceite de eneldo.</div>
+          </div>
+          <div class="mi-price">$8.400</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-info">
+            <div class="mi-name">Carpaccio de lomo wagyu</div>
+            <div class="mi-desc">Lomo wagyu laminado, parmesano 24 meses, rúcula silvestre y reducción de aceto balsámico.</div>
+          </div>
+          <div class="mi-price">$9.200</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-info">
+            <div class="mi-name">Foie gras con brioche</div>
+            <div class="mi-desc">Foie gras al torchon, brioche tostado, mermelada de higos y sal de Himalaya.</div>
+          </div>
+          <div class="mi-price">$11.500</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-info">
+            <div class="mi-name">Sopa de cebolla gratinada</div>
+            <div class="mi-desc">Caldo de hueso lento, cebolla caramelizada 6 horas, gruyère y croutons de masa madre.</div>
+          </div>
+          <div class="mi-price">$5.800</div>
+        </div>
+        <div class="menu-item">
+          <div class="mi-info">
+            <div class="mi-name">Tartare de salmón</div>
+            <div class="mi-desc">Salmón fresco, alcaparras, cebolla morada, yema curada y tostadas de centeno.</div>
+          </div>
+          <div class="mi-price">$7.600</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-right">
+      <div class="menu-img-box">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=80" alt="Plato Noir">
+        <div class="menu-img-caption">
+          <div class="cap-title">Lomo con reducción de Malbec</div>
+          <p>Nuestro plato más premiado. Lomo de novillo Black Angus, reducción de Malbec Luján de Cuyo y puré trufado.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEF -->
+<section id="chef">
+  <div class="chef-inner">
+    <div class="chef-img-wrap">
+      <img class="chef-img" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=700&q=80" alt="Chef Noir">
+      <div class="chef-quote-box">
+        <p>"La cocina es emoción. Si no sentís algo cuando comés, fallé."</p>
+        <cite>— Chef Alejandro Vargas</cite>
+      </div>
+    </div>
+    <div class="chef-right">
+      <div class="sec-eyebrow">Detrás de los fogones</div>
+      <h2 class="sec-h2">El Chef<br><em>Alejandro Vargas.</em></h2>
+      <p class="sec-sub" style="margin-bottom:32px;">Formado en Le Cordon Bleu París y con 15 años de experiencia en los mejores restaurantes de Europa y Argentina. Su cocina combina técnica francesa con el alma del producto local.</p>
+      <div class="chef-awards">
+        <div class="award"><div class="award-ico">🏆</div><div class="award-text"><strong>Mejor Restaurante Buenos Aires 2023</strong><span>Premio Gourmet Argentina</span></div></div>
+        <div class="award"><div class="award-ico">⭐</div><div class="award-text"><strong>Top 10 Restaurantes de Argentina</strong><span>Guía Culinaria Latinoamérica 2024</span></div></div>
+        <div class="award"><div class="award-ico">👨‍🍳</div><div class="award-text"><strong>Chef del Año 2022</strong><span>Asociación Gastronómica Argentina</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section id="reservas">
+  <div class="res-inner">
+    <div class="res-left">
+      <div class="sec-eyebrow">Reservas</div>
+      <h2 class="sec-h2">Una noche<br><em>memorable</em><br>comienza aquí.</h2>
+      <p class="sec-sub" style="margin-bottom:36px;">Recomendamos reservar con al menos 48 horas de anticipación. Los fines de semana se completan rápido.</p>
+      <div class="horarios">
+        <div class="horario"><span class="dia">Martes — Miércoles</span><span class="hora">20:00 — 23:30</span></div>
+        <div class="horario"><span class="dia">Jueves</span><span class="hora">20:00 — 00:00</span></div>
+        <div class="horario"><span class="dia">Viernes — Sábado</span><span class="hora">20:00 — 01:00</span></div>
+        <div class="horario"><span class="dia">Domingo</span><span class="hora">13:00 — 17:00</span></div>
+        <div class="horario"><span class="dia">Lunes</span><span class="hora" style="color:var(--faint);">Cerrado</span></div>
+      </div>
+    </div>
+    <div class="res-form">
+      <h3>Reservá tu mesa</h3>
+      <p>Completá el formulario y te confirmamos en menos de 2 horas.</p>
+      <div class="fg-row">
+        <div class="fg"><label>Nombre completo</label><input type="text" placeholder="Juan García"></div>
+        <div class="fg"><label>Teléfono</label><input type="text" placeholder="11 1234-5678"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Fecha</label><input type="date"></div>
+        <div class="fg"><label>Hora</label><select><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option></select></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Personas</label><select><option>2 personas</option><option>3-4 personas</option><option>5-6 personas</option><option>+6 personas</option></select></div>
+        <div class="fg"><label>Ocasión</label><select><option>Cena romántica</option><option>Cumpleaños</option><option>Aniversario</option><option>Negocios</option><option>Sin ocasión especial</option></select></div>
+      </div>
+      <button class="res-btn">Confirmar reserva</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="test-header">
+    <div>
+      <div class="sec-eyebrow">Lo que dicen</div>
+      <h2 class="sec-h2">620 experiencias.<br><em>Todas únicas.</em></h2>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--gold);line-height:1;">4.9</div>
+      <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);">Promedio en Google</div>
+    </div>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"La experiencia más memorable que tuve en un restaurante en Buenos Aires. Las vieiras selladas son perfectas. El servicio, impecable. Ya reservé para la semana que viene."</div>
+      <div class="test-sep"></div>
+      <div class="test-author"><div class="name">CAROLINA M.</div><div class="info">Reserva verificada · Hace 3 días</div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"El lomo con reducción de Malbec es el mejor plato que comí en mi vida. Sin exagerar. El maridaje que sugirió el sommelier fue perfecto. Lugar mágico."</div>
+      <div class="test-sep"></div>
+      <div class="test-author"><div class="name">ROBERTO A.</div><div class="info">Reserva verificada · Hace 1 semana</div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"Festejé mi aniversario acá y fue una noche perfecta. El equipo nos preparó una mesa especial sin que pidiéramos nada. Atención personalizada de otro nivel."</div>
+      <div class="test-sep"></div>
+      <div class="test-author"><div class="name">VALENTINA R.</div><div class="info">Reserva verificada · Hace 2 semanas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">NOIR</div>
+    <div class="footer-tagline">Fine Dining · Buenos Aires</div>
+  </div>
+  <div class="footer-col">
+    <h4>Contacto</h4>
+    <p>Av. Alvear 1890, Recoleta</p>
+    <p>Buenos Aires, Argentina</p>
+    <a href="tel:+541145678901">11 4567-8901</a>
+    <a href="mailto:reservas@noirba.com">reservas@noirba.com</a>
+  </div>
+  <div class="footer-col">
+    <h4>Horarios</h4>
+    <p>Mar — Jue: 20:00 — 23:30</p>
+    <p>Vie — Sáb: 20:00 — 01:00</p>
+    <p>Dom: 13:00 — 17:00</p>
+    <p>Lun: Cerrado</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Noir Restaurant · Buenos Aires</p>
+  <p style="color:var(--faint);">Diseño por <span style="color:var(--gold);">Presence</span></p>
+</div>
+
+<a class="wa-float" href="https://wa.me/541140347468" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 1.998C6.475 1.998 2 6.473 2 11.996c0 1.76.463 3.513 1.34 5.053L2 22l5.109-1.322A9.946 9.946 0 0 0 12 21.994c5.523 0 9.998-4.475 9.998-9.998s-4.475-9.998-9.998-9.998z"/></svg>
+</a>
+
+</body>
+</html>

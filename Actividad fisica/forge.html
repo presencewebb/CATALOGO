@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORGE | CrossFit & Functional Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --red:#D42B2B;--red2:#FF3A3A;--red-dim:rgba(212,43,43,0.12);
+  --steel:#1C1C1C;--steel2:#242424;--steel3:#2E2E2E;--steel4:#3A3A3A;
+  --text:#F0EDE8;--muted:#7A7570;--rule:rgba(240,237,232,0.07);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--steel);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(28,28,28,0.95);backdrop-filter:blur(12px);border-bottom:2px solid var(--red);display:flex;align-items:stretch;justify-content:space-between;padding:0 6%;}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;letter-spacing:0.1em;color:var(--text);padding:1rem 0;display:flex;align-items:center;gap:0.4rem;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;padding:0 1.2rem;display:flex;align-items:center;border-right:1px solid var(--rule);transition:all 0.2s;}
+.nav-links a:hover{color:var(--red2);background:var(--red-dim);}
+.nav-cta{background:var(--red);color:white;border:none;padding:0 1.8rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.nav-cta:hover{background:var(--red2);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:65px;background:var(--steel2);display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(240,237,232,0.015) 80px,rgba(240,237,232,0.015) 81px),repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(240,237,232,0.015) 80px,rgba(240,237,232,0.015) 81px);}
+
+.hero-body{flex:1;display:grid;grid-template-columns:1fr 380px;align-items:center;padding:3rem 6%;gap:3rem;position:relative;z-index:1;}
+
+.hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem;}
+.hero-tag::before{content:'';width:30px;height:2px;background:var(--red);}
+
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4.5rem,9vw,9rem);line-height:0.88;letter-spacing:0.02em;margin-bottom:2rem;}
+.hero h1 .outline{-webkit-text-stroke:2px var(--text);color:transparent;}
+.hero h1 .red{color:var(--red);}
+
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.8;max-width:480px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+
+.btn-red{background:var(--red);color:white;border:none;padding:1rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-red:hover{background:var(--red2);}
+.btn-steel{background:transparent;color:var(--text);border:2px solid var(--rule);padding:1rem 2.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-steel:hover{border-color:var(--red);color:var(--red2);}
+
+.hero-right{display:flex;flex-direction:column;gap:1rem;}
+.hero-stat{background:var(--steel3);border:1px solid var(--rule);border-left:3px solid var(--red);padding:1.5rem;display:flex;align-items:center;gap:1.2rem;transition:border-color 0.2s;}
+.hero-stat:hover{border-left-color:var(--red2);}
+.hs-ico{font-size:1.8rem;width:44px;text-align:center;flex-shrink:0;}
+.hs-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:var(--red);line-height:1;}
+.hs-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem;}
+
+.hero-bottom{background:var(--red);padding:1rem 6%;display:flex;gap:3rem;overflow-x:auto;scrollbar-width:none;}
+.hero-bottom::-webkit-scrollbar{display:none;}
+.hb-item{font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);white-space:nowrap;display:flex;align-items:center;gap:2rem;}
+.hb-item::after{content:'//';color:rgba(255,255,255,0.3);font-size:0.8rem;}
+.hb-item:last-child::after{display:none;}
+
+/* SECCIÓN */
+.section{padding:5rem 6%;}
+.sec-kicker{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem;}
+.sec-h{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);letter-spacing:0.04em;line-height:0.95;text-transform:uppercase;}
+.sec-h .red{color:var(--red);}
+
+/* DISCIPLINAS */
+.disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:3rem;}
+.disc-card{background:var(--steel2);padding:2.5rem 2rem;position:relative;overflow:hidden;cursor:default;transition:background 0.3s;}
+.disc-card:hover{background:var(--steel3);}
+.disc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--red);transition:height 0.4s;}
+.disc-card:hover::before{height:100%;}
+.disc-ico{font-size:2.5rem;margin-bottom:1.2rem;}
+.disc-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.6rem;}
+.disc-desc{font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1.2rem;}
+.disc-level{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);font-weight:500;}
+
+/* PLANES */
+.planes-bg{background:var(--steel2);}
+.planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.plan-card{background:var(--steel3);border:1px solid var(--rule);padding:2.5rem;position:relative;transition:border-color 0.3s;}
+.plan-card:hover{border-color:rgba(212,43,43,0.4);}
+.plan-card.featured{background:var(--red);border-color:var(--red);}
+.plan-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--red);color:white;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 1rem;font-weight:700;}
+.plan-card.featured .plan-badge{background:white;color:var(--red);}
+.plan-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.2rem;}
+.plan-price{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;line-height:1;margin-bottom:0.3rem;}
+.plan-price sup{font-size:1.2rem;vertical-align:super;}
+.plan-freq{font-size:0.75rem;color:rgba(240,237,232,0.5);letter-spacing:0.06em;margin-bottom:2rem;}
+.plan-card.featured .plan-freq{color:rgba(255,255,255,0.7);}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:2rem;}
+.plan-features li{font-size:0.85rem;display:flex;align-items:center;gap:0.6rem;color:var(--muted);}
+.plan-card.featured .plan-features li{color:rgba(255,255,255,0.85);}
+.plan-features li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;}
+.plan-card.featured .plan-features li::before{color:white;}
+.btn-plan{width:100%;background:var(--red);color:white;border:none;padding:0.9rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.btn-plan:hover{background:var(--red2);}
+.plan-card.featured .btn-plan{background:white;color:var(--red);}
+.plan-card.featured .btn-plan:hover{background:var(--text);color:var(--red);}
+
+/* HORARIOS */
+.horarios-table{margin-top:3rem;border:1px solid var(--rule);}
+.hor-header{display:grid;grid-template-columns:150px repeat(6,1fr);background:var(--red);padding:0.8rem 1.5rem;gap:1rem;}
+.hor-header span{font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);font-weight:600;}
+.hor-row{display:grid;grid-template-columns:150px repeat(6,1fr);padding:1rem 1.5rem;border-bottom:1px solid var(--rule);gap:1rem;align-items:center;transition:background 0.2s;}
+.hor-row:hover{background:var(--steel3);}
+.hor-row:last-child{border-bottom:none;}
+.hor-time{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--text);}
+.hor-clase{font-size:0.75rem;text-align:center;padding:0.25rem 0.4rem;border-radius:2px;}
+.hc-crossfit{background:rgba(212,43,43,0.2);color:var(--red2);font-weight:500;}
+.hc-funcional{background:rgba(240,237,232,0.08);color:var(--muted);}
+.hc-fuerza{background:rgba(90,160,90,0.15);color:#7ACC7A;}
+.hc-empty{color:var(--steel4);}
+
+/* CONTACTO */
+.contact-section{background:var(--steel2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;}
+.contact-left{background:var(--red);padding:4rem;}
+.contact-left h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,4vw,3.5rem);letter-spacing:0.04em;text-transform:uppercase;color:white;line-height:0.95;margin-bottom:1.5rem;}
+.contact-left p{font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:2rem;font-weight:300;}
+.cl-info{display:flex;flex-direction:column;gap:0.8rem;}
+.cl-item{font-size:0.85rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:0.8rem;}
+.contact-right{background:var(--steel3);padding:4rem;}
+.fg{margin-bottom:1.2rem;}
+.fl{display:block;font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;font-weight:600;}
+.fi,.fs{width:100%;background:var(--steel4);border:1px solid var(--rule);color:var(--text);padding:0.85rem 1rem;font-family:'Barlow',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;appearance:none;}
+.fi:focus,.fs:focus{border-color:var(--red);}
+.fi::placeholder{color:var(--muted);}
+.fs option{background:var(--steel3);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.btn-submit{width:100%;background:var(--red);color:white;border:none;padding:1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.btn-submit:hover{background:var(--red2);}
+
+/* FOOTER */
+footer{background:var(--steel);padding:3rem 6% 2rem;border-top:2px solid var(--red);}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.fl-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:0.1em;color:var(--text);margin-bottom:0.8rem;}
+.fl-logo span{color:var(--red);}
+.fl-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;font-weight:300;max-width:260px;}
+.fc-h{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(240,237,232,0.2);margin-bottom:1rem;font-weight:600;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.fc a{text-decoration:none;color:var(--muted);font-size:0.82rem;transition:color 0.2s;}
+.fc a:hover{color:var(--red2);}
+.fb{border-top:1px solid var(--rule);padding-top:1.5rem;display:flex;justify-content:space-between;font-size:0.73rem;color:var(--muted);flex-wrap:wrap;gap:0.5rem;}
+.fp{color:rgba(212,43,43,0.3);}
+
+@media(max-width:900px){
+  .hero-body{grid-template-columns:1fr;padding-top:2rem;}
+  .hero-right{display:none;}
+  .disc-grid{grid-template-columns:1fr;}
+  .planes-grid{grid-template-columns:1fr;}
+  .hor-header,.hor-row{grid-template-columns:120px repeat(3,1fr);}
+  .contact-grid{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">FOR<span>GE</span></div>
+  <ul class="nav-links">
+    <li><a href="#disciplinas">Clases</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Empezar ahora</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-body">
+    <div>
+      <div class="hero-tag">CrossFit & Functional Training · Lanús, Buenos Aires</div>
+      <h1>
+        <span class="outline">ENTRE</span><br>
+        <span class="red">AL</span><br>
+        FORGE
+      </h1>
+      <p class="hero-sub">No es un gimnasio. Es un sistema. Entrenamiento funcional de alta intensidad con coaches certificados y una comunidad que te impulsa a ir más lejos.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-red">Clase de prueba gratis</a>
+        <a href="#planes" class="btn-steel">Ver planes</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="hs-ico">👥</div>
+        <div><div class="hs-num">350+</div><div class="hs-label">Atletas activos</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-ico">🏆</div>
+        <div><div class="hs-num">6</div><div class="hs-label">Años de experiencia</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-ico">📅</div>
+        <div><div class="hs-num">30+</div><div class="hs-label">Clases semanales</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-ico">⭐</div>
+        <div><div class="hs-num">4.9</div><div class="hs-label">Google Rating</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <span class="hb-item">CrossFit</span>
+    <span class="hb-item">Funcional</span>
+    <span class="hb-item">Fuerza</span>
+    <span class="hb-item">Cardio HIIT</span>
+    <span class="hb-item">Movilidad</span>
+    <span class="hb-item">Open Gym</span>
+    <span class="hb-item">Nutrición</span>
+  </div>
+</section>
+
+<!-- DISCIPLINAS -->
+<section class="section" id="disciplinas">
+  <div class="sec-kicker">Nuestras disciplinas</div>
+  <h2 class="sec-h">ENTRENÁ <span class="red">EN SERIO</span></h2>
+  <div class="disc-grid">
+    <div class="disc-card">
+      <div class="disc-ico">⚡</div>
+      <div class="disc-name">CrossFit</div>
+      <p class="disc-desc">WODs variados que combinan levantamiento olímpico, gimnasia y cardio. Cada día es diferente, cada día te supera.</p>
+      <div class="disc-level">Todos los niveles · 60 min</div>
+    </div>
+    <div class="disc-card">
+      <div class="disc-ico">🔥</div>
+      <div class="disc-name">Funcional HIIT</div>
+      <p class="disc-desc">Alta intensidad con intervalos. Quema grasa, construye músculo y mejora tu capacidad cardiovascular en 45 minutos.</p>
+      <div class="disc-level">Intermedio · 45 min</div>
+    </div>
+    <div class="disc-card">
+      <div class="disc-ico">🏋️</div>
+      <div class="disc-name">Fuerza & Potencia</div>
+      <p class="disc-desc">Sentadillas, peso muerto, press. Programación de periodización para ganar fuerza máxima y masa muscular real.</p>
+      <div class="disc-level">Avanzado · 75 min</div>
+    </div>
+    <div class="disc-card">
+      <div class="disc-ico">🤸</div>
+      <div class="disc-name">Movilidad & Recuperación</div>
+      <p class="disc-desc">Trabajo de movilidad articular, elongación y foam rolling. Fundamental para entrenar más seguido y sin lesiones.</p>
+      <div class="disc-level">Todos los niveles · 45 min</div>
+    </div>
+    <div class="disc-card">
+      <div class="disc-ico">🏃</div>
+      <div class="disc-name">Cardio & Resistencia</div>
+      <p class="disc-desc">Remo, assault bike, saltar la soga y más. Desarrollá tu motor aeróbico para rendir más en cada WOD.</p>
+      <div class="disc-level">Principiante · 45 min</div>
+    </div>
+    <div class="disc-card">
+      <div class="disc-ico">🆓</div>
+      <div class="disc-name">Open Gym</div>
+      <p class="disc-desc">Acceso libre al box y a todos los equipos en horarios habilitados. Trabajá tu programación personal con coaches presentes.</p>
+      <div class="disc-level">Plan completo · Todo el día</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="section planes-bg" id="planes">
+  <div class="sec-kicker">Membresías</div>
+  <h2 class="sec-h">ELEGÍ TU <span class="red">PLAN</span></h2>
+  <div class="planes-grid">
+    <div class="plan-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>$</sup>35.000</div>
+      <div class="plan-freq">por mes</div>
+      <ul class="plan-features">
+        <li>3 clases por semana</li>
+        <li>Acceso a CrossFit y Funcional</li>
+        <li>App de seguimiento</li>
+        <li>Vestuarios y duchas</li>
+      </ul>
+      <button class="btn-plan">Elegir plan</button>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-badge">Más popular</div>
+      <div class="plan-name">Completo</div>
+      <div class="plan-price"><sup>$</sup>55.000</div>
+      <div class="plan-freq">por mes</div>
+      <ul class="plan-features">
+        <li>Clases ilimitadas</li>
+        <li>Acceso a todas las disciplinas</li>
+        <li>Open Gym incluido</li>
+        <li>Seguimiento personalizado</li>
+        <li>Nutrición básica incluida</li>
+        <li>Vestuarios y duchas</li>
+      </ul>
+      <button class="btn-plan">Elegir plan</button>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name">Elite</div>
+      <div class="plan-price"><sup>$</sup>75.000</div>
+      <div class="plan-freq">por mes</div>
+      <ul class="plan-features">
+        <li>Todo el plan Completo</li>
+        <li>Coaching 1 a 1 mensual</li>
+        <li>Plan nutricional personalizado</li>
+        <li>Acceso 24/7</li>
+        <li>Prioridad en turnos</li>
+      </ul>
+      <button class="btn-plan">Elegir plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="section" id="horarios">
+  <div class="sec-kicker">Horarios semanales</div>
+  <h2 class="sec-h">CLASES CADA <span class="red">DÍA</span></h2>
+  <div class="horarios-table">
+    <div class="hor-header">
+      <span>Horario</span><span>Lunes</span><span>Martes</span><span>Miércoles</span><span>Jueves</span><span>Viernes</span><span>Sábado</span>
+    </div>
+    <div class="hor-row">
+      <div class="hor-time">07:00</div>
+      <div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-funcional">Funcional</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-funcional">Funcional</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-fuerza">Fuerza</div>
+    </div>
+    <div class="hor-row">
+      <div class="hor-time">09:00</div>
+      <div class="hor-clase hc-funcional">Funcional</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-fuerza">Fuerza</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-funcional">Funcional</div><div class="hor-clase hc-crossfit">CrossFit</div>
+    </div>
+    <div class="hor-row">
+      <div class="hor-time">12:00</div>
+      <div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-fuerza">Fuerza</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-funcional">Funcional</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-empty">—</div>
+    </div>
+    <div class="hor-row">
+      <div class="hor-time">18:00</div>
+      <div class="hor-clase hc-fuerza">Fuerza</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-funcional">Funcional</div><div class="hor-clase hc-fuerza">Fuerza</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-empty">—</div>
+    </div>
+    <div class="hor-row">
+      <div class="hor-time">20:00</div>
+      <div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-funcional">Funcional</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-crossfit">CrossFit</div><div class="hor-clase hc-fuerza">Fuerza</div><div class="hor-clase hc-empty">—</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section contact-section" id="contacto">
+  <div class="sec-kicker">Sumate al box</div>
+  <h2 class="sec-h">TU PRIMERA <span class="red">CLASE ES GRATIS</span></h2>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2>EMPEZÁ HOY.<br>SIN EXCUSAS.</h2>
+      <p>Vení a conocer el box, conocer al equipo y vivir una clase de CrossFit sin ningún compromiso. Si te enganchás, bienvenido a la familia.</p>
+      <div class="cl-info">
+        <div class="cl-item">📍 Av. Hipólito Yrigoyen 3456, Lanús</div>
+        <div class="cl-item">📱 +54 11 4567-8900</div>
+        <div class="cl-item">⏰ Lun–Vie 6:30 a 22:00 · Sáb 8:00 a 14:00</div>
+        <div class="cl-item">📸 @forge.crossfit</div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="fg"><label class="fl">Nombre</label><input class="fi" type="text" placeholder="Tu nombre completo"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Nivel</label>
+          <select class="fs"><option>Soy principiante</option><option>Tengo experiencia</option><option>Soy atleta avanzado</option></select>
+        </div>
+      </div>
+      <div class="fg"><label class="fl">¿Qué te interesa?</label>
+        <select class="fs"><option>Clase de prueba gratis</option><option>Info sobre planes</option><option>Visita al box</option><option>Entrenamiento personal</option></select>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Fecha preferida</label><input class="fi" type="date"></div>
+        <div class="fg"><label class="fl">Horario</label>
+          <select class="fs"><option>Mañana (7–12h)</option><option>Mediodía (12–15h)</option><option>Tarde-noche (18–21h)</option></select>
+        </div>
+      </div>
+      <button class="btn-submit">Quiero mi clase gratis →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-logo">FOR<span>GE</span></div>
+      <p class="fl-desc">CrossFit & Functional Training. El box donde los límites se rompen y la comunidad te hace más fuerte.</p>
+    </div>
+    <div class="fc"><div class="fc-h">Disciplinas</div><ul><li><a href="#">CrossFit</a></li><li><a href="#">Funcional HIIT</a></li><li><a href="#">Fuerza</a></li><li><a href="#">Movilidad</a></li><li><a href="#">Open Gym</a></li></ul></div>
+    <div class="fc"><div class="fc-h">Contacto</div><ul><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Ubicación</a></li><li><a href="#">Planes</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2025 Forge CrossFit · Lanús, Buenos Aires</span><span class="fp">Sitio web por Presence ✦</span></div>
+</footer>
+
+</body>
+</html>
