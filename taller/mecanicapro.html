@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MecánicaPro | Taller Mecánico</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0D1B2E;--navy2:#132340;--navy3:#1A2E52;--navy4:#213660;
+  --orange:#E8650A;--orange2:#F5780A;--orange-lt:#FEE4CC;--orange-pale:#FFF5EB;
+  --bg:#F8F9FB;--off:#F0F2F5;--border:#DDE2EA;--border2:#C8D0DC;
+  --text:#0A1020;--mid:#2A3550;--muted:#6A7A95;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);display:flex;align-items:stretch;justify-content:space-between;padding:0 6%;}
+.nav-brand{display:flex;align-items:center;gap:0.7rem;padding:1rem 0;}
+.nav-ico{width:36px;height:36px;background:var(--orange);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.nav-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:white;}
+.nav-name span{color:var(--orange);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,0.45);font-size:0.82rem;font-weight:500;padding:0 1.1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,0.06);transition:all 0.2s;}
+.nav-links a:hover{color:white;background:rgba(255,255,255,0.05);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-tel{font-size:0.8rem;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:0.4rem;}
+.nav-cta{background:var(--orange);color:white;border:none;padding:0.65rem 1.4rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;transition:background 0.2s;}
+.nav-cta:hover{background:var(--orange2);}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:65px;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative;}
+.hero::before{content:'';position:absolute;top:0;right:0;bottom:0;left:50%;background:repeating-linear-gradient(45deg,rgba(255,255,255,0.015) 0,rgba(255,255,255,0.015) 1px,transparent 0,transparent 50%);background-size:20px 20px;}
+
+.hero-left{padding:5rem 3rem 5rem 6%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
+
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(232,101,10,0.15);border:1px solid rgba(232,101,10,0.3);border-radius:50px;padding:0.4rem 1rem;font-size:0.72rem;font-weight:600;color:var(--orange2);margin-bottom:2rem;width:fit-content;letter-spacing:0.04em;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.8rem,5vw,5rem);line-height:0.95;letter-spacing:-0.02em;color:white;margin-bottom:1.5rem;}
+.hero h1 .orange{color:var(--orange);}
+.hero h1 .outline{-webkit-text-stroke:1.5px rgba(255,255,255,0.25);color:transparent;}
+
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.45);line-height:1.85;max-width:420px;margin-bottom:2.5rem;font-weight:300;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.btn-orange{background:var(--orange);color:white;border:none;padding:1rem 2rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-orange:hover{background:var(--orange2);transform:translateY(-1px);}
+.btn-outline-w{background:transparent;color:rgba(255,255,255,0.6);border:1.5px solid rgba(255,255,255,0.15);padding:1rem 2rem;border-radius:8px;font-family:'Syne',sans-serif;font-weight:600;font-size:0.88rem;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-outline-w:hover{border-color:rgba(255,255,255,0.4);color:white;}
+
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.hstat{padding-left:1.2rem;border-left:2px solid rgba(232,101,10,0.4);}
+.hstat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--orange);line-height:1;}
+.hstat-label{font-size:0.68rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem;}
+
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;gap:1rem;padding:4rem 4rem 4rem 2rem;justify-content:center;}
+.hero-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.5rem;display:flex;align-items:center;gap:1.2rem;transition:all 0.2s;cursor:default;}
+.hero-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(232,101,10,0.3);}
+.hc-ico{width:46px;height:46px;background:rgba(232,101,10,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.hc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.92rem;color:white;margin-bottom:0.2rem;}
+.hc-sub{font-size:0.75rem;color:rgba(255,255,255,0.35);font-weight:300;}
+
+/* STRIP */
+.strip{background:var(--orange);padding:0.9rem 6%;display:flex;gap:0;overflow:hidden;}
+.strip-track{display:flex;gap:2.5rem;animation:mrq 20s linear infinite;width:max-content;}
+.si{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;color:rgba(255,255,255,0.85);white-space:nowrap;letter-spacing:0.04em;display:flex;align-items:center;gap:2.5rem;}
+.si::after{content:'⚙️';font-size:0.7rem;opacity:0.6;}
+.si:last-child::after{display:none;}
+@keyframes mrq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECCIÓN */
+.section{padding:5.5rem 6%;}
+.sec-e{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:0.7rem;font-weight:600;}
+.sec-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,2.8vw,2.6rem);letter-spacing:-0.02em;color:var(--text);line-height:1.05;}
+.sec-h .col{color:var(--orange);}
+.sec-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+.sec-link{font-size:0.8rem;color:var(--orange);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.4rem;transition:gap 0.2s;}
+.sec-link:hover{gap:0.8rem;}
+
+/* SERVICIOS */
+.svs-bg{background:var(--off);}
+.svs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.sv{background:white;border-radius:14px;border:1.5px solid var(--border);overflow:hidden;transition:all 0.3s;cursor:default;}
+.sv:hover{border-color:var(--orange);box-shadow:0 8px 32px rgba(232,101,10,0.1);transform:translateY(-3px);}
+.sv-stripe{height:4px;background:linear-gradient(90deg,var(--orange),var(--orange2));}
+.sv-body{padding:2rem;}
+.sv-ico{font-size:2.2rem;margin-bottom:1rem;display:block;}
+.sv-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:0.4rem;}
+.sv-desc{font-size:0.82rem;color:var(--muted);line-height:1.72;font-weight:300;}
+.sv-foot{padding:1rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:var(--off);}
+.sv-tag{font-size:0.68rem;font-weight:600;color:var(--orange);background:var(--orange-pale);padding:0.22rem 0.7rem;border-radius:50px;}
+.sv-price{font-size:0.88rem;font-weight:700;color:var(--mid);}
+
+/* POR QUÉ */
+.porque-section{background:var(--navy);}
+.pq-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.pq-left h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,3vw,2.8rem);letter-spacing:-0.02em;color:white;line-height:1.05;margin-bottom:1.2rem;}
+.pq-left h2 span{color:var(--orange);}
+.pq-left p{font-size:0.9rem;color:rgba(255,255,255,0.4);line-height:1.85;font-weight:300;margin-bottom:2.5rem;}
+.pq-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);}
+.pqs{background:var(--navy);padding:1.5rem;}
+.pqs-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:var(--orange);line-height:1;}
+.pqs-label{font-size:0.68rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.3rem;}
+.pq-right{display:flex;flex-direction:column;gap:1rem;}
+.pqi{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.5rem;display:flex;gap:1.2rem;align-items:flex-start;transition:background 0.2s;}
+.pqi:hover{background:rgba(255,255,255,0.07);}
+.pqi-ico{width:42px;height:42px;background:rgba(232,101,10,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.pqi-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:white;margin-bottom:0.2rem;}
+.pqi-desc{font-size:0.8rem;color:rgba(255,255,255,0.38);line-height:1.65;font-weight:300;}
+
+/* PRESUPUESTO */
+.presup-section{background:white;}
+.presup-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.pl h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,3vw,2.6rem);letter-spacing:-0.02em;color:var(--text);line-height:1.05;margin-bottom:1rem;}
+.pl h2 span{color:var(--orange);}
+.pl p{font-size:0.9rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;font-weight:300;}
+.pl-info{display:flex;flex-direction:column;gap:0;}
+.pi-row{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem;border-bottom:1px solid var(--border);font-size:0.85rem;}
+.pi-row:last-child{border-bottom:none;}
+.pi-key{color:var(--muted);font-weight:400;}
+.pi-val{font-weight:600;color:var(--text);}
+.pl-info{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;}
+
+.pr{background:var(--off);border-radius:14px;padding:2.5rem;border:1.5px solid var(--border);}
+.pr h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:2rem;}
+.fg{margin-bottom:1.1rem;}
+.fl{display:block;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;font-weight:600;}
+.fi,.fs{width:100%;background:white;border:1.5px solid var(--border);color:var(--text);padding:0.85rem 1rem;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.87rem;outline:none;transition:border-color 0.2s;appearance:none;}
+.fi:focus,.fs:focus{border-color:var(--orange);}
+.fi::placeholder{color:var(--muted);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.btn-pres{width:100%;background:var(--orange);color:white;border:none;padding:1.1rem;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;}
+.btn-pres:hover{background:var(--orange2);}
+.btn-wa{width:100%;background:#25D366;color:white;border:none;padding:0.9rem;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;margin-top:0.6rem;transition:background 0.2s;}
+.btn-wa:hover{background:#1EBF5A;}
+
+footer{background:var(--navy);padding:3.5rem 6% 2rem;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.fl-brand{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;}
+.fl-i{width:30px;height:30px;background:var(--orange);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;}
+.fl-n{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:white;}
+.fl-n span{color:var(--orange);}
+.fl-desc{font-size:0.82rem;color:rgba(255,255,255,0.3);line-height:1.7;font-weight:300;max-width:250px;}
+.fc-h{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:1rem;font-weight:600;}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.fc a{text-decoration:none;color:rgba(255,255,255,0.35);font-size:0.82rem;transition:color 0.2s;}
+.fc a:hover{color:var(--orange);}
+.fb{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;display:flex;justify-content:space-between;font-size:0.73rem;color:rgba(255,255,255,0.2);flex-wrap:wrap;gap:0.5rem;}
+.fp{color:rgba(232,101,10,0.3);}
+
+@media(max-width:900px){
+  .hero,.pq-grid,.presup-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .svs-grid{grid-template-columns:1fr 1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .nav-links,.nav-tel{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-ico">🔧</div>
+    <div class="nav-name">Mecánica<span>Pro</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#presupuesto">Presupuesto</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-tel">📞 11 4567-8900</span>
+    <button class="nav-cta" onclick="document.getElementById('presupuesto').scrollIntoView({behavior:'smooth'})">Pedir presupuesto</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Taller Mecánico · Lanús, Buenos Aires</div>
+    <h1>Tu auto en<br><span class="orange">manos</span><br><span class="outline">expertas.</span></h1>
+    <p class="hero-sub">Más de 20 años reparando vehículos en el sur del GBA. Mecánica general, service, frenos, suspensión y mucho más. Presupuesto sin cargo.</p>
+    <div class="hero-btns">
+      <a href="#presupuesto" class="btn-orange">Pedir presupuesto</a>
+      <a href="#servicios" class="btn-outline-w">Ver servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">20+</div><div class="hstat-label">Años de experiencia</div></div>
+      <div class="hstat"><div class="hstat-num">5K+</div><div class="hstat-label">Autos reparados</div></div>
+      <div class="hstat"><div class="hstat-num">4.8★</div><div class="hstat-label">Google</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card"><div class="hc-ico">🔧</div><div><div class="hc-title">Mecánica General</div><div class="hc-sub">Motor, transmisión, embrague</div></div></div>
+    <div class="hero-card"><div class="hc-ico">🛞</div><div><div class="hc-title">Frenos & Suspensión</div><div class="hc-sub">Pastillas, amortiguadores, rótulas</div></div></div>
+    <div class="hero-card"><div class="hc-ico">⚡</div><div><div class="hc-title">Electricidad del Auto</div><div class="hc-sub">Diagnóstico por scanner</div></div></div>
+    <div class="hero-card"><div class="hc-ico">🔄</div><div><div class="hc-title">Service & Mantenimiento</div><div class="hc-sub">Aceite, filtros, correa de distribución</div></div></div>
+    <div class="hero-card"><div class="hc-ico">❄️</div><div><div class="hc-title">Aire Acondicionado</div><div class="hc-sub">Carga de gas y reparación</div></div></div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span class="si">Mecánica General</span><span class="si">Frenos</span><span class="si">Suspensión</span><span class="si">Service</span><span class="si">Electricidad</span><span class="si">Scanner</span><span class="si">Aire Acondicionado</span><span class="si">Correa de Distribución</span><span class="si">Embrague</span>
+    <span class="si">Mecánica General</span><span class="si">Frenos</span><span class="si">Suspensión</span><span class="si">Service</span><span class="si">Electricidad</span><span class="si">Scanner</span><span class="si">Aire Acondicionado</span><span class="si">Correa de Distribución</span><span class="si">Embrague</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="section svs-bg" id="servicios">
+  <div class="sec-top">
+    <div><div class="sec-e">Nuestros servicios</div><h2 class="sec-h">¿Qué le pasa a <span class="col">tu auto?</span></h2></div>
+    <a href="#presupuesto" class="sec-link">Pedir presupuesto →</a>
+  </div>
+  <div class="svs-grid">
+    <div class="sv"><div class="sv-stripe"></div><div class="sv-body"><span class="sv-ico">🔧</span><div class="sv-name">Mecánica General</div><p class="sv-desc">Motor, caja de cambios, embrague, junta de culata y toda la mecánica del vehículo. Diagnóstico completo incluido.</p></div><div class="sv-foot"><span class="sv-tag">Todas las marcas</span><span class="sv-price">Presupuesto gratis</span></div></div>
+    <div class="sv"><div class="sv-stripe"></div><div class="sv-body"><span class="sv-ico">🛞</span><div class="sv-name">Frenos & Suspensión</div><p class="sv-desc">Pastillas, discos, tambores, amortiguadores, rótulas, bieletas y alineación. Tu seguridad primero.</p></div><div class="sv-foot"><span class="sv-tag">Urgencias mismo día</span><span class="sv-price">Presupuesto gratis</span></div></div>
+    <div class="sv"><div class="sv-stripe"></div><div class="sv-body"><span class="sv-ico">⚡</span><div class="sv-name">Electricidad & Scanner</div><p class="sv-desc">Diagnóstico computarizado, testigo de motor, batería, alternador, arranque y sistema de inyección.</p></div><div class="sv-foot"><span class="sv-tag">Scanner universal</span><span class="sv-price">Presupuesto gratis</span></div></div>
+    <div class="sv"><div class="sv-stripe"></div><div class="sv-body"><span class="sv-ico">🔄</span><div class="sv-name">Service & Mantenimiento</div><p class="sv-desc">Cambio de aceite y filtros, correa de distribución, bujías, líquido de frenos y revisión completa.</p></div><div class="sv-foot"><span class="sv-tag">Con repuestos incluidos</span><span class="sv-price">Presupuesto gratis</span></div></div>
+    <div class="sv"><div class="sv-stripe"></div><div class="sv-body"><span class="sv-ico">❄️</span><div class="sv-name">Aire Acondicionado</div><p class="sv-desc">Carga de gas, limpieza de filtros, reparación del compresor y sistema de climatización completo.</p></div><div class="sv-foot"><span class="sv-tag">Gas R134a y R1234yf</span><span class="sv-price">Presupuesto gratis</span></div></div>
+    <div class="sv"><div class="sv-stripe"></div><div class="sv-body"><span class="sv-ico">🚗</span><div class="sv-name">Pre-compra & Peritaje</div><p class="sv-desc">Revisión completa antes de comprar un auto usado. Informe detallado del estado mecánico y de carrocería.</p></div><div class="sv-foot"><span class="sv-tag">Informe escrito</span><span class="sv-price">Consultar precio</span></div></div>
+  </div>
+</section>
+
+<!-- POR QUÉ -->
+<section class="section porque-section" id="nosotros">
+  <div class="pq-grid">
+    <div class="pq-left">
+      <div class="sec-e" style="color:rgba(232,101,10,0.7);">Por qué elegirnos</div>
+      <h2>20 años arreglando<br>autos en <span>el barrio.</span></h2>
+      <p>No somos una cadena. Somos un taller familiar donde el dueño está todos los días y te explica en persona qué le pasa a tu auto y qué necesita.</p>
+      <div class="pq-stats">
+        <div class="pqs"><div class="pqs-num">20+</div><div class="pqs-label">Años en el rubro</div></div>
+        <div class="pqs"><div class="pqs-num">5K+</div><div class="pqs-label">Vehículos reparados</div></div>
+        <div class="pqs"><div class="pqs-num">4.8★</div><div class="pqs-label">Google Maps</div></div>
+        <div class="pqs"><div class="pqs-num">100%</div><div class="pqs-label">Repuestos originales</div></div>
+      </div>
+    </div>
+    <div class="pq-right">
+      <div class="pqi"><div class="pqi-ico">📋</div><div><div class="pqi-title">Presupuesto detallado por escrito</div><p class="pqi-desc">Antes de tocar el auto, te damos un presupuesto por escrito con mano de obra y repuestos por separado. Sin sorpresas.</p></div></div>
+      <div class="pqi"><div class="pqi-ico">🔩</div><div><div class="pqi-title">Repuestos originales y de calidad</div><p class="pqi-desc">Trabajamos solo con repuestos de marcas reconocidas. Te mostramos el repuesto viejo y el nuevo antes de montar.</p></div></div>
+      <div class="pqi"><div class="pqi-ico">📱</div><div><div class="pqi-title">Te avisamos por WhatsApp</div><p class="pqi-desc">Cuando el auto está listo, cuando encontramos algo extra o si hay alguna demora — te escribimos sin que tengas que llamar.</p></div></div>
+      <div class="pqi"><div class="pqi-ico">🛡️</div><div><div class="pqi-title">Garantía en todos los trabajos</div><p class="pqi-desc">Todos los trabajos tienen garantía por escrito. Si algo falla, volvés sin costo y lo resolvemos.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESUPUESTO -->
+<section class="section presup-section" id="presupuesto">
+  <div class="presup-inner">
+    <div class="pl">
+      <div class="sec-e">Contacto & Presupuesto</div>
+      <h2>Traé tu auto o<br><span>mandanos un mensaje</span></h2>
+      <p>Completá el formulario con el problema de tu auto y te respondemos con un presupuesto estimado en menos de una hora. Sin cargo ni compromiso.</p>
+      <div class="pl-info">
+        <div class="pi-row"><span class="pi-key">Dirección</span><span class="pi-val">Av. H. Yrigoyen 3456, Lanús</span></div>
+        <div class="pi-row"><span class="pi-key">Lunes a Viernes</span><span class="pi-val">8:00 – 19:00</span></div>
+        <div class="pi-row"><span class="pi-key">Sábados</span><span class="pi-val">8:00 – 13:00</span></div>
+        <div class="pi-row"><span class="pi-key">WhatsApp</span><span class="pi-val">+54 11 4567-8900</span></div>
+        <div class="pi-row"><span class="pi-key">Instagram</span><span class="pi-val">@mecanicapro.lanus</span></div>
+      </div>
+    </div>
+    <div class="pr">
+      <h3>Pedí tu presupuesto</h3>
+      <div class="fg"><label class="fl">Tu nombre</label><input class="fi" type="text" placeholder="Nombre completo"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" type="tel" placeholder="+54 11..."></div>
+        <div class="fg"><label class="fl">Marca y modelo</label><input class="fi" type="text" placeholder="Ej: Volkswagen Gol 2018"></div>
+      </div>
+      <div class="fg"><label class="fl">¿Qué servicio necesitás?</label>
+        <select class="fs"><option>Mecánica General</option><option>Frenos & Suspensión</option><option>Electricidad / Scanner</option><option>Service & Mantenimiento</option><option>Aire Acondicionado</option><option>Pre-compra / Peritaje</option><option>No sé, necesito diagnóstico</option></select>
+      </div>
+      <div class="fg"><label class="fl">Describí el problema</label><input class="fi" type="text" placeholder="Ej: hace ruido al frenar, testigo de motor encendido..."></div>
+      <button class="btn-pres">Solicitar presupuesto</button>
+      <button class="btn-wa">💬 Escribir por WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl-brand"><div class="fl-i">🔧</div><div class="fl-n">Mecánica<span>Pro</span></div></div>
+      <p class="fl-desc">Taller mecánico en Lanús con 20 años de experiencia. Trabajo serio, repuestos de calidad y garantía en todo.</p>
+    </div>
+    <div class="fc"><div class="fc-h">Servicios</div><ul><li><a href="#">Mecánica General</a></li><li><a href="#">Frenos & Suspensión</a></li><li><a href="#">Electricidad</a></li><li><a href="#">Service</a></li><li><a href="#">Aire Acondicionado</a></li></ul></div>
+    <div class="fc"><div class="fc-h">Contacto</div><ul><li><a href="#">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><a href="#">Ubicación</a></li><li><a href="#">Presupuesto</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2025 MecánicaPro · Lanús, Buenos Aires</span><span class="fp">Sitio web por Presence ✦</span></div>
+</footer>
+</body>
+</html>
