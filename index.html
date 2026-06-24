@@ -592,9 +592,11 @@ function filtrar(cat, el) {
   });
 }
 
+document.querySelectorAll('.rv').forEach(el => el.classList.add('show'));
+
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-}, {threshold: 0.1});
+}, {threshold: 0.05});
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
